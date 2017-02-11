@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.VideoItem"
+            table="video"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property name="video" column="video">
+
+        </property>
+
+        <property name="text" column="text" not-null="false"  >
+
+        </property>
+
+        <property name="description" column="description" not-null="false"  >
+
+        </property>
+        
+        <property name="discepline" column="discepline" not-null="true"  >
+
+        </property>
+
+            
+        <property name="fightId" column="fightId">
+
+        </property>
+        
+
+		<property name="participanIdRed" column="participanIdRed">
+
+        </property>
+        
+        <property name="participanIdBlue" column="participanIdBlue">
+
+        </property>
+        
+        <property name="size" column="size">
+
+        </property>
+        
+        <property name="filename" column="filename">
+
+        </property>
+        
+		
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+       
+    </class>    
+
+</hibernate-mapping>
+

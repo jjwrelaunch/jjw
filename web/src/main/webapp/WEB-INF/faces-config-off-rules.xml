@@ -1,0 +1,312 @@
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : faces-config-off-rules.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+  <navigation-rule>
+    <from-view-id>/*</from-view-id>
+    <navigation-case>
+      <from-outcome>startoff</from-outcome>
+      <to-view-id>/off/start.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFight</from-outcome>
+      <to-view-id>/off/showFight.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFighter</from-outcome>
+      <to-view-id>/off/showFighter.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>fightingclassOverview</from-outcome>
+      <to-view-id>/off/fightingclassOverview.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>fightingPool</from-outcome>
+      <to-view-id>/off/fightingPool.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/fighting/fightingPool.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>showFight</from-outcome>
+      <to-view-id>/off/showFight.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFightingClock</from-outcome>
+      <to-view-id>/off/showFightingClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFriendlyFightingClock</from-outcome>
+      <to-view-id>/off/showFriendlyFightingClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFightingResults</from-outcome>
+      <to-view-id>/off/showFightingResults.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+ 
+
+  <!-- Duo -->
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showDuoclasses</from-outcome>
+      <to-view-id>/off/showDuoclasses.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showDuoTeams</from-outcome>
+      <to-view-id>/off/showDuoTeams.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>duoclassOverview</from-outcome>
+      <to-view-id>/off/duoclassOverview.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>duoPool</from-outcome>
+      <to-view-id>/off/duoPool.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showDuoFight</from-outcome>
+      <to-view-id>/off/showDuoFight.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+<navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showDuoClock</from-outcome>
+      <to-view-id>/off/showDuoClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFriendlyDuoClock</from-outcome>
+      <to-view-id>/off/showFriendlyDuoClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+ 
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showDuoResults</from-outcome>
+      <to-view-id>/off/showDuoResults.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+  
+   <!-- newa -->
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showNewaFight</from-outcome>
+      <to-view-id>/off/showNewaFight.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showNewaFighter</from-outcome>
+      <to-view-id>/off/showNewaFighter.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>newaclassOverview</from-outcome>
+      <to-view-id>/off/newaclassOverview.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>newaPool</from-outcome>
+      <to-view-id>/off/newaPool.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/off/newa/newaPool.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>showNewaFight</from-outcome>
+      <to-view-id>/off/showNewaFight.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showNewaClock</from-outcome>
+      <to-view-id>/off/showNewaClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showFriendlyNewaClock</from-outcome>
+      <to-view-id>/off/showFriendlyNewaClock.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showNewaResults</from-outcome>
+      <to-view-id>/off/showNewaResults.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+ 
+  
+  
+  
+  
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>showMedalRanking</from-outcome>
+      <to-view-id>/off/showMedalRanking.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>pressInfos</from-outcome>
+      <to-view-id>/off/pressInfos.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  
+   <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>allPreviews</from-outcome>
+      <to-view-id>/off/allPreviews.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>TeamParticipants</from-outcome>
+      <to-view-id>/off/teamParticipants.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+	<navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>
+      <from-outcome>tatamiPreview</from-outcome>
+      <to-view-id>/off/tatamiPreview.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/off/*</from-view-id>
+    <navigation-case>            
+      <from-outcome>tatamiPreviewReload</from-outcome>
+      <to-view-id>/off/tatamiPreview.html</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+</faces-config>

@@ -1,0 +1,77 @@
+/*
+ * This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+ * Copyright (c) 2010.
+ * Joerg Boehme / Tino Schlegel
+ *
+ * File    : messages.css
+ * Created : 05 Jun 2010
+ * Last Modified: Sat, 05 Jun 2010 21:54:41
+ *
+ * Ju Jutsu Web is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Ju Jutsu Web is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/* This is the style for the informational messages presented to the user */
+
+div.error, div.message {
+    background-color: #ffffcc;
+    border: 1px solid #000;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin: 10px auto;
+    padding: 3px;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/* use a different color for the errors */
+div.error {
+    border: 2px solid red;
+}
+
+img.validationWarning, div.errors img.icon, div.messages img.icon {
+    border: 0;
+    width: 14px;
+    height: 13px;
+    vertical-align: top;
+}
+
+div.message a {
+    background: transparent;
+    color: #0000FF;
+}
+
+div.message a:visited {
+    background: transparent;
+    color: #0000FF;
+}
+
+div.message a:hover {
+    background: transparent;
+    color: #008000;
+}
+
+div.message a:active {
+    text-decoration: underline overline;
+}
+
+div.message img.icon {
+    vertical-align: middle;
+}
+
+span.fieldError {
+    color: red;
+    font-size: .95em;
+    font-weight: bold;
+}

@@ -1,0 +1,573 @@
+<?xml version="1.0" ?>
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : tiles-defs.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+  <!-- =======================================================  -->
+  <!-- Master definition  									-->
+  <!-- =======================================================  -->
+
+  <definition name="ext.index.template" template="/templateTiles.jsp">
+    <put-attribute name="header" value="/common/header.jsp"/>
+    <put-attribute name="menu" value="/extern/menuExtern.jsp"/>
+    <put-attribute name="footer" value="/common/footer.jsp"/>
+  </definition>
+
+  <definition name="int.index.template" template="/templateTiles.jsp">
+    <put-attribute name="header" value="/common/header.jsp"/>
+    <put-attribute name="menu" value="/admin/menuAdmin.jsp"/>
+    <put-attribute name="footer" value="/common/footer.jsp"/>
+  </definition>
+
+  <definition name="off.index.template" template="/templateTiles.jsp">
+    <put-attribute name="header" value="/common/header.jsp"/>
+    <put-attribute name="menu" value="/off/menuOff.jsp"/>
+    <put-attribute name="footer" value="/common/footer.jsp"/>
+  </definition>
+
+
+  <definition name="int.fightingClock.template" template="/admin/fighting/fightingClock2.jsp">
+  </definition>
+  
+   <definition name="int.friendlyfightingClock.template" template="/admin/fighting/friendlyfightingClock2.jsp">
+  </definition>
+
+  <definition name="int.duoClock.template" template="/admin/duo/duoClock2.jsp">
+  </definition>
+  
+   <definition name="int.friendlyduoClock.template" template="/admin/duo/friendlyduoClock2.jsp">
+  </definition>
+  
+   <definition name="int.newaClock.template" template="/admin/newa/newaClock2.jsp">
+  </definition>
+  
+   <definition name="int.friendlynewaClock.template" template="/admin/newa/friendlynewaClock2.jsp">
+  </definition>
+                      
+   <definition name="/allPreviews.tiles" template="/extern/allPreviews.jsp">
+  </definition>
+  
+    <definition name="/admin/allPreviews.tiles" template="/extern/allPreviews.jsp">
+  </definition>
+  
+    <definition name="/off/allPreviews.tiles" template="/extern/allPreviews.jsp">
+  </definition>
+  
+
+
+  <!-- extern -->
+  <definition name="/index.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/start.jsp"/>
+  </definition>
+
+  <definition name="/start.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/start.jsp"/>
+  </definition>
+
+  <definition name="/logIn.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/login.jsp"/>
+  </definition>
+
+  <definition name="/teamParticipants.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/teamParticipants.jsp"/>
+  </definition>
+  
+  <definition name="/pressInfos.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/pressInfos.jsp"/>
+  </definition>
+  
+  <definition name="/showMedalRanking.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/medalRanking.jsp"/>
+  </definition>
+
+
+  <!-- extern fighting -->
+  <definition name="/fightingclassOverview.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/fighting/fightingclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/fightingPool.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/fighting/fightingPool.jsp"/>
+  </definition>
+
+  <definition name="/showFightingResults.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/fighting/showFightingResults.jsp"/>
+  </definition>
+
+  <definition name="/showFighter.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/fighting/showFighter.jsp"/>
+  </definition>
+
+  <!-- extern duo -->
+  <definition name="/showDuoTeams.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/duo/showDuoTeams.jsp"/>
+  </definition>
+
+  <definition name="/duoclassOverview.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/duo/duoclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/duoPool.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/duo/duoPool.jsp"/>
+  </definition>
+
+  <definition name="/showDuoResults.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/duo/showDuoResults.jsp"/>
+  </definition>
+  
+  <!-- extern newa -->
+  <definition name="/newaclassOverview.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/newa/newaclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/newaPool.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/newa/newaPool.jsp"/>
+  </definition>
+
+  <definition name="/showNewaResults.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/newa/showNewaResults.jsp"/>
+  </definition>
+
+  <definition name="/showNewaFighter.tiles" extends="ext.index.template">
+    <put-attribute name="main" value="/extern/newa/showNewaFighter.jsp"/>
+  </definition>
+
+  <!-- admin -->
+  <definition name="/admin/start.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/start.jsp"/>
+  </definition>
+
+  <definition name="/admin/showCountries.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showCountries.jsp"/>
+  </definition>
+
+  <definition name="/admin/showRegions.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showRegions.jsp"/>
+  </definition>
+
+  <definition name="/admin/showAges.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showAges.jsp"/>
+  </definition>
+
+  <definition name="/admin/editAge.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/editAge.jsp"/>
+  </definition>
+
+  <definition name="/admin/showUsers.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showUsers.jsp"/>
+  </definition>
+
+  <definition name="/admin/editUser.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/editUser.jsp"/>
+  </definition>
+
+  <definition name="/admin/showTeams.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showTeams.jsp"/>
+  </definition>
+
+  <definition name="/admin/editTeam.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/editTeam.jsp"/>
+  </definition>
+  
+  <definition name="/admin/uploadTeam.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/uploadTeam.jsp"/>
+  </definition>
+  
+  <definition name="/admin/uploadApplications.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/uploadApplications.jsp"/>
+  </definition>
+
+  <definition name="/admin/showFightsystem.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFightsystem.jsp"/>
+  </definition>
+
+  <definition name="/admin/showConfig.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showConfig.jsp"/>
+  </definition>
+
+  <definition name="/admin/showMedalRanking.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/medalRanking.jsp"/>
+  </definition>
+  
+   <definition name="/admin/pressInfos.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/pressInfos.jsp"/>
+  </definition>  
+ 
+  <definition name="/admin/teamParticipants.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/teamParticipants.jsp"/>
+  </definition>
+  
+    <definition name="/admin/showStatistics.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showStatistics.jsp"/>
+  </definition>
+
+  <definition name="/admin/friendlies.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFriendlies.jsp"/>
+  </definition>
+
+  <definition name="/admin/friendlyFightingFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFriendlyFighter.jsp"/>
+  </definition>
+  
+   <definition name="/admin/showFriendlyFighterOpponent.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFriendlyFighterOpponent.jsp"/>
+  </definition>
+  
+  <definition name="/admin/friendlyDuoFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFriendlyDuoTeams.jsp"/>
+  </definition>
+  
+   <definition name="/admin/showFriendlyDuoOpponent.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/admin/showFriendlyDuoOpponent.jsp"/>
+  </definition>  
+  
+   <definition name="/admin/markFighterForExport.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/markFighterForExport.jsp"/>
+  </definition>
+  
+   <definition name="/admin/markDuoForExport.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/markDuoForExport.jsp"/>
+  </definition>
+  
+   <definition name="/admin/markNewaForExport.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/markNewaForExport.jsp"/>
+  </definition>
+
+  <!--  intern fighting -->
+
+  <definition name="/admin/fightingclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/fightingclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/userFightingclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/userFightingclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/fightingPool.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/fightingPool.jsp"/>
+  </definition>
+
+  <definition name="/admin/showFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showFight.jsp"/>
+  </definition>
+  
+  <definition name="/admin/showFriendlyFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showFriendlyFight.jsp"/>
+  </definition>
+
+  <definition name="/admin/showWeightclasses.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showWeightclasses.jsp"/>
+  </definition>
+
+  <definition name="/admin/editWeightclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/editWeightclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/automaticWeightclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/automaticWeightclass.jsp"/>
+  </definition>
+  
+  <definition name="/admin/fightingclassCombine.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/fightingclassCombine.jsp"/>
+  </definition>
+  
+
+  <definition name="/admin/showFightingResults.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showFightingResults.jsp"/>
+  </definition>
+
+  <definition name="/admin/showFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNotRegistratedFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/showNotRegistratedFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/editFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/editFighter.jsp"/>
+  </definition>
+  
+  <definition name="/admin/editNotRegFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/editNotRegFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/createFightingclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/createFightingclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/changeFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/fighting/changeFighter.jsp"/>
+  </definition>
+  
+  <definition name="/admin/showFightingClock.tiles" extends="int.fightingClock.template">
+  </definition>
+  
+  <definition name="/admin/showFriendlyFightingClock.tiles" extends="int.friendlyfightingClock.template">  
+
+  </definition>
+  
+
+  <!-- intern duo -->
+  <definition name="/admin/showDuoclasses.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showDuoclasses.jsp"/>
+  </definition>
+
+  <definition name="/admin/editDuoclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/editDuoclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/showDuoTeams.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showDuoTeams.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNotRegistratedDuoTeams.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showNotRegistratedDuoTeams.jsp"/>
+  </definition>
+
+  <definition name="/admin/editDuoTeam.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/editDuoTeam.jsp"/>
+  </definition>
+  
+   <definition name="/admin/editNotRegDuoTeam.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/editNotRegDuoTeam.jsp"/>
+  </definition>
+
+  <definition name="/admin/duoclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/duoclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/userDuoclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/userDuoclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/duoPool.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/duoPool.jsp"/>
+  </definition>
+
+  <definition name="/admin/createDuoclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/createDuoclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/showDuoFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showDuoFight.jsp"/>
+  </definition>
+  
+  <definition name="/admin/showFriendlyDuoFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showFriendlyDuoFight.jsp"/>
+  </definition>
+  
+   <definition name="/admin/duoclassCombine.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/duoclassCombine.jsp"/>
+  </definition>
+
+  <definition name="/admin/showDuoResults.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/showDuoResults.jsp"/>
+  </definition>
+
+  <definition name="/admin/changeDuoTeams.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/duo/changeDuoTeams.jsp"/>
+  </definition>
+
+  <definition name="/admin/showDuoClock.tiles" extends="int.duoClock.template">
+  </definition>
+      
+  <definition name="/admin/showFriendlyDuoClock.tiles" extends="int.friendlyduoClock.template">
+
+  </definition>
+  
+  <!--  intern newa -->
+
+  <definition name="/admin/newaclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/newaclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/userNewaclassOverview.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/userNewaclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/admin/newaPool.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/newaPool.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNewaFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showNewaFight.jsp"/>
+  </definition>
+  
+  <definition name="/admin/showFriendlyNewaFight.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showFriendlyNewaFight.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNewaWeightclasses.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showNewaWeightclasses.jsp"/>
+  </definition>
+
+  <definition name="/admin/editNewaWeightclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/editNewaWeightclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/automaticNewaWeightclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/automaticNewaWeightclass.jsp"/>
+  </definition>
+  
+  <definition name="/admin/newaclassCombine.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/newaclassCombine.jsp"/>
+  </definition>
+  
+
+  <definition name="/admin/showNewaResults.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showNewaResults.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNewaFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showNewaFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/showNotRegistratedNewaFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/showNotRegistratedNewaFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/editNewaFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/editNewaFighter.jsp"/>
+  </definition>
+  
+  <definition name="/admin/editNotRegNewaFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/editNotRegNewaFighter.jsp"/>
+  </definition>
+
+  <definition name="/admin/createNewaclass.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/createNewaclass.jsp"/>
+  </definition>
+
+  <definition name="/admin/changeNewaFighter.tiles" extends="int.index.template">
+    <put-attribute name="main" value="/admin/newa/changeNewaFighter.jsp"/>
+  </definition>
+  
+  <definition name="/admin/showNewaClock.tiles" extends="int.newaClock.template">
+  </definition>
+  
+  <definition name="/admin/showFriendlyNewaClock.tiles" extends="int.friendlynewaClock.template">  
+
+  </definition>
+
+
+  <!--  off -->
+  <definition name="/off/start.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/start.jsp"/>
+  </definition>
+  
+    <definition name="/off/showMedalRanking.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/medalRanking.jsp"/>
+  </definition>
+
+ <definition name="/off/pressInfos.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/pressInfos.jsp"/>
+  </definition>  
+
+  <definition name="/off/teamParticipants.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/teamParticipants.jsp"/>
+  </definition>
+
+  <definition name="/off/showFighter.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/fighting/showFighter.jsp"/>
+  </definition>
+
+  <definition name="/off/fightingclassOverview.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/fighting/fightingclassOverview.jsp"/>
+  </definition>
+  
+  <definition name="/off/fightingPool.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/fighting/fightingPool.jsp"/>
+  </definition>
+
+  <definition name="/off/showFight.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/fighting/showFight.jsp"/>
+  </definition>
+  
+  <definition name="/off/showFightingResults.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/fighting/showFightingResults.jsp"/>
+  </definition>
+  
+  <definition name="/off/showFightingClock.tiles" extends="int.fightingClock.template">
+  </definition>
+  <!-- Duo -->
+  
+  <definition name="/off/showDuoTeams.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/duo/showDuoTeams.jsp"/>
+  </definition>
+
+  <definition name="/off/duoclassOverview.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/duo/duoclassOverview.jsp"/>
+  </definition>
+
+  <definition name="/off/duoPool.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/duo/duoPool.jsp"/>
+  </definition>
+
+  <definition name="/off/showDuoFight.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/duo/showDuoFight.jsp"/>
+  </definition>
+
+
+  <definition name="/off/showDuoResults.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/duo/showDuoResults.jsp"/>
+  </definition>
+  
+  <definition name="/off/showDuoClock.tiles" extends="int.duoClock.template">
+  </definition>
+  
+  
+  <!-- newa -->
+  <definition name="/off/showNewaFighter.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/newa/showNewaFighter.jsp"/>
+  </definition>
+  <definition name="/off/newaclassOverview.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/newa/newaclassOverview.jsp"/>
+  </definition>
+  
+  <definition name="/off/newaPool.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/newa/newaPool.jsp"/>
+  </definition>
+
+  <definition name="/off/showNewaFight.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/newa/showNewaFight.jsp"/>
+  </definition>
+  
+  <definition name="/off/showNewaResults.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/newa/showNewaResults.jsp"/>
+  </definition>
+  
+  <definition name="/off/showNewaClock.tiles" extends="int.newaClock.template">
+  </definition>
+  
+  
+  
+  
+  
+  <definition name="/off/tatamiPreview.tiles" extends="off.index.template">
+    <put-attribute name="main" value="/off/preview.jsp"/>
+  </definition>
+</tiles-definitions>

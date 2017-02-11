@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.duo.FriendlyDuoFight"
+            table="duo_fight_list_friend"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="teamIdRed"
+                    column="teamIdRed"
+        >
+
+        </property>
+
+        <property
+            name="teamIdBlue"
+                    column="teamIdBlue"
+        >
+
+        </property>
+
+        <many-to-one
+            name="duoclass"
+                    class="de.jjw.model.duo.Duoclass"
+                    column="duoclass"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="duoclassId"
+                    column="duoclass"
+        >
+
+        </property>
+
+        <property
+            name="pointsRed"
+                    column="pointsRed"
+        >
+
+        </property>
+
+        <property
+            name="pointsBlue"
+                    column="pointsBlue"
+        >
+
+        </property>
+
+        <property
+            name="pointsRedMax"
+                    column="pointsRedMax"
+        >
+
+        </property>
+
+        <property
+            name="pointsBlueMax"
+                    column="pointsBlueMax"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="flag"
+        >
+
+        </property>
+
+        <property
+            name="winnerId"
+                    column="winnerId"
+        >
+
+        </property>
+
+        <property
+            name="kikengachi"
+                    column="kikengachi"
+        >
+
+        </property>
+
+        <property
+            name="fusengachi"
+                    column="fusengachi"
+        >
+
+        </property>
+
+        <property
+            name="injuryTimeRed"
+                    column="injuryTimeRed"
+        >
+
+        </property>
+
+        <property
+            name="injuryTimeBlue"
+                    column="injuryTimeBlue"
+        >
+
+        </property>
+
+        <property
+            name="overallFightTime"
+                    column="overallFightTime"
+        >
+
+        </property>
+
+        <property
+            name="poolPart"
+                    column="poolPart"
+        >
+
+        </property>
+
+        <property
+            name="mainRound"
+                    type="yes_no"
+                    column="mainRound"
+        >
+
+        </property>
+
+        <property
+            name="fightNumberInPart"
+                    column="fightNumberInPart"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesArefI"
+                    column="redSeriesArefI"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesArefII"
+                    column="redSeriesArefII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesArefIII"
+                    column="redSeriesArefIII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesArefIV"
+                    column="redSeriesArefIV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesArefV"
+                    column="redSeriesArefV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesArefI"
+                    column="blueSeriesArefI"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesArefII"
+                    column="blueSeriesArefII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesArefIII"
+                    column="blueSeriesArefIII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesArefIV"
+                    column="blueSeriesArefIV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesArefV"
+                    column="blueSeriesArefV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesBrefI"
+                    column="redSeriesBrefI"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesBrefII"
+                    column="redSeriesBrefII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesBrefIII"
+                    column="redSeriesBrefIII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesBrefIV"
+                    column="redSeriesBrefIV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesBrefV"
+                    column="redSeriesBrefV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesBrefI"
+                    column="blueSeriesBrefI"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesBrefII"
+                    column="blueSeriesBrefII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesBrefIII"
+                    column="blueSeriesBrefIII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesBrefIV"
+                    column="blueSeriesBrefIV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesBrefV"
+                    column="blueSeriesBrefV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesCrefI"
+                    column="redSeriesCrefI"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesCrefII"
+                    column="redSeriesCrefII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesCrefIII"
+                    column="redSeriesCrefIII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesCrefIV"
+                    column="redSeriesCrefIV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesCrefV"
+                    column="redSeriesCrefV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesCrefI"
+                    column="blueSeriesCrefI"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesCrefII"
+                    column="blueSeriesCrefII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesCrefIII"
+                    column="blueSeriesCrefIII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesCrefIV"
+                    column="blueSeriesCrefIV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesCrefV"
+                    column="blueSeriesCrefV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesDrefI"
+                    column="redSeriesDrefI"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesDrefII"
+                    column="redSeriesDrefII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesDrefIII"
+                    column="redSeriesDrefIII"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesDrefIV"
+                    column="redSeriesDrefIV"
+        >
+
+        </property>
+
+        <property
+            name="redSeriesDrefV"
+                    column="redSeriesDrefV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesDrefI"
+                    column="blueSeriesDrefI"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesDrefII"
+                    column="blueSeriesDrefII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesDrefIII"
+                    column="blueSeriesDrefIII"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesDrefIV"
+                    column="blueSeriesDrefIV"
+        >
+
+        </property>
+
+        <property
+            name="blueSeriesDrefV"
+                    column="blueSeriesDrefV"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

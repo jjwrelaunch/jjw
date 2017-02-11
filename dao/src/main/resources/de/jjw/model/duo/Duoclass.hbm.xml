@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.duo.Duoclass"
+            table="duoclass"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="certificationPrint"
+                    type="yes_no"
+                    column="certificationPrint"
+        >
+
+        </property>
+
+        <property
+            name="complete"
+                    type="yes_no"
+                    column="complete"
+        >
+
+        </property>
+
+        <property
+            name="deleteStop"
+                    type="yes_no"
+                    column="deleteStop"
+        >
+
+        </property>
+
+        <property
+            name="startTime"
+                    column="startTime"
+        >
+
+        </property>
+
+        <property
+            name="endTime"
+                    column="endTime"
+        >
+
+        </property>
+
+        <property
+            name="officialsLog"
+                    column="officialsLog"
+                length="1000"
+        >
+
+        </property>
+
+        <property
+            name="inuse"
+                    type="yes_no"
+                    column="inuse"
+        >
+
+        </property>
+
+        <many-to-one
+            name="age"
+                    class="de.jjw.model.admin.Age"
+                    column="age"
+                not-null="true"
+        >
+
+        </many-to-one>
+
+        <property
+            name="sex"
+                    column="sex"
+        >
+
+        </property>
+
+        <property
+            name="duoclassName"
+                    column="duoclassName"
+        >
+
+        </property>
+
+        <set
+            name="childs"
+            table="Duoclass"
+            inverse="true"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="parent"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="de.jjw.model.duo.Duoclass"
+            />
+
+        </set>
+
+        <many-to-one
+            name="parent"
+                    class="de.jjw.model.duo.Duoclass"
+                    column="parent"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="parentId"
+                    column="parent"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

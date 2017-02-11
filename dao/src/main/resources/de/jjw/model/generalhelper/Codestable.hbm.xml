@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.generalhelper.Codestable"
+            table="codestable"
+    >
+
+    <id
+        name="syn_id"
+            column="syn_id"
+    >
+
+    </id>
+
+        <property
+            name="id"
+                    column="id"
+                length="30"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="level"
+                    column="level"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="order"
+                    column="ordernb"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="type"
+                    column="type"
+                length="3"
+        >
+
+        </property>
+
+        <property
+            name="value"
+                    column="value"
+                length="300"
+        >
+
+        </property>
+
+        <property
+            name="locale"
+                    column="locale"
+                length="10"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

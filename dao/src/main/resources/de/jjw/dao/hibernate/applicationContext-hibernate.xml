@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : applicationContext-hibernate.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 20:55:43
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  <!-- Hibernate SessionFactory -->
+  <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="mappingResources">
+      <list>
+        <value>de/jjw/model/Role.hbm.xml</value>
+        <value>de/jjw/model/User.hbm.xml</value>
+        <value>de/jjw/model/Team.hbm.xml</value>
+        <value>de/jjw/model/Preview.hbm.xml</value>
+        <value>de/jjw/model/generalhelper/Codestable.hbm.xml</value>
+        <value>de/jjw/model/admin/Age.hbm.xml</value>
+        <value>de/jjw/model/admin/Region.hbm.xml</value>
+        <value>de/jjw/model/admin/Country.hbm.xml</value>
+        <value>de/jjw/model/admin/Fightsystem.hbm.xml</value>
+        <value>de/jjw/model/admin/ConfigJJW.hbm.xml</value>     
+        <value>de/jjw/model/admin/IPLog.hbm.xml</value>
+        <value>de/jjw/model/Video.hbm.xml</value>        
+
+        <value>de/jjw/model/fighting/Fighter.hbm.xml</value>
+        <value>de/jjw/model/fighting/FightingSimplePoolItem.hbm.xml</value>
+        <value>de/jjw/model/fighting/FightingDoublePoolItem.hbm.xml</value>
+        <value>de/jjw/model/fighting/FightingKoItem.hbm.xml</value>
+        <value>de/jjw/model/fighting/Fightingclass.hbm.xml</value>
+        <value>de/jjw/model/fighting/Fight.hbm.xml</value>
+        <value>de/jjw/model/fighting/FriendlyFight.hbm.xml</value>
+        <value>de/jjw/model/fighting/UserFightingclass.hbm.xml</value>
+
+        <value>de/jjw/model/duo/Duoclass.hbm.xml</value>
+        <value>de/jjw/model/duo/DuoFight.hbm.xml</value>
+        <value>de/jjw/model/duo/FriendlyDuoFight.hbm.xml</value>
+        <value>de/jjw/model/duo/DuoSimplePoolItem.hbm.xml</value>
+        <value>de/jjw/model/duo/DuoDoublePoolItem.hbm.xml</value>
+        <value>de/jjw/model/duo/DuoKoItem.hbm.xml</value>
+        <value>de/jjw/model/duo/DuoTeam.hbm.xml</value>
+        <value>de/jjw/model/duo/UserDuoclass.hbm.xml</value>
+        
+        <value>de/jjw/model/newa/NewaFighter.hbm.xml</value>
+        <value>de/jjw/model/newa/NewaSimplePoolItem.hbm.xml</value>
+        <value>de/jjw/model/newa/NewaDoublePoolItem.hbm.xml</value>
+        <value>de/jjw/model/newa/NewaKoItem.hbm.xml</value>
+        <value>de/jjw/model/newa/Newaclass.hbm.xml</value>
+        <value>de/jjw/model/newa/NewaFight.hbm.xml</value>
+        <value>de/jjw/model/newa/FriendlyNewaFight.hbm.xml</value>
+        <value>de/jjw/model/newa/UserNewaclass.hbm.xml</value>
+      </list>
+    </property>
+    <!-- The property below is commented out b/c it doesn't work when run via
+         Ant in Eclipse.  It works fine for individual JUnit tests and in IDEA ??
+    <property name="mappingJarLocations">
+        <list><value>file:dist/appfuse-dao.jar</value></list>
+    </property>
+    -->
+    <property name="hibernateProperties">
+      <props>
+        <prop key="hibernate.dialect">@HIBERNATE-DIALECT@</prop>
+        <!-- Create/update the database tables automatically when the JVM starts up
+      <prop key="hibernate.hbm2ddl.auto">update</prop> -->
+        <!-- Turn batching off for better error messages under PostgreSQL
+      <prop key="hibernate.jdbc.batch_size">0</prop> -->
+      </props>
+    </property>
+  </bean>
+
+  <!-- Transaction manager for a single Hibernate SessionFactory (alternative to JTA) -->
+  <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!-- Generic Dao - can be used when doing standard CRUD -->
+  <bean id="dao" class="de.jjw.dao.hibernate.BaseDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!-- LookupDao: Hibernate implementation -->
+  <bean id="lookupDao" class="de.jjw.dao.hibernate.LookupDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!-- UserDao: Hibernate implementation -->
+  <bean id="userDao" class="de.jjw.dao.hibernate.UserDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!-- RoleDao: Hibernate implementation -->
+  <bean id="roleDao" class="de.jjw.dao.hibernate.RoleDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <bean id="medalRankingDao" class="de.jjw.dao.hibernate.MedalRankingDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+    
+  <bean id="teamDao" class="de.jjw.dao.hibernate.TeamDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="codestableDao" class="de.jjw.dao.hibernate.generalhelper.CodestableDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="optimisticLockingDao" class="de.jjw.dao.hibernate.generalhelper.OptimisticLockingDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!--  Admin Dao -->
+  <bean id="ageDao" class="de.jjw.dao.hibernate.admin.AgeDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="countryDao" class="de.jjw.dao.hibernate.admin.CountryDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="regionDao" class="de.jjw.dao.hibernate.admin.RegionDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="fightsystemDao" class="de.jjw.dao.hibernate.admin.FightsystemDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="configDao" class="de.jjw.dao.hibernate.admin.ConfigDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="pressInfoDao" class="de.jjw.dao.hibernate.PressInfoDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+   <bean id="databaseDumpDao" class="de.jjw.dao.hibernate.DatabaseDumpDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+   <bean id="previewDao" class="de.jjw.dao.hibernate.PreviewDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+   <bean id="ipLogDao" class="de.jjw.dao.hibernate.admin.IPLogDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <bean id="videoDao" class="de.jjw.dao.hibernate.VideoDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+
+  <!-- Fighting Daos here -->
+
+  <bean id="fighterDao" class="de.jjw.dao.hibernate.fighting.FighterDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="weightclassDao" class="de.jjw.dao.hibernate.fighting.WeightclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="fightingclassDao" class="de.jjw.dao.hibernate.fighting.FightingclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="fightDao" class="de.jjw.dao.hibernate.fighting.FightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="userFightingclassDao" class="de.jjw.dao.hibernate.fighting.UserFightingclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+   <bean id="friendlyFightDao" class="de.jjw.dao.hibernate.fighting.FriendlyFightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+
+  <!-- Duo Daos here -->
+
+  <bean id="duoclassDao" class="de.jjw.dao.hibernate.duo.DuoclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="duoTeamDao" class="de.jjw.dao.hibernate.duo.DuoTeamDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="duoFightDao" class="de.jjw.dao.hibernate.duo.DuoFightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="userDuoclassDao" class="de.jjw.dao.hibernate.duo.UserDuoclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="friendlyDuoFightDao" class="de.jjw.dao.hibernate.duo.FriendlyDuoFightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  
+  <!-- Newa Daos here -->
+
+  <bean id="newaFighterDao" class="de.jjw.dao.hibernate.newa.NewaFighterDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="newaWeightclassDao" class="de.jjw.dao.hibernate.newa.NewaWeightclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="newaclassDao" class="de.jjw.dao.hibernate.newa.NewaclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="newaFightDao" class="de.jjw.dao.hibernate.newa.NewaFightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+  <bean id="userNewaclassDao" class="de.jjw.dao.hibernate.newa.UserNewaclassDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+   <bean id="friendlyNewaFightDao" class="de.jjw.dao.hibernate.newa.FriendlyNewaFightDaoHibernate">
+    <property name="sessionFactory" ref="sessionFactory"/>
+  </bean>
+</beans>

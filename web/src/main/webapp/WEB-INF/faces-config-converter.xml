@@ -1,0 +1,75 @@
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : faces-config-converter.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+  <converter>
+    <description>converts countries</description>
+    <converter-id>jjw.webapp.converter.CountryConverter</converter-id>
+    <converter-class>de.jjw.webapp.converter.CountryConverter</converter-class>
+  </converter>
+  <converter>
+    <description>converts regions</description>
+    <converter-id>jjw.webapp.converter.RegionConverter</converter-id>
+    <converter-class>de.jjw.webapp.converter.RegionConverter</converter-class>
+  </converter>
+  <converter>
+    <description>converts regions for fighter</description>
+    <converter-id>jjw.webapp.converter.RegionConverterForFighter</converter-id>
+    <converter-class>de.jjw.webapp.converter.RegionConverterForFighter</converter-class>
+  </converter>
+  <converter>
+    <description>converts regions for duoteam</description>
+    <converter-id>jjw.webapp.converter.RegionConverterForDuoTeam</converter-id>
+    <converter-class>de.jjw.webapp.converter.RegionConverterForDuoTeam</converter-class>
+  </converter>
+   <converter>
+    <description>converts regions for newa</description>
+    <converter-id>jjw.webapp.converter.RegionConverterForNewa</converter-id>
+    <converter-class>de.jjw.webapp.converter.RegionConverterForNewa</converter-class>
+  </converter>
+  <converter>
+    <description>converts ages</description>
+    <converter-id>jjw.webapp.converter.AgeConverter</converter-id>
+    <converter-class>de.jjw.webapp.converter.AgeConverter</converter-class>
+  </converter>
+  <converter>
+    <description>converts teams</description>
+    <converter-id>jjw.webapp.converter.TeamConverter</converter-id>
+    <converter-class>de.jjw.webapp.converter.TeamConverter</converter-class>
+  </converter>
+
+
+  <converter>
+    <description>converts double</description>
+    <converter-for-class>java.lang.Double</converter-for-class>
+    <converter-class>de.jjw.webapp.converter.DoubleConverter</converter-class>
+  </converter>
+  <converter>
+    <converter-for-class>java.lang.Integer</converter-for-class>
+    <converter-class>de.jjw.webapp.converter.IntegerConverter</converter-class>
+  </converter>
+</faces-config>

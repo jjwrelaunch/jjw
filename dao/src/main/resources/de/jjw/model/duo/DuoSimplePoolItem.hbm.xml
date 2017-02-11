@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.duo.DuoSimplePoolItem"
+            table="duo_poolentries"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="duoclassId"
+                    column="poolId"
+        >
+
+        </property>
+
+        <many-to-one
+            name="duoclass"
+                    class="de.jjw.model.duo.Duoclass"
+                    column="poolId"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="duoTeam"
+                    class="de.jjw.model.duo.DuoTeam"
+                    column="duoTeamId"
+                not-null="false"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="duoTeamId"
+                    column="duoTeamId"
+        >
+
+        </property>
+
+        <property
+            name="numberInPool"
+                    column="numberInPool"
+        >
+
+        </property>
+
+        <many-to-one
+            name="fight1"
+                    class="de.jjw.model.duo.DuoFight"
+                    column="fight1"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="fight2"
+                    class="de.jjw.model.duo.DuoFight"
+                    column="fight2"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="fight3"
+                    class="de.jjw.model.duo.DuoFight"
+                    column="fight3"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="fight4"
+                    class="de.jjw.model.duo.DuoFight"
+                    column="fight4"
+        >
+
+        </many-to-one>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

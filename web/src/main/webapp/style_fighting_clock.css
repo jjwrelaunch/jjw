@@ -1,0 +1,216 @@
+/*
+ * This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+ * Copyright (c) 2010.
+ * Joerg Boehme / Tino Schlegel
+ *
+ * File    : style_fighting_clock.css
+ * Created : 05 Jun 2010
+ * Last Modified: Sat, 05 Jun 2010 21:02:56
+ *
+ * Ju Jutsu Web is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Ju Jutsu Web is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+.loadfield_age_text {
+    color: #FFFFFF;
+    background-color: #666666;
+    font-size: 50px;
+    padding-left: 20px;
+}
+
+.loadfield_sex_text {
+    color: #FFFFFF;
+    background-color: #666666;
+    font-size: 50px;
+    padding: 0px;
+}
+
+.loadfield_weight_text {
+    color: #FFFFFF;
+    background-color: #666666;
+    font-size: 50px;
+    padding-right: 20px;
+}
+
+.red {
+    background: #FF3333;
+}
+
+.white, .blue {
+    background: #0033FF;
+}
+
+.font_red {
+    color: #FF3333;
+}
+
+.font_blue {
+    color: #0033ff;
+}
+
+.font_black {
+    color: #000000;
+}
+
+.td_preparation {
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clock {
+    font-family: Verdana, Geneva, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #55E533;
+    background: #000000;
+}
+
+.VornameRed, .NameRed {
+    font-family: Tahoma, Geneva, Verdana, Arial;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+    float: left;
+}
+
+.VornameWhite, .NameWhite {
+    font-family: Tahoma, Geneva, Verdana, Arial;
+    font-size: 28px;
+    font-weight: bold;
+    color: #FFFFFF;
+    float: left;
+}
+
+.VereinRed {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #FFFFFF;
+    clear: left;
+    float: left;
+}
+
+.VereinWhite {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #FFFFFF;
+    clear: left;
+    float: left;
+}
+
+.space {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.points {
+    background: #000000;
+    border: 0px solid white;
+}
+
+.points-inner-border {
+    background: #FFFFFF;
+    margin: 0;
+    padding: 4px;
+}
+
+.points-outer-border {
+    background: #000000;
+    border-width: 2px 4px 4px 2px;
+    border-color: #BBBBBB #666666 #666666 #BBBBBB;
+    border-style: solid;
+    margin: 1px;
+    padding: 1px;
+}
+
+.penalty {
+    cursor: pointer;
+}
+
+.button {
+    cursor: pointer;
+}
+
+#call_red_1, #call_red_2 {
+    padding-top: 25px;
+    padding-bottom: 45px;
+    font-size: 75px;
+    font-weight: bold;
+    color: #FF3333;
+    margin: 0;
+    margin-top: 5px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 0px solid #ff3333;
+    display: block;
+    overflow: hidden;
+}
+
+#call_blue_1, #call_blue_2, #call_white {
+    padding-top: 25px;
+    padding-bottom: 45px;
+    font-size: 75px;
+    font-weight: bold;
+    color: #0033ff;
+    margin: 0;
+    margin-bottom: 5px;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 0px solid #0033ff;
+    display: block;
+    overflow: hidden;
+}
+
+.Info {
+    position: absolute;
+    display: none;
+    padding: 5px;
+    font-size: 10px;
+    height: 150px;
+    width: 120px;
+    overflow: hidden;
+}
+
+.displayLabels, .displayLabels a {
+    color: white;
+    cursor: pointer;
+    font-family: Tahoma, Arial, serif;
+    font-size: 36px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.smallClockCaption, .smallClockCaption a {
+    color: white;
+    cursor: pointer;
+    font-family: Tahoma, Arial, serif;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.Injury {
+    position: absolute;
+    display: none;
+    background-color: #EEEEEE;
+    padding: 5px;
+    border: 2px solid black;
+    height: 300px;
+    width: 300px;
+    overflow: hidden;
+    top: 200px;
+    left: 362px;
+}

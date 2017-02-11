@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : jjw.tld
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+
+  <tlib-version>1.1</tlib-version>
+  <jsp-version>2.1</jsp-version>
+
+  <description><![CDATA[Custom tag library for this application]]></description>
+
+
+  <tag>
+    <name>codestableErrorMessage</name>
+    <tag-class>de.jjw.webapp.taglib.CodestableErrorMessageTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>print CodestableErrorMessage</info>
+  </tag>
+  <tag>
+    <name>codestableErrorMark</name>
+    <tag-class>de.jjw.webapp.taglib.CodestableErrorMarkTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>print CodestableErrorMark</info>
+    <attribute>
+      <name>field</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>message</name>
+    <tag-class>de.jjw.webapp.taglib.MessageTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>print Message</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <attribute>
+      <name>message</name>
+      <required>true</required>
+      <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>errorMessage</name>
+    <tag-class>de.jjw.webapp.taglib.ErrorMessageTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>print ErrorMessages</info>
+  </tag>
+
+  <tag>
+    <name>fightingSimplePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.FightingSimplePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a FightingSimplePool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.FightingSimplePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>fightingDoublePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.FightingDoublePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a FightingDoppelPool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.FightingDoublePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>fightingKoWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.FightingKoWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a FightingKo</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.FightingKoWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+
+  <tag>
+    <name>duoSimplePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.DuoSimplePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a DuoSimplePool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.DuoSimplePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>duoDoublePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.DuoDoublePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a DuoDoppelPool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.DuoDoublePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>duoKoWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.DuoKoWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a DuoKo</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.DuoKoWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+  
+  
+  <tag>
+    <name>newaSimplePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.newa.NewaSimplePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a NewaSimplePool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.newa.NewaSimplePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>newaDoublePoolWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.newa.NewaDoublePoolWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a NewaDoppelPool</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.newa.NewaDoublePoolWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+
+  <tag>
+    <name>newaKoWeb</name>
+    <tag-class>de.jjw.webapp.jsfTags.taglib.newa.NewaKoWebRendererTag</tag-class>
+    <bodycontent>empty</bodycontent>
+    <info>display a NewaKo</info>
+    <attribute>
+      <name>messageResource</name>
+      <required>true</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>binding</name>
+      <required>true</required>
+      <deferred-value>
+        <type>de.jjw.webapp.jsfTags.component.newa.NewaKoWebComponent</type>
+      </deferred-value>
+    </attribute>
+    <attribute>
+      <name>readOnly</name>
+      <required>false</required>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
+    </attribute>
+  </tag>
+  
+
+</taglib>

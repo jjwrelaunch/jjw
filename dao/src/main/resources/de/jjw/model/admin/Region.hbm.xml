@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.admin.Region"
+            table="region"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="description"
+                    column="description"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="regionShort"
+                    column="regionShort"
+        >
+
+        </property>
+
+        <many-to-one
+            name="country"
+                    class="de.jjw.model.admin.Country"
+                    column="country"
+        >
+
+        </many-to-one>
+
+        <set
+            name="teamsForRegion"
+            table="Team"
+            inverse="true"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="id"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-one-to-many tag is deprecated, use @hibernate.one-to-many instead -->
+            <one-to-many
+                  class="de.jjw.model.Team"
+            />
+
+        </set>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

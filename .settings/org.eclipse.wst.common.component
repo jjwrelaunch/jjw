@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ju-jutsu-web">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/dao/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/service/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/util/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/web/src/main/java"/>
+        <property name="context-root" value="ju-jutsu-web"/>
+        <property name="java-output-path" value="/ju-jutsu-web/bin"/>
+    </wb-module>
+</project-modules>

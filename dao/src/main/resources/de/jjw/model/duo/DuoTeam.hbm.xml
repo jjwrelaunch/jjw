@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.duo.DuoTeam"
+            table="duoteam"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="firstname"
+                    column="firstname"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="firstname2"
+                    column="firstname2"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="name"
+                    column="name"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="name2"
+                    column="name2"
+                length="30"
+        >
+
+        </property>
+
+        <many-to-one
+            name="age"
+                    class="de.jjw.model.admin.Age"
+                    column="age"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="team"
+                    class="de.jjw.model.Team"
+                    column="team"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="place"
+                    column="place"
+        >
+
+        </property>
+
+        <property
+            name="ready"
+                    column="ready"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="sex"
+                    column="sex"
+                not-null="true"
+        >
+
+        </property>
+
+        <many-to-one
+            name="duoclass"
+                    class="de.jjw.model.duo.Duoclass"
+                    column="duoclass"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="delete"
+                    type="yes_no"
+                    column="delete_flag"
+                length="1"
+        >
+
+        </property>
+
+        <property
+            name="ageId"
+                    column="age"
+        >
+
+        </property>
+
+        <property
+            name="teamId"
+                    column="team"
+        >
+
+        </property>
+
+        <property
+            name="duoclassId"
+                    column="duoclass"
+        >
+
+        </property>
+
+        <property
+            name="originalDuoclassId"
+                    column="originalDuoclass"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+        
+		<property
+            name="yearOfBirth"
+                    column="yearOfBirth"
+        >
+
+        </property>
+        
+		<property
+            name="yearOfBirth2"
+                    column="yearOfBirth2"
+        >
+
+        </property>       
+        
+         <property
+            name="markForExport"
+                    type="yes_no"
+                    column="markForExport"
+        > 
+        </property>  
+    </class>    
+
+</hibernate-mapping>
+

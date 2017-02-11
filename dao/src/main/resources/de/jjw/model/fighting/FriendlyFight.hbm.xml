@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.fighting.FriendlyFight"
+            table="fight_list_friend"
+    >
+
+    <id
+        name="id"
+            column="id"
+            unsaved-value="null"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="fighterIdRed"
+                    column="fighterIdRed"
+        >
+
+        </property>
+
+        <property
+            name="fighterIdBlue"
+                    column="fighterIdBlue"
+        >
+
+        </property>
+
+        <many-to-one
+            name="fightingclass"
+                    class="de.jjw.model.fighting.Fightingclass"
+                    column="fightingclass"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="fightingclassId"
+                    column="fightingclass"
+        >
+
+        </property>
+
+        <property
+            name="pointsRed"
+                    column="pointsRed"
+        >
+
+        </property>
+
+        <property
+            name="pointsBlue"
+                    column="pointsBlue"
+        >
+
+        </property>
+
+        <property
+            name="flag"
+                    column="flag"
+        >
+
+        </property>
+
+        <property
+            name="winnerId"
+                    column="winnerId"
+        >
+
+        </property>
+
+        <property
+            name="ipponRedI"
+                    column="ipponRedI"
+        >
+
+        </property>
+
+        <property
+            name="ipponRedII"
+                    column="ipponRedII"
+        >
+
+        </property>
+
+        <property
+            name="ipponRedIII"
+                    column="ipponRedIII"
+        >
+
+        </property>
+
+        <property
+            name="ipponBlueI"
+                    column="ipponBlueI"
+        >
+
+        </property>
+
+        <property
+            name="ipponBlueII"
+                    column="ipponBlueII"
+        >
+
+        </property>
+
+        <property
+            name="ipponBlueIII"
+                    column="ipponBlueIII"
+        >
+
+        </property>
+
+        <property
+            name="shidoRed"
+                    column="shidoRed"
+        >
+
+        </property>
+
+        <property
+            name="shidoBlue"
+                    column="shidoBlue"
+        >
+
+        </property>
+
+        <property
+            name="chuiRed"
+                    column="chuiRed"
+        >
+
+        </property>
+
+        <property
+            name="chuiBlue"
+                    column="chuiBlue"
+        >
+
+        </property>
+
+        <property
+            name="hansokumakeRed"
+                    column="hansokumakeRed"
+        >
+
+        </property>
+
+        <property
+            name="hansokumakeBlue"
+                    column="hansokumakeBlue"
+        >
+
+        </property>
+
+        <property
+            name="protokoll"
+                    column="protokoll"
+        >
+
+        </property>
+
+        <property
+            name="kikengachi"
+                    column="kikengachi"
+        >
+
+        </property>
+
+        <property
+            name="fusengachi"
+                    column="fusengachi"
+        >
+
+        </property>
+
+        <property
+            name="fightTime"
+                    column="fightTime"
+        >
+
+        </property>
+
+        <property
+            name="injuryTimeRed"
+                    column="injuryTimeRed"
+        >
+
+        </property>
+
+        <property
+            name="injuryTimeBlue"
+                    column="injuryTimeBlue"
+        >
+
+        </property>
+
+        <property
+            name="fightTimeWithBreaks"
+                    column="fightTimeWithBreaks"
+        >
+
+        </property>
+
+        <property
+            name="overallFightTime"
+                    column="overallFightTime"
+        >
+
+        </property>
+
+        <property
+            name="poolPart"
+                    column="poolPart"
+        >
+
+        </property>
+
+        <property
+            name="mainRound"
+                    type="yes_no"
+                    column="mainRound"
+        >
+
+        </property>
+
+        <property
+            name="fightNumberInPart"
+                    column="fightNumberInPart"
+        >
+
+        </property>
+
+        <property
+            name="pointsRedOnClock"
+                    column="pointsRedOnClock"
+        >
+
+        </property>
+
+        <property
+            name="pointsBlueOnClock"
+                    column="pointsBlueOnClock"
+        >
+
+        </property>
+
+        <property
+            name="modifiedWith2Call"
+                    type="yes_no"
+                    column="modifiedWithSecondCall"
+        >
+
+        </property>
+
+        <property
+            name="saveTime"
+                    column="saveTime"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.admin.ConfigJJW"
+            table="config"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="eventName"
+                    column="eventName"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="eventLocation"
+                    column="eventLocation"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="eventDate"
+                    column="eventDate"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="certificationType"
+                    column="certificationType"
+        >
+
+        </property>
+
+        <property
+            name="logo"
+                    column="logo"
+        >
+
+        </property>
+
+        <property
+            name="fighterDeleteable"
+                    type="yes_no"
+                    column="fighterDeleteable"
+        >
+
+        </property>
+
+        <property
+            name="websiteHeadLine1"
+                    column="websiteHeadLine1"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="websiteHeadLine2"
+                    column="websiteHeadLine2"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pdfHeadLine1"
+                    column="pdfHeadLine1"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="pdfHeadLine2"
+                    column="pdfHeadLine2"
+                length="30"
+        >
+
+        </property>
+
+        <property
+            name="fightRevenge"
+                    column="fightRevenge"
+        >
+
+        </property>
+
+        <property
+            name="certificationPlaces"
+                    column="certificationPlaces"
+        >
+
+        </property>
+
+        <property
+            name="dumpSend"
+                    column="send"
+                not-null="true"
+        >
+
+        </property>
+        
+        
+        <property
+            name="videoOn"
+                    type="yes_no"
+                    column="videoOn"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

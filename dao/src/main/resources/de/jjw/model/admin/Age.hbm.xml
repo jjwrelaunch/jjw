@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.admin.Age"
+            table="age"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="description"
+                    column="description"
+                length="15"
+        >
+
+        </property>
+
+        <property
+            name="ageShort"
+                    column="ageShort"
+        >
+
+        </property>
+
+        <property
+            name="ageLimit"
+                    column="ageLimit"
+        >
+
+        </property>
+
+        <property
+            name="fightingRounds"
+                    column="fightingRounds"
+        >
+
+        </property>
+
+        <property
+            name="fightingTime"
+                    column="fightingTime"
+        >
+
+        </property>
+
+        <property
+            name="orderNumber"
+                    column="orderNumber"
+        >
+
+        </property>
+
+        <property
+            name="startAge"
+                    column="startAge"
+        >
+
+        </property>
+
+        <property
+            name="overtime"
+                    column="overtime"
+        >
+
+        </property>
+
+        <property
+            name="injurytime"
+                    column="injurytime"
+        >
+
+        </property>
+
+        <property
+            name="estimatedTime"
+                    column="estimatedTime"
+        >
+
+        </property>
+
+        <property
+            name="estimatedTimeDuo"
+                    column="estimatedTimeDuo"
+        >
+
+        </property>
+
+        <property
+            name="estimatedTimeNewa"
+                    column="estimatedTimeNewa"
+        >
+
+        </property>
+
+        <property
+            name="fightingTimeNewa"
+                    column="fightingTimeNewa"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

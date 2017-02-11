@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.Preview"
+            table="preview"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="increment">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="fighterIdRed"
+                    column="fighterIdRed"
+        >
+
+        </property>
+
+        <property
+            name="fighterIdBlue"
+                    column="fighterIdBlue"
+        >
+
+        </property>
+
+        <property
+            name="tatami"
+                    column="tatami"
+        >
+
+        </property>
+
+        <property
+            name="orderNumber"
+                    column="orderNumber"
+        >
+
+        </property>
+
+        <property
+            name="nameRed"
+                    column="nameRed"
+        >
+
+        </property>
+
+        <property
+            name="nameBlue"
+                    column="nameBlue"
+        >
+
+        </property>
+
+        <property
+            name="sex"
+                    column="sex"
+        >
+
+        </property>
+
+        <property
+            name="ageId"
+                    column="ageId"
+        >
+
+        </property>
+
+        <property
+            name="fightingclassId"
+                    column="fightingclassId"
+        >
+
+        </property>
+
+        <property
+            name="duoclassId"
+                    column="duoclassId"
+        >
+
+        </property>
+
+        <property
+            name="fightId"
+                    column="fightId"
+        >
+
+        </property>
+
+        <many-to-one
+            name="fightingclass"
+                    class="de.jjw.model.fighting.Fightingclass"
+                    column="fightingclassId"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="duoclass"
+                    class="de.jjw.model.duo.Duoclass"
+                    column="duoclassId"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="newaclassId"
+                    column="newaclassId"
+        >
+
+        </property>
+
+        <many-to-one
+            name="newaclass"
+                    class="de.jjw.model.newa.Newaclass"
+                    column="newaclassId"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <many-to-one
+            name="age"
+                    class="de.jjw.model.admin.Age"
+                    column="ageId"
+                not-null="true"
+                insert="false"
+                update="false"
+        >
+
+        </many-to-one>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+        
+        <property
+            name="userIdOfTatami"
+                    column="userIdOfTatami"
+        >
+		 </property>
+    </class>    
+
+</hibernate-mapping>
+

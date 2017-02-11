@@ -1,0 +1,49 @@
+/*
+ * This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+ * Copyright (c) 2010.
+ * Joerg Boehme / Tino Schlegel
+ *
+ * File    : DuoclassHelper.java
+ * Created : 05 Jun 2010
+ * Last Modified: Sat, 05 Jun 2010 20:55:42
+ *
+ * Ju Jutsu Web is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * Ju Jutsu Web is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+package de.jjw.service.util.helper;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import de.jjw.model.duo.Duoclass;
+
+public class DuoclassHelper
+{
+
+    /**
+     * @param duoclasses
+     * @return Map<weightclassId,Duoclass>
+     */
+    public static Map<Long, Duoclass> getDuoclassesMap( List<Duoclass> duoclasses )
+    {
+        HashMap<Long, Duoclass> map = new HashMap<Long, Duoclass>( duoclasses.size() );
+
+        for ( Duoclass duoclass : duoclasses )
+        {
+            map.put( duoclass.getId(), duoclass );
+        }
+        return map;
+    }
+}

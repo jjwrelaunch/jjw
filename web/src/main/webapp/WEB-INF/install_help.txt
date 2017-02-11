@@ -1,0 +1,2 @@
+insert this in the context.xml of Tomcat
+<Loader delegate="true" /> 

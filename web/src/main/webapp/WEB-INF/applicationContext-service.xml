@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : applicationContext-service.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 20:55:44
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  <bean id="lookupManager" class="de.jjw.service.impl.LookupManagerImpl">
+    <property name="lookupDao" ref="lookupDao"/>
+  </bean>
+
+ 
+  <bean id="txProxyTemplate" abstract="true"
+        class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+    <property name="transactionManager" ref="transactionManager"/>
+    <property name="transactionAttributes">
+      <props>
+        <prop key="startClass">PROPAGATION_REQUIRED</prop>   
+        <prop key="getFightingclassKo">PROPAGATION_REQUIRED</prop>
+        <prop key="getAllFightingclasses">PROPAGATION_REQUIRED</prop>
+        <prop key="getDuoclassKo">PROPAGATION_REQUIRED</prop>
+        <prop key="getAllDuoclasses">PROPAGATION_REQUIRED</prop>               
+        <prop key="getNewaclassKo">PROPAGATION_REQUIRED</prop>
+        <prop key="getAllNewaclasses">PROPAGATION_REQUIRED</prop>        
+        <prop key="save*">PROPAGATION_REQUIRED</prop>
+        <prop key="create*">PROPAGATION_REQUIRED</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED</prop>
+        <prop key="toggle*">PROPAGATION_REQUIRED</prop>
+        <prop key="change*">PROPAGATION_REQUIRED</prop>
+        <prop key="move*">PROPAGATION_REQUIRED</prop>        
+        <prop key="registerFast">PROPAGATION_REQUIRED</prop>
+        <prop key="add*">PROPAGATION_REQUIRED</prop>
+        <prop key="sortFighterIntoClasses">PROPAGATION_REQUIRED</prop>
+        <prop key="setFightingclassAsPrinted">PROPAGATION_REQUIRED</prop>
+        <prop key="setDuoclassAsPrinted">PROPAGATION_REQUIRED</prop>
+        <prop key="setNewaclassAsPrinted">PROPAGATION_REQUIRED</prop>    
+        <prop key="handleDeleteRoleAssignment">PROPAGATION_REQUIRED</prop> 
+        <prop key="resetOrderNumbers">PROPAGATION_REQUIRED</prop>     
+        <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>        
+      </props>
+    </property>
+  </bean>
+
+  <!-- Generic manager that can be used to do basic CRUD operations on any objects -->
+  <bean id="manager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.BaseManager">
+        <property name="dao" ref="dao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- Transaction declarations for business services.  To apply a generic transaction proxy to
+all managers, you might look into using the BeanNameAutoProxyCreator -->
+  <bean id="userManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.UserManagerImpl">
+        <property name="userDao" ref="userDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="roleDao" ref="roleDao"/>
+      </bean>
+    </property>
+    <!-- Override default transaction attributes b/c of UserExistsException -->
+    <property name="transactionAttributes">
+      <props>
+        <prop key="save*">PROPAGATION_REQUIRED,-UserExistsException</prop>
+        <prop key="remove*">PROPAGATION_REQUIRED</prop>
+        <prop key="registerFast">PROPAGATION_REQUIRED</prop>
+        <prop key="handleDeleteRoleAssignment">PROPAGATION_REQUIRED</prop>   
+        <prop key="*">PROPAGATION_REQUIRED,readOnly</prop>
+      </props>
+    </property>
+    <!-- This property is overriden in applicationContext-security.xml to add
+ method-level role security -->
+    <property name="preInterceptors">
+      <list>
+       
+      </list>
+    </property>
+  </bean>
+
+  <bean id="roleManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.RoleManagerImpl">
+        <property name="roleDao" ref="roleDao"/>
+      </bean>
+    </property>
+  </bean>
+
+ 
+
+  <!-- Add new Managers here -->
+  <bean id="medalRankingManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.MedalRankingManagerImpl">
+        <property name="medalRankingDao" ref="medalRankingDao"/>
+      </bean>
+    </property>
+  </bean>
+
+  
+  <bean id="teamManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.TeamManagerImpl">
+        <property name="dao" ref="teamDao"/>
+        <property name="countryDao" ref="countryDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="fighterDao" ref="fighterDao"/>
+        <property name="duoTeamDao" ref="duoTeamDao"/>
+        <property name="newaFighterDao" ref="newaFighterDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="codestableManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.generalhelper.CodestableManagerImp">
+        <property name="dao" ref="codestableDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="optimisticLockingManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.generalhelper.OptimisticLockingManagerImpl">
+        <property name="optimisticLockingDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="countryManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.CountryManagerImpl">
+        <property name="countryDao" ref="countryDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="regionManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.RegionManagerImpl">
+        <property name="regionDao" ref="regionDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="ageManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.AgeManagerImpl">
+        <property name="ageDao" ref="ageDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="fightsystemManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.FightsystemManagerImpl">
+        <property name="fightsystemDao" ref="fightsystemDao"/>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="configManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.ConfigManagerImpl">
+        <property name="configDao" ref="configDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  
+  <bean id="pressInfoManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.PressInfoManagerImpl">
+        <property name="pressInfoDao" ref="pressInfoDao"/>
+      </bean>
+    </property>
+  </bean>
+  
+  <bean id="previewManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.PreviewManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="userFightingclassDao" ref="userFightingclassDao"/>
+      </bean>            
+    </property>
+  </bean>
+  
+  <bean id="ipLogManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.admin.IPLogManagerImpl">
+        <property name="ipLogDao" ref="ipLogDao"/>
+      </bean>
+    </property>
+  </bean>
+  
+   <bean id="databaseDumpManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.DatabaseDumpManagerImpl">
+        <property name="databaseDumpDao" ref="databaseDumpDao"/>
+      </bean>
+    </property>
+  </bean>
+  
+  <bean id="videoManager" parent="txProxyTemplate">
+    <property name="target">          
+      <bean class="de.jjw.service.impl.VideoManagerImpl">
+        <property name="videoDao" ref="videoDao"/>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- Fighting -->
+  
+  <bean id="fighterManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.FighterManagerImpl">
+        <property name="fighterDao" ref="fighterDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="weightclassDao" ref="weightclassDao"/>
+      </bean>
+    </property>
+  </bean>  
+  <bean id="weightclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.WeightclassManagerImpl">
+        <property name="weightclassDao" ref="weightclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="fightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.FightManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="fightDao" ref="fightDao"/>
+        <property name="fightingclassDao" ref="fightingclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="fightingclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.FightingclassManagerImpl">
+        <!-- property name="weightclassDao" ref="weightclassDao"/ -->
+        <property name="fighterDao" ref="fighterDao"/>
+        <property name="fightingclassDao" ref="fightingclassDao"/>
+        <property name="fightsystemDao" ref="fightsystemDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="fightDao" ref="fightDao"/>
+        <property name="configDao" ref="configDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="userFightingclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.UserFightingclassManagerImpl">
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="userFightingclassDao" ref="userFightingclassDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="friendlyFightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.fighting.FriendlyFightManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="friendlyFightDao" ref="friendlyFightDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+
+  <!-- Duo -->
+  <bean id="duoclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.duo.DuoclassManagerImpl">
+        <property name="duoclassDao" ref="duoclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="duoTeamDao" ref="duoTeamDao"/>
+        <property name="fightsystemDao" ref="fightsystemDao"/>
+        <property name="configDao" ref="configDao"/>
+        <property name="duoFightDao" ref="duoFightDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="duoTeamManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.duo.DuoTeamManagerImpl">
+        <property name="duoclassDao" ref="duoclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="duoTeamDao" ref="duoTeamDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="duoFightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.duo.DuoFightManagerImpl">
+      	<property name="previewDao" ref="previewDao"/>
+        <property name="duoFightDao" ref="duoFightDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="duoclassDao" ref="duoclassDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="userDuoclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.duo.UserDuoclassManagerImpl">
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="userDuoclassDao" ref="userDuoclassDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="friendlyDuoFightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.duo.FriendlyDuoFightManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="friendlyDuoFightDao" ref="friendlyDuoFightDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  
+  <!-- Newa -->
+  
+  <bean id="newaFighterManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.NewaFighterManagerImpl">
+        <property name="newaFighterDao" ref="newaFighterDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="newaWeightclassDao" ref="newaWeightclassDao"/>
+      </bean>
+    </property>
+  </bean>  
+  <bean id="newaWeightclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.NewaWeightclassManagerImpl">
+        <property name="newaWeightclassDao" ref="newaWeightclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="newaFightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.NewaFightManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="newaFightDao" ref="newaFightDao"/>
+        <property name="newaclassDao" ref="newaclassDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="newaclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.NewaclassManagerImpl">        
+        <property name="newaFighterDao" ref="newaFighterDao"/>
+        <property name="newaclassDao" ref="newaclassDao"/>
+        <property name="fightsystemDao" ref="fightsystemDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="newaFightDao" ref="newaFightDao"/>
+        <property name="configDao" ref="configDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="userNewaclassManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.UserNewaclassManagerImpl">
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+        <property name="userNewaclassDao" ref="userNewaclassDao"/>
+      </bean>
+    </property>
+  </bean>
+  <bean id="friendlyNewaFightManager" parent="txProxyTemplate">
+    <property name="target">
+      <bean class="de.jjw.service.impl.newa.FriendlyNewaFightManagerImpl">
+        <property name="previewDao" ref="previewDao"/>
+        <property name="friendlyNewaFightDao" ref="friendlyNewaFightDao"/>
+        <property name="optimisticDao" ref="optimisticLockingDao"/>
+      </bean>
+    </property>
+  </bean>
+</beans>

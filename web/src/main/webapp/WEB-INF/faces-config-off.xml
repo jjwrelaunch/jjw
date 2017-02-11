@@ -1,0 +1,238 @@
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : faces-config-off.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:02:53
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+  <managed-bean>
+    <managed-bean-name>offMenuAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.OfficialMenuAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+     <managed-property>
+            <property-name>fighterManager</property-name>
+            <value>#{fighterManager}</value>
+      </managed-property> 
+      <managed-property>
+            <property-name>duoTeamManager</property-name>
+            <value>#{duoTeamManager}</value>
+      </managed-property>
+      <managed-property>
+            <property-name>newaFighterManager</property-name>
+            <value>#{newaFighterManager}</value>
+      </managed-property>         
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>previewTatamiAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.PreviewAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>previewManager</property-name>
+      <value>#{previewManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  
+  <managed-bean>
+    <managed-bean-name>tatamiShowFighter</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.ShowFighterAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>fighterManager</property-name>
+      <value>#{fighterManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>tatamiFightingclassOverview</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.FightingclassOverviewAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>fightingclassManager</property-name>
+      <value>#{fightingclassManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>offFightingclassAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.FightingclassAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>fightingclassManager</property-name>
+      <value>#{fightingclassManager}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>userFightingclassManager</property-name>
+      <value>#{userFightingclassManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>offFightAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.FightAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>fightManager</property-name>
+      <value>#{fightManager}</value>
+    </managed-property>
+       <managed-property>
+      <property-name>userFightingclassManager</property-name>
+      <value>#{userFightingclassManager}</value>
+    </managed-property>   
+  </managed-bean>
+  
+  <managed-bean>  
+    <managed-bean-name>tatamiFightingResults</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.FightingResultsAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>fighterManager</property-name>
+      <value>#{fighterManager}</value>
+    </managed-property>
+  </managed-bean>
+
+
+  <!--  duo -->
+
+  <managed-bean>
+    <managed-bean-name>tatamiShowDuoTeam</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.ShowDuoTeamAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>duoTeamManager</property-name>
+      <value>#{duoTeamManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>tatamiDuoclassOverview</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.DuoclassOverviewAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>duoclassManager</property-name>
+      <value>#{duoclassManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+    
+  <managed-bean>
+    <managed-bean-name>offDuoclassAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.DuoclassAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>duoclassManager</property-name>
+      <value>#{duoclassManager}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>userDuoclassManager</property-name>
+      <value>#{userDuoclassManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+  
+  <managed-bean>
+    <managed-bean-name>offDuoFightAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.DuoFightAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>duoFightManager</property-name>
+      <value>#{duoFightManager}</value>
+    </managed-property>
+     <managed-property>
+      <property-name>userDuoclassManager</property-name>
+      <value>#{userDuoclassManager}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>tatamiDuoTeamResults</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.DuoTeamResultsAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>duoTeamManager</property-name>
+      <value>#{duoTeamManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+  
+  
+  
+  <!--  newa -->
+  <managed-bean>
+    <managed-bean-name>tatamiShowNewaFighter</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.newa.ShowNewaFighterAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>newaFighterManager</property-name>
+      <value>#{newaFighterManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>tatamiNewaclassOverview</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.newa.NewaclassOverviewAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>newaclassManager</property-name>
+      <value>#{newaclassManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>offNewaclassAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.newa.NewaclassAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>newaclassManager</property-name>
+      <value>#{newaclassManager}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>userNewaclassManager</property-name>
+      <value>#{userNewaclassManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>offNewaFightAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.off.newa.NewaFightAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>newaFightManager</property-name>
+      <value>#{newaFightManager}</value>
+    </managed-property>
+       <managed-property>
+      <property-name>userNewaclassManager</property-name>
+      <value>#{userNewaclassManager}</value>
+    </managed-property>   
+  </managed-bean>
+  
+  <managed-bean>  
+    <managed-bean-name>tatamiNewaResults</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.newa.NewaResultsAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>newaFighterManager</property-name>
+      <value>#{newaFighterManager}</value>
+    </managed-property>
+  </managed-bean>
+</faces-config>

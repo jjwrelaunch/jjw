@@ -1,0 +1,235 @@
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : faces-config-component.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+<faces-config>
+
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.FightingSimplePoolWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.FightingSimplePoolWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.FightingDoublePoolWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.FightingDoublePoolWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.FightingKoWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.FightingKoWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+
+  
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.newa.NewaSimplePoolWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.newa.NewaSimplePoolWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.newa.NewaDoublePoolWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.newa.NewaDoublePoolWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+
+  <component>
+    <component-type>de.jjw.webapp.jsfTags.component.newa.NewaKoWebComponent</component-type>
+    <component-class>de.jjw.webapp.jsfTags.component.newa.NewaKoWebComponent</component-class>
+
+    <!-- UIComponent attributes -->
+    <attribute>
+      <description>
+        The component identifier for this component. This value must be
+        unique within the closest parent component that is a naming
+        container.
+      </description>
+      <attribute-name>id</attribute-name>
+      <attribute-class>java.lang.String</attribute-class>
+    </attribute>
+    <attribute>
+      <description>
+        Flag indicating whether or not this component should be rendered
+        (during Render Response Phase), or processed on any subsequent
+        form submit.
+      </description>
+      <attribute-name>rendered</attribute-name>
+      <attribute-class>boolean</attribute-class>
+      <default-value>true</default-value>
+    </attribute>
+    <attribute>
+      <description>
+        The value binding expression linking this component to a
+        property in a backing bean.
+      </description>
+      <attribute-name>binding</attribute-name>
+      <attribute-class>javax.faces.el.ValueBinding</attribute-class>
+    </attribute>
+  </component>
+  
+
+</faces-config>

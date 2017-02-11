@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping
+
+>
+
+    <class
+            name="de.jjw.model.User"
+            table="account"
+    >
+
+    <id
+        name="id"
+            column="id"
+    >
+
+    <!-- The generator-class attribute of @hibernate.id is deprecated, use the @hibernate.generator tag instead -->
+    <generator class="native">
+
+    </generator>
+
+    </id>
+
+        <property
+            name="username"
+                length="50"
+                not-null="true"
+                unique="true"
+        >
+
+        </property>
+
+        <property
+            name="password"
+                    column="password"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="firstName"
+                    column="firstname"
+                length="50"
+        >
+
+        </property>
+
+        <property
+            name="lastName"
+                    column="lastname"
+                length="50"
+        >
+
+        </property>
+
+        <set
+            name="roles"
+            table="user_role"
+            lazy="false"
+            cascade="save-update"
+        >
+
+            <!-- @hibernate.collection-key tag is deprecated, use @hibernate.key instead -->
+            <key
+                column="user_id"
+            >
+
+            </key>
+
+            <!-- @hibernate.collection-many-to-many tag is deprecated, use @hibernate.many-to-many instead -->
+            <many-to-many
+                class="de.jjw.model.Role"
+                column="role_id"
+                outer-join="auto"
+             />
+
+        </set>
+
+        <property
+            name="enabled"
+                    type="yes_no"
+                    column="accountEnabled"
+        >
+
+        </property>
+
+        <property
+            name="accountExpired"
+                    type="yes_no"
+                    column="accountExpired"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="accountLocked"
+                    type="yes_no"
+                    column="accountLocked"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="credentialsExpired"
+                    type="yes_no"
+                    column="credentialsExpired"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="accountLockedUntilDate"
+                    column="AccountLockedUntilDate"
+        >
+
+        </property>
+
+        <property
+            name="context"
+                    column="Context"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="lastLogInDate"
+                    column="LastLogInDate"
+        >
+
+        </property>
+
+        <property
+            name="logInErrors"
+                    column="LogInErrors"
+        >
+
+        </property>
+
+        <property
+            name="logInErrorsAll"
+                    column="LogInErrorsAll"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="accountExpireDate"
+                    column="AccountExpireDate"
+        >
+
+        </property>
+
+        <property
+            name="createDate"
+                    column="createDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="createId"
+                    column="createId"
+        >
+
+        </property>
+
+        <property
+            name="modificationDate"
+                    column="modificationDate"
+                not-null="true"
+        >
+
+        </property>
+
+        <property
+            name="modificationId"
+                    column="modificationId"
+                not-null="true"
+        >
+
+        </property>
+
+    </class>    
+
+</hibernate-mapping>
+

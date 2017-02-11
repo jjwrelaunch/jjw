@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : applicationContext-resources.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:40
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  <!-- For mail settings and future properties files -->
+  <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="locations">
+      <list>
+        <value>classpath:mail.properties</value>
+      </list>
+    </property>
+  </bean>
+
+  <!-- JNDI DataSource for J2EE environments -->
+  <!--bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+      <property name="jndiName"><value>java:comp/env/jdbc/mydb</value></property>
+  </bean-->
+
+  <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    <property name="url" value="jdbc:mysql://localhost/jjw_15?useUnicode=true&amp;characterEncoding=utf-8"/>
+    <property name="username" value="root"/>
+    <property name="password" value=""/>
+    <property name="maxActive" value="45"/>
+    <property name="maxIdle" value="30"/>
+    <property name="maxWait" value="10000"/>
+    <property name="defaultAutoCommit" value="true"/>
+    <property name="removeAbandoned" value="true"/>
+    <property name="removeAbandonedTimeout" value="60"/>
+  </bean>
+</beans>

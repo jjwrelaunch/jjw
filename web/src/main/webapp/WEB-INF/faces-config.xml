@@ -1,0 +1,218 @@
+<!--
+  ~ This file is part of Ju Jutsu Web (JJW) - a J2EE Ju-Jutsu competition management software.
+  ~ Copyright (c) 2010.
+  ~ Joerg Boehme / Tino Schlegel
+  ~
+  ~ File    : faces-config.xml
+  ~ Created : 05 Jun 2010
+  ~ Last Modified: Sat, 05 Jun 2010 21:54:41
+  ~
+  ~ Ju Jutsu Web is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Ju Jutsu Web is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
+<!DOCTYPE faces-config PUBLIC
+    "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN"
+    "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+  <!-- Spring VariableResolver for JSF -->
+  <application>
+    <variable-resolver>org.springframework.web.jsf.DelegatingVariableResolver</variable-resolver>
+    <locale-config>
+      <default-locale>de</default-locale>
+      <supported-locale>de</supported-locale>
+      <supported-locale>en</supported-locale>
+    </locale-config>
+    <message-bundle>ApplicationResources</message-bundle>
+
+    <view-handler>org.apache.myfaces.tomahawk.application.jsp.JspTilesTwoViewHandlerImpl</view-handler>
+  </application>  
+
+  <navigation-rule>
+    <from-view-id>/*</from-view-id>
+    <navigation-case>
+      <from-outcome>mainMenu</from-outcome>
+      <to-view-id>/mainMenu.jsp</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+
+  <navigation-rule>
+    <from-view-id>/selectFile.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/showFile.jsp</to-view-id>
+    </navigation-case>
+  </navigation-rule>
+
+  <!-- Add additional rules here -->
+
+  <navigation-rule>
+    <from-view-id>/*</from-view-id>
+    <navigation-case>
+      <from-outcome>start</from-outcome>
+      <to-view-id>index.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/*</from-view-id>
+    <navigation-case>
+      <from-outcome>logIn</from-outcome>
+      <to-view-id>logIn.tiles</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/extern/logInTeam.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>success</from-outcome>
+      <to-view-id>/team/start.jsp</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/extern/logInTeam.jsp</from-view-id>
+    <navigation-case>
+      <from-outcome>fail</from-outcome>
+      <to-view-id>/extern/logInTeam.jsp</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <navigation-rule>
+    <from-view-id>/*</from-view-id>
+    <navigation-case>
+      <from-outcome>start_admin</from-outcome>
+      <to-view-id>/admin/start.jsp</to-view-id>
+      <redirect/>
+    </navigation-case>
+  </navigation-rule>
+
+  <managed-bean>
+    <managed-bean-name>basePage</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.BasePage</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>passwordEncoder</property-name>
+      <value>#{passwordEncoder}</value>
+    </managed-property>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>userList</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.UserList</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>userManager</property-name>
+      <value>#{userManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  
+
+  <managed-bean>
+    <managed-bean-name>fileUpload</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.FileUpload</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>flushCache</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.FlushCache</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>reload</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.Reload</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <managed-bean>
+    <managed-bean-name>activeUserList</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.ActiveUserList</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <!-- Add additional beans here -->
+
+  <managed-bean>
+    <managed-bean-name>actionUtil</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.ActionUtil</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  
+  <managed-bean>
+    <managed-bean-name>MedalRankingAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.MedalRankingAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>medalRankingManager</property-name>
+      <value>#{medalRankingManager}</value>
+    </managed-property>
+    <managed-property>
+      <property-name>ageManager</property-name>
+      <value>#{ageManager}</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>TeamParticipantsAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.TeamParticipantsAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>teamManager</property-name>
+      <value>#{teamManager}</value>
+    </managed-property>
+  </managed-bean>
+  
+  <managed-bean>
+    <managed-bean-name>menuAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.ExternMenuAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+     <managed-property>
+            <property-name>fighterManager</property-name>
+            <value>#{fighterManager}</value>
+      </managed-property> 
+      <managed-property>
+            <property-name>duoTeamManager</property-name>
+            <value>#{duoTeamManager}</value>
+      </managed-property>     
+      <managed-property>
+            <property-name>newaFighterManager</property-name>
+            <value>#{newaFighterManager}</value>
+      </managed-property>    
+  </managed-bean>
+  <managed-bean>
+    <managed-bean-name>PressInfoAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.PressInfoAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>pressInfoManager</property-name>
+      <value>#{pressInfoManager}</value>
+    </managed-property>
+  </managed-bean>
+
+  <render-kit>
+    <description>Some replacements for the standard renderers</description>
+    <renderer>
+      <description>Replacement renderer for h:outputLabel</description>
+      <component-family>javax.faces.Output</component-family>
+      <renderer-type>javax.faces.Label</renderer-type>
+      <renderer-class>de.jjw.webapp.action.LabelRenderer</renderer-class>
+    </renderer>
+  </render-kit>
+</faces-config>
