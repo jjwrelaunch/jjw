@@ -154,16 +154,27 @@ function shutClock()
 		shutFriendlyClock();
 		return;
 	}
-	if (videoOn == true )
-		jjw_stopRecording();
+	if (videoOn == true ){
+		try{
+			jjw_stopRecording();
+			jjw_stopRecordingScreen();
+		}
+		catch (e){}
+	}
 	
     doResult();
     giveBackResult();
 
     var exit = confirm("schließen / close?");
 	if (videoOn == true ){
-		var videoData = {'fightId' : videoFightId, 'videoDescription' : videoDescription, 'discipline' : 'D', 'data' : this.opener.audioVideoRecorder.getBlob() };
-		this.opener.jjw_sendVideo(videoData);
+		
+		
+		try{
+			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.audioVideoRecorder.getBlob() });
+			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.screenRecorder.getBlob() });
+		}
+		catch (e){}
+				
     }
     
 	if(!exit){
@@ -1397,8 +1408,12 @@ var isActiveAnzeige = false;
 
 function handleAnzeige( displayForm )
 {
-	if (videoOn == true )
-		jjw_startRecording();
+	if (videoOn== true){		
+		try{
+			jjw_startRecording();
+		}
+		catch (e){}
+	}
 	
     // if (isActiveAnzeige)
     // nur in FightingAnzeige

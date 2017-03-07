@@ -679,16 +679,30 @@ function shutClock()
 		shutFriendlyClock();
 		return;
 	}
-	if (videoOn == true)
-		jjw_stopRecording();
+	if (videoOn == true){
+		
+		try{
+			jjw_stopRecording();
+			jjw_stopRecordingScreen();
+		}
+		catch (e){}
+	}
 	
     doResult();
     giveBackResult();
     
     var exit = confirm("schließen / close?");
 
-	if (videoOn == true)	
-		this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.audioVideoRecorder.getBlob() });
+	if (videoOn == true){
+		
+		try{
+			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.audioVideoRecorder.getBlob() });
+			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.screenRecorder.getBlob() });
+		}
+		catch (e){}
+		
+	}
+		
 	
     if(!exit){
         window.stop();
@@ -2066,8 +2080,13 @@ var isActiveAnzeige = false;
 function handleAnzeige( displayForm )
 {
 	//start video
-	if (videoOn== true)
-		jjw_startRecording();
+	if (videoOn== true){	
+		try{
+			jjw_startRecording();
+		}
+		catch (e){}
+	}
+	
     // if (isActiveAnzeige)
     user_input = user_input + "DP" + displayForm + "_;";
     if ( (displayForm == "1" || displayForm == "2") )

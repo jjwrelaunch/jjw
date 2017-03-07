@@ -68,6 +68,8 @@ public class VideoItem
     private String ageDescription; // not in db
     
     private String filename;
+    
+    private boolean isScreenVideo = false;
 
     public VideoItem(){
         super();
@@ -85,6 +87,7 @@ public class VideoItem
         
         this.participanIdRed=participanIdRed;
         this.participanIdBlue=participanIdBlue;
+        
     }
 
     /**
@@ -284,6 +287,16 @@ public class VideoItem
     public void setFilename( String filename )
     {
         this.filename = filename;
+    }
+
+    public boolean isScreenVideo()
+    {
+        return isScreenVideo;
+    }
+
+    public void setScreenVideo( boolean isScreenVideo )
+    {
+        this.isScreenVideo = isScreenVideo;
     }
 
   

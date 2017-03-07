@@ -25,6 +25,7 @@
   	  var videoOn=<h:outputText value="#{adminNewaClockAction.videoWeb}"/>;
       var paraAgeDescription='<h:outputText value="#{adminNewaClockAction.fight.newaclass.age.description}"/>';
       var videoElement = document.getElementById('video');
+      var videoElementScreen = document.getElementById('videoScreen');
 	  var videoFightId='<h:outputText value="#{adminNewaClockAction.fight.id}"/>';
 	  var videoDescription='<h:outputText value="#{adminNewaClockAction.fight.newaclass.age.description}"/> <h:outputText value="#{adminNewaClockAction.fight.newaclass.weightclass}"/> <h:outputText value="#{adminNewaClockAction.fight.newaclass.sexWeb}"/>';
 </script>
@@ -577,6 +578,7 @@ Soundframe
          <!-- video screen -->
 			<div style="display:block; visibility:visible; background-color:#000000; padding:0px; margin:0px;">
 				<video  id="video" width="300"></video>
+				<video  id="videoScreen" width="0" heigth="0"></video>
 			</div>
       </td>
     </tr>

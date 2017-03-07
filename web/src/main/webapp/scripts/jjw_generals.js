@@ -28,21 +28,7 @@ function jjw_sendVideo(data)
 
 function sendFight(blob) {
 	window.BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder ||  window.BlobBuilder;
-	const BYTES_PER_CHUNK = 1024 * 1024; // 1MB chunk sizes.
-	var SIZE = blob.data.size;
-
-	var start = 0;
-	var end = BYTES_PER_CHUNK;
-	var i = 0;
-	//while (start < SIZE) {
-
-		// Note: blob.slice has changed semantics and been prefixed. See
-		// http://goo.gl/U9mE5.
-//		if ('mozSlice' in blob.data) {
-	//		var chunk = blob.data.mozSlice(start, end);
-		//} else {
-		//	var chunk = blob.data.slice(start, end);
-//		}
+	
 		var formData = new FormData();
 		formData.append('blob', blob.data);
 		formData.append('fightId', blob.fightId);
@@ -51,12 +37,23 @@ function sendFight(blob) {
 //		formData.append('order', "" + i);
 
 		console.error("Send Beacon Data");
-		//navigator.sendBeacon('/jjw/video', formData);
+		
 		upload(formData);
-		i++;
-//		start = end;
-//		end = start + BYTES_PER_CHUNK;
-	//}
+}
+
+function jjw_sendScreen(blob) {
+	window.BlobBuilder = window.MozBlobBuilder || window.WebKitBlobBuilder ||  window.BlobBuilder;
+	
+		var formData = new FormData();
+		formData.append('blob', blob.data);
+		formData.append('fightId', blob.fightId);
+		formData.append('discipline', blob.discipline);
+		formData.append('description', blob.description);
+		formData.append('isScreen', blob.isScreen);
+
+		console.error("Send Beacon Data");
+		
+		upload(formData);
 }
 
 function upload(blobOrFile) {
@@ -65,8 +62,6 @@ function upload(blobOrFile) {
 	  xhr.open('POST', '/jjw/video', true);
 	  xhr.timeout=60000;
 	  xhr.send(blobOrFile);
-	  
-
 }
 
 
@@ -208,7 +203,7 @@ if (window.XMLHttpRequest) {
 } else if (window.ActiveXObject) {
    http = new ActiveXObject("Microsoft.XMLHTTP");
 }
-        http.open('get','http://' +location.host  +url,true);
+        http.open('get','https://' +location.host  +url,true);
     http.send(null);
 
 }
@@ -216,13 +211,18 @@ if (window.XMLHttpRequest) {
 function handleLinkClick(event,urlStandard, urlSpecial)
 {
 	if (event.button==2) hiddenCall(urlSpecial);
-	else window.location.href ='http://' +location.host  +urlStandard;
+	else window.location.href ='https://' +location.host  +urlStandard;
 }
 
 
 $(window).bind('beforeunload', function(eventObject) {
-	jjw_stopRecording();
-	jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'F',	'data' : audioVideoRecorder.getBlob() });
+	//jjw_stopRecordingScreen();
+	//this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'F',	'data' : this.opener.screenRecorder.getBlob() });
+	
+	//jjw_stopRecording();
+	//jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'F',	'data' : audioVideoRecorder.getBlob() });
+	
+	
 	
     var returnValue = "Do you really want to close?";
     eventObject.returnValue = returnValue;

@@ -20,6 +20,7 @@
 	  var videoOn=<h:outputText value="#{adminDuoClockAction.videoWeb}"/>;
       var paraAgeDescription='<h:outputText value="#{adminDuoClockAction.fight.duoclass.age.description}"/>';
       var videoElement = document.getElementById('video');
+      var videoElementScreen = document.getElementById('videoScreen');
 	  var videoFightId='<h:outputText value="#{adminDuoClockAction.fight.id}"/>';
 	  var videoDescription='<h:outputText value="#{adminDuoClockAction.fight.duoclass.age.description}"/> <h:outputText value="#{adminDuoClockAction.fight.duoclass.duoclassName}"/> <h:outputText value="#{adminDuoClockAction.fight.duoclass.sexWeb}"/>';
 </script>
@@ -711,6 +712,7 @@ Uhrentabelle -- wird nicht mehr angezeigt
  <!-- video screen -->
 			<div style="display:none; visibility:hidden; background-color:#000000; padding:0px; margin:0px;">
 				<video  id="video" width="300"></video>
+				<video  id="videoScreen" width="0" heigth="0"></video>
 			</div>
 </td>
 <!-- middleTable -->

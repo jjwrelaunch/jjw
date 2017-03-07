@@ -95,6 +95,11 @@
     <h:inputText value="#{adminConfigAction.config.certificationPlaces}" id="certificationPlaces" required="false" size="30"
                  maxlength="3"/>
                  
+    <h:outputLabel for="video" value="#{msg['video']}"/>
+    <h:outputText value=""/>
+    <h:selectBooleanCheckbox id="video" value="#{adminConfigAction.config.videoOn}" required="false" tabindex="11"/>
+    
+    
     <h:outputText value="&nbsp;" escape="false"/>
     <h:outputText value="&nbsp;" escape="false"/>
     <h:outputText value="&nbsp;" escape="false"/>

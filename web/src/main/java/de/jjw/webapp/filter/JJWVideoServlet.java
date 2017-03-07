@@ -152,6 +152,8 @@ public class JJWVideoServlet
         VideoItem item = new VideoItem();
         item.setFightId( Long.valueOf((String)map.get("fightId") ));
         item.setDiscepline( (String)map.get("discipline") );
+        item.setScreenVideo( Boolean.valueOf( (String)map.get("isScreen") ));
+        
        // item.setVideo( (byte[]) map.get("blob") );
         
         if("F".equals( item.getDiscepline() )){
@@ -166,6 +168,7 @@ public class JJWVideoServlet
             item.setSex( fight.getFighterRed().getSex() );
             item.setAgeDescription( fight.getFighterRed().getAge().getAgeShort() );
             StringBuilder sb = new StringBuilder(200);
+            if(item.isScreenVideo()) sb.append( "__Screen__" );
             sb.append( item.getDiscepline() ).append( FILENAME_SEPERATOR ).append( item.getAgeDescription() ).append( FILENAME_SEPERATOR ).append( item.getSex()).append( FILENAME_SEPERATOR );
             sb.append( item.getClassname()).append( FILENAME_SEPERATOR ).append( item.getNameRed() ).append( FILENAME_SEPERATOR ).append( item.getNameBlue() );
             item.setFilename( sb.toString() );
@@ -180,6 +183,7 @@ public class JJWVideoServlet
             item.setSex( fight.getDuoTeamRed().getSex() );
             item.setAgeDescription( fight.getDuoTeamRed().getAge().getAgeShort() );
             StringBuilder sb = new StringBuilder(200);
+            if(item.isScreenVideo()) sb.append( "__Screen__" );
             sb.append( item.getDiscepline() ).append( FILENAME_SEPERATOR ).append( item.getAgeDescription() ).append( FILENAME_SEPERATOR ).append( item.getSex()).append( FILENAME_SEPERATOR );
             sb.append( item.getClassname()).append( FILENAME_SEPERATOR ).append( item.getNameRed() ).append( FILENAME_SEPERATOR ).append( item.getNameBlue() );
             item.setFilename( sb.toString() );
@@ -194,6 +198,7 @@ public class JJWVideoServlet
             item.setSex( fight.getFighterRed().getSex() );
             item.setAgeDescription( fight.getFighterRed().getAge().getAgeShort() );
             StringBuilder sb = new StringBuilder(200);
+            if(item.isScreenVideo()) sb.append( "__Screen__" );
             sb.append( item.getDiscepline() ).append( FILENAME_SEPERATOR ).append( item.getAgeDescription() ).append( FILENAME_SEPERATOR ).append( item.getSex()).append( FILENAME_SEPERATOR );
             sb.append( item.getClassname()).append( FILENAME_SEPERATOR ).append( item.getNameRed() ).append( FILENAME_SEPERATOR ).append( item.getNameBlue() );
             item.setFilename( sb.toString() );
