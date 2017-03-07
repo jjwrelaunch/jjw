@@ -108,11 +108,9 @@
               <h:outputText value="#{msg.team}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowNewaFighterAction.fighterPerTeam}">
+          
             <h:outputText value="#{cty.team.teamName}"/>
-            <f:param id="fighterPerTeam" name="fighterPer" value="#{adminShowNewaFighterAction.fighterPer}"/>
-            <f:param id="fighterPerIdTeam" name="fighterPerId" value="#{adminShowNewaFighterAction.fighterPerId}"/>
-          </h:commandLink>
+
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -120,11 +118,9 @@
               <h:outputText value="#{msg.age}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowNewaFighterAction.fighterPerAge}">
+          
             <h:outputText value="#{cty.age.ageShort}"/>
-            <f:param id="fighterPerAge" name="fighterPer" value="#{adminShowNewaFighterAction.fighterPer}"/>
-            <f:param id="fighterPerIdAge" name="fighterPerId" value="#{adminShowNewaFighterAction.fighterPerId}"/>
-          </h:commandLink>
+         
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -140,11 +136,9 @@
               <h:outputText value="#{msg.region}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowNewaFighterAction.fighterPerRegion}">
+         
             <h:outputText value="#{cty.team.region.regionShort}"/>
-            <f:param id="fighterPerRegion" name="fighterPer" value="#{adminShowNewaFighterAction.fighterPer}"/>
-            <f:param id="fighterPerIdRegion" name="fighterPerId" value="#{adminShowNewaFighterAction.fighterPerId}"/>
-          </h:commandLink>
+          
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -152,11 +146,9 @@
               <h:outputText value="#{msg.country}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowNewaFighterAction.fighterPerCountry}">
+           
             <h:outputText value="#{cty.team.country.countryShort}"/>
-            <f:param id="fighterPerCountry" name="fighterPer" value="#{adminShowNewaFighterAction.fighterPer}"/>
-            <f:param id="fighterPerIdCountry" name="fighterPerId" value="#{adminShowNewaFighterAction.fighterPerId}"/>
-          </h:commandLink>
+          
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -172,11 +164,9 @@
               <h:outputText value="#{msg.weightclass}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowNewaFighterAction.fighterPerNewaclass}">
+
             <h:outputText value="#{cty.newaclass.weightclass}"/>
-            <f:param id="fighterPer" name="fighterPer" value="#{adminShowNewaFighterAction.fighterPer}"/>
-            <f:param id="fighterPerId" name="fighterPerId" value="#{adminShowNewaFighterAction.fighterPerId}"/>
-          </h:commandLink>
+            
         </t:column>
         <t:column sortable="true" styleClass="center">
           <f:facet name="header">

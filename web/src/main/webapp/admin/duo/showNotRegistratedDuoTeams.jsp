@@ -106,12 +106,9 @@
               <h:outputText value="#{msg.team}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowDuoTeamAction.duoTeamPerTeam}">
+          
             <h:outputText value="#{cty.team.teamName}"/>
-            <f:param id="duoTeamPerTeam" name="duoTeamPer" value="#{adminShowDuoTeamAction.duoTeamPer}"/>
-            <f:param id="duoTeamPerIdTeam" name="duoTeamPerId" value="#{adminShowDuoTeamAction.duoTeamPerId}"/>
-            <f:param id="notRegTeam" name="notReg" value="#{adminShowDuoTeamAction.notReg}"/>
-          </h:commandLink>
+           
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -119,12 +116,9 @@
               <h:outputText value="#{msg.age}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowDuoTeamAction.duoTeamPerAge}">
+          
             <h:outputText value="#{cty.age.ageShort}"/>
-            <f:param id="duoTeamPerAge" name="duoTeamPer" value="#{adminShowDuoTeamAction.duoTeamPer}"/>
-            <f:param id="duoTeamPerIdAge" name="duoTeamPerId" value="#{adminShowDuoTeamAction.duoTeamPerId}"/>
-            <f:param id="notRegAge" name="notReg" value="#{adminShowDuoTeamAction.notReg}"/>
-          </h:commandLink>
+            
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -140,12 +134,9 @@
               <h:outputText value="#{msg.region}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowDuoTeamAction.duoTeamPerRegion}">
+         
             <h:outputText value="#{cty.team.region.regionShort}"/>
-            <f:param id="duoTeamPerRegion" name="duoTeamPer" value="#{adminShowDuoTeamAction.duoTeamPer}"/>
-            <f:param id="duoTeamPerIdRegion" name="duoTeamPerId" value="#{adminShowDuoTeamAction.duoTeamPerId}"/>
-            <f:param id="notRegRegion" name="notReg" value="#{adminShowDuoTeamAction.notReg}"/>
-          </h:commandLink>
+          
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -153,12 +144,9 @@
               <h:outputText value="#{msg.country}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowDuoTeamAction.duoTeamPerCountry}">
+         
             <h:outputText value="#{cty.team.country.countryShort}"/>
-            <f:param id="duoTeamPerCountry" name="duoTeamPer" value="#{adminShowDuoTeamAction.duoTeamPer}"/>
-            <f:param id="duoTeamPerIdCountry" name="duoTeamPerId" value="#{adminShowDuoTeamAction.duoTeamPerId}"/>
-            <f:param id="notRegCountry" name="notReg" value="#{adminShowDuoTeamAction.notReg}"/>
-          </h:commandLink>
+ 
         </t:column>
         <t:column sortable="true">
           <f:facet name="header">
@@ -166,12 +154,9 @@
               <h:outputText value="#{msg.duoclassName}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{adminShowDuoTeamAction.duoTeamPerDuoclass}">
+         
             <h:outputText value="#{cty.duoclass.duoclassName}"/>
-            <f:param id="duoTeamPerDuoclass" name="duoTeamPer" value="#{adminShowDuoTeamAction.duoTeamPer}"/>
-            <f:param id="duoTeamPerIdDuoclass" name="duoTeamPerId" value="#{adminShowDuoTeamAction.duoTeamPerId}"/>
-            <f:param id="notRegDuoclass" name="notReg" value="#{adminShowDuoTeamAction.notReg}"/>
-          </h:commandLink>
+         
         </t:column>
         <t:column>
           <f:facet name="header">
