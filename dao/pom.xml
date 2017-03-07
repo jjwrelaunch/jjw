@@ -8,23 +8,26 @@
 	</parent>
 	<artifactId>dao</artifactId>
 	<packaging>jar</packaging>
+	<version>17.0.1-SNAPSHOT</version>
 
+	
 	<properties>
 		<spring.version>3.1.4.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
+			<groupId>de.jjw</groupId>
+			<artifactId>util</artifactId>
+			<version>17.0.1-SNAPSHOT</version>
+		</dependency>
+	
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.16</version>
 		</dependency>
 
-		<dependency>
-			<groupId>de.jjw</groupId>
-			<artifactId>util</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>

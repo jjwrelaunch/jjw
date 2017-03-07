@@ -36,12 +36,17 @@
 		<link>
 			<name>dao</name>
 			<type>2</type>
-			<location>C:/Users/joerg.boehme/Documents/data/Workspceeclipse2/ju-jutsu-web/dao</location>
+			<location>C:/Users/joerg.boehme/Documents/data/Workspceeclipse2/ju-jutsu-web-git/dao</location>
 		</link>
 		<link>
 			<name>service</name>
 			<type>2</type>
-			<location>C:/Users/joerg.boehme/Documents/data/Workspceeclipse2/ju-jutsu-web/service</location>
+			<location>C:/Users/joerg.boehme/Documents/data/Workspceeclipse2/ju-jutsu-web-git/service</location>
+		</link>
+		<link>
+			<name>util</name>
+			<type>2</type>
+			<location>C:/Users/joerg.boehme/Documents/data/Workspceeclipse2/ju-jutsu-web-git/util</location>
 		</link>
 	</linkedResources>
 </projectDescription>

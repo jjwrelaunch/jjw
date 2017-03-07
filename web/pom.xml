@@ -8,21 +8,24 @@
 	</parent>
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
+	<version>17.0.1-SNAPSHOT</version>
 
 	<properties>
 		<spring.version>3.1.4.RELEASE</spring.version>
 		<myfaces.version>1.2.8</myfaces.version>
 	</properties>
 	<dependencies>
+		
 		<dependency>
 			<groupId>de.jjw</groupId>
 			<artifactId>util</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>17.0.1-SNAPSHOT</version>
 		</dependency>
+		
 		<dependency>
 			<groupId>de.jjw</groupId>
 			<artifactId>service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>17.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
@@ -177,8 +180,7 @@
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.1</version>
-		</dependency>
+			</dependency>
 	</dependencies>
 
 	<build>
