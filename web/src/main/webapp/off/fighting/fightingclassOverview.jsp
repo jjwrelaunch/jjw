@@ -149,6 +149,15 @@
           <h:outputText value="&nbsp;" escape="false"/>
           <h:outputText value="#{cty.estimateBeginTimeWeb}"/>
         </t:column>
+        
+        <t:column >
+          <f:facet name="header">
+            <t:commandSortHeader columnName="13" >
+              <h:outputText value=" "/>
+            </t:commandSortHeader>
+          </f:facet>
+          <h:outputText value="#{cty.order}"/>
+        </t:column>
       </t:dataTable>
     </c:if>
   </c:if>

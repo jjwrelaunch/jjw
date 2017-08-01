@@ -177,7 +177,7 @@ public class AllClassesPDF
                     fillFightTableFighting( 394, fdpc.getFightListMapPoolB() );
 
                     createFinals( 580, 410 );
-                    fillFinalsFighting( 580, 410, fdpc.getFinalFight(), rbFighting );
+                    fillFinalsFighting( 580, 410, fdpc, rbFighting );
                 }
 
                 if ( item.getFightsystem() == Fightsystem.DOUBLE_KO )
@@ -369,7 +369,7 @@ public class AllClassesPDF
                     fillFightTableDuo( 394, ddpc.getFightListMapPoolB() );
 
                     createFinals( 580, 410 );
-                    fillFinalsDuo( 580, 410, ddpc.getFinalFight(), rbDuo );
+                    fillFinalsDuo( 580, 410, ddpc, rbDuo );
                 }
 
                 if ( item2.getFightsystem() == Fightsystem.DOUBLE_KO )
@@ -450,7 +450,7 @@ public class AllClassesPDF
                     fillFightTableNewa( 394, fdpc.getFightListMapPoolB() );
 
                     createFinals( 580, 410 );
-                    fillFinalsNewa( 580, 410, fdpc.getFinalFight(), rbFighting );
+                    fillFinalsNewa( 580, 410, fdpc, rbFighting );
                 }
 
                 if ( item3.getFightsystem() == Fightsystem.DOUBLE_KO )

@@ -45,6 +45,8 @@ public class FightingclassWeb
     private boolean classStartet;
 
     private String estimateBeginTimeWeb;
+    
+    private int order;
 
     public String getSexWeb()
     {
@@ -142,4 +144,13 @@ public class FightingclassWeb
         this.estimateBeginTimeWeb = estimateBeginTimeWeb;
     }
 
+    public int getOrder()
+    {
+        return order;
+    }
+
+    public void setOrder( int order )
+    {
+        this.order = order;
+    }
 }

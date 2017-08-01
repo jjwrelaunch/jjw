@@ -366,7 +366,9 @@ public class FightingclassManagerImpl
             List<EstimatedTimes> timesList = fightingclassDao.getTimesOfCurrentTatamiUse();
             for ( FightingclassWeb item : retList )
             {
+               // item.setOrder(getOrderOfWeightclass);
                 startTime= getStartTime( timesList, item.getId() );
+                
                 if (startTime >0)
                  item.setEstimateBeginTimeWeb( FastDateFormat.getInstance( "HH:mm" ).format( current
                                                                                                     + 1000
@@ -1023,6 +1025,18 @@ public class FightingclassManagerImpl
         {
             throw new JJWManagerException( e );
         }
+    }
+    
+    private int getOrderOfWeightclass(List<EstimatedTimes> list, long weightclassId)
+    {
+        for ( EstimatedTimes item : list )
+        {
+            if ( weightclassId == item.getWeightclassId() &&  "F".equals( item.getDiscepline()))
+            {
+               return item.getOrderNumber();
+            }
+        }
+        return 0;
     }
 
 

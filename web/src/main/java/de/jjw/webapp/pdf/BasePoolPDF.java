@@ -30,12 +30,15 @@ import java.util.ResourceBundle;
 
 import com.itextpdf.text.BaseColor;
 
+import de.jjw.model.duo.DuoDoublePoolClass;
 import de.jjw.model.duo.DuoDoublePoolItem;
 import de.jjw.model.duo.DuoFight;
 import de.jjw.model.duo.DuoSimplePoolItem;
 import de.jjw.model.fighting.Fight;
+import de.jjw.model.fighting.FightingDoublePoolClass;
 import de.jjw.model.fighting.FightingDoublePoolItem;
 import de.jjw.model.fighting.FightingSimplePoolItem;
+import de.jjw.model.newa.NewaDoublePoolClass;
 import de.jjw.model.newa.NewaDoublePoolItem;
 import de.jjw.model.newa.NewaFight;
 import de.jjw.model.newa.NewaSimplePoolItem;
@@ -854,29 +857,40 @@ public class BasePoolPDF
         cb.rectangle( x, y, _80, height );
         y -= 31;
 
-        // y -= 31; // Finale
-        // cb.rectangle(x, y, _80, height);
-        // y -= 36;
-        // y -= 36;
-        // cb.rectangle(x, y, _80, height);
-        // y -= 36;
+         y -= 31; // Finale
+         cb.rectangle( x + _80, y, _0, -3 * height );
+         cb.rectangle(x, y, _80, height);
+         y -= 36;
+         cb.rectangle( x + _80, y, _80, height );
+         y -= 36;
+         cb.rectangle(x, y, _80, height);
+         y -= 36;
+         
         cb.stroke();
 
         return;
     }
 
-    protected void fillFinalsFighting( int x, int y, Fight finalFight, ResourceBundle rb_ )
+    protected void fillFinalsFighting( int x, int y,  FightingDoublePoolClass fightingclass, ResourceBundle rb_ )
         throws Exception
     {
 
-        if ( finalFight == null )
-            return;
+        Fight halfFinalFight1 = fightingclass.getHalfFinalFight1();
+        Fight halfFinalFight2 = fightingclass.getHalfFinalFight2();
+        Fight finalFight = fightingclass.getFinalFight();
         // Finale
         writeText( x, y + 23, "A1", BOOLEAN_TRUE, _10 );
 
-        if ( finalFight.getFighterRed() != null )
+        if ( halfFinalFight1.getFighterRed() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getFighterIdRed() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterRed().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterRed().getName(), BOOLEAN_FALSE );
+            }
         }
         y -= 36;
         if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
@@ -884,59 +898,103 @@ public class BasePoolPDF
             if ( finalFight.getWinnerId() == finalFight.getFighterIdRed() )
             {
                 writeText( x + 120, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_TRUE );
+                writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
             }
             else
             {
-                writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_TRUE );
+                writeText( x + 120, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_FALSE );
             }
         }
-        else
-        {
-            // if (DPool.FinalFight.getNameWhite ().equalsIgnoreCase ("&nbsp;"))
-            // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_TRUE);
-            // else writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_TRUE);
-        }
-        writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
-        // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_FALSE);
+
+
         y -= 36;
-        writeText( x, y + 23, "B1", BOOLEAN_TRUE, _10 );
-        if ( finalFight.getFighterBlue() != null )
+        writeText( x, y + 23, "B2", BOOLEAN_TRUE, _10 );
+        if ( halfFinalFight1.getFighterBlue() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getFighterIdBlue() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterBlue().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterBlue().getName(), BOOLEAN_FALSE );
+            }
+            
         }
         y -= 31;
 
-        // y-=31;
-        // // Small Final
-        // writeText(x,y+23,"A2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(2),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
-        //    
-        //
-        // //writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_FALSE);
-        // y-=36;
-        // writeText(x,y+23,"B2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(3),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
+        y -= 31;
+    
+         writeText(x,y+23,"B1",BOOLEAN_TRUE,_10);
+         if ( halfFinalFight2.getFighterRed() != null )
+         {
+             if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getFighterIdRed() )
+             {
+                 writeText( x + _40, y + 5, halfFinalFight2.getFighterRed().getName(), BOOLEAN_TRUE );
+             }
+             else
+             {
+                 writeText( x + _40, y + 5, halfFinalFight2.getFighterRed().getName(), BOOLEAN_FALSE );
+             }
+         }
+        
+         y-=36;
+        
+         if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
+         {
+             if ( finalFight.getWinnerId() == finalFight.getFighterIdBlue() )
+             {
+                 writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_TRUE );
+                 writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
+             }
+             else
+             {
+                 writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_FALSE );
+             }
+         }
+        
+       
+         y-=36;
+         writeText(x,y+23,"A2",BOOLEAN_TRUE,_10);
+         if ( halfFinalFight2.getFighterBlue() != null )
+         {
+             if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getFighterIdBlue() )
+             {
+                 writeText( x + _40, y + 5, halfFinalFight2.getFighterBlue().getName(), BOOLEAN_TRUE );
+             }
+             else
+             {
+                 writeText( x + _40, y + 5, halfFinalFight2.getFighterBlue().getName(), BOOLEAN_FALSE );
+             }
+             
+         }
+        
+         y-=36;
 
         cb.stroke();
         return;
     }
 
-    protected void fillFinalsNewa( int x, int y, NewaFight finalFight, ResourceBundle rb_ )
+    protected void fillFinalsNewa( int x, int y, NewaDoublePoolClass newaclass, ResourceBundle rb_ )
         throws Exception
     {
 
-        if ( finalFight == null )
-            return;
+        NewaFight halfFinalFight1 = newaclass.getHalfFinalFight1();
+        NewaFight halfFinalFight2 = newaclass.getHalfFinalFight2();
+        NewaFight finalFight = newaclass.getFinalFight();
         // Finale
         writeText( x, y + 23, "A1", BOOLEAN_TRUE, _10 );
 
-        if ( finalFight.getFighterRed() != null )
+        if ( halfFinalFight1.getFighterRed() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getFighterIdRed() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterRed().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterRed().getName(), BOOLEAN_FALSE );
+            }
         }
         y -= 36;
         if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
@@ -944,104 +1002,182 @@ public class BasePoolPDF
             if ( finalFight.getWinnerId() == finalFight.getFighterIdRed() )
             {
                 writeText( x + 120, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_TRUE );
+                writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
             }
             else
             {
-                writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_TRUE );
+                writeText( x + 120, y + 5, finalFight.getFighterRed().getName(), BOOLEAN_FALSE );
             }
         }
-        else
-        {
-            // if (DPool.FinalFight.getNameWhite ().equalsIgnoreCase ("&nbsp;"))
-            // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_TRUE);
-            // else writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_TRUE);
-        }
-        writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
-        // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_FALSE);
+
         y -= 36;
-        writeText( x, y + 23, "B1", BOOLEAN_TRUE, _10 );
-        if ( finalFight.getFighterBlue() != null )
+        writeText( x, y + 23, "B2", BOOLEAN_TRUE, _10 );
+        if ( halfFinalFight1.getFighterBlue() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getFighterIdBlue() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterBlue().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getFighterBlue().getName(), BOOLEAN_FALSE );
+            }
+
         }
         y -= 31;
 
-        // y-=31;
-        // // Small Final
-        // writeText(x,y+23,"A2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(2),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
-        //
-        //
-        // //writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_FALSE);
-        // y-=36;
-        // writeText(x,y+23,"B2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(3),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
+        y -= 31;
+
+        writeText( x, y + 23, "B1", BOOLEAN_TRUE, _10 );
+        if ( halfFinalFight2.getFighterRed() != null )
+        {
+            if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getFighterIdRed() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getFighterRed().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getFighterRed().getName(), BOOLEAN_FALSE );
+            }
+        }
+
+        y -= 36;
+
+        if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
+        {
+            if ( finalFight.getWinnerId() == finalFight.getFighterIdBlue() )
+            {
+                writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_TRUE );
+                writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
+            }
+            else
+            {
+                writeText( x + 120, y + 5, finalFight.getFighterBlue().getName(), BOOLEAN_FALSE );
+            }
+        }
+
+        y -= 36;
+        writeText( x, y + 23, "A2", BOOLEAN_TRUE, _10 );
+        if ( halfFinalFight2.getFighterBlue() != null )
+        {
+            if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getFighterIdBlue() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getFighterBlue().getName(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getFighterBlue().getName(), BOOLEAN_FALSE );
+            }
+
+        }
+
+        y -= 36;
 
         cb.stroke();
         return;
     }
 
-    protected void fillFinalsDuo( int x, int y, DuoFight finalFight, ResourceBundle rb_ )
+    protected void fillFinalsDuo( int x, int y, DuoDoublePoolClass duoclass , ResourceBundle rb_ )
         throws Exception
     {
 
+        DuoFight halfFinalFight1 = duoclass.getHalfFinalFight1();
+        DuoFight halfFinalFight2 = duoclass.getHalfFinalFight2();
+        DuoFight finalFight = duoclass.getFinalFight();
         // Finale
         writeText( x, y + 23, "A1", BOOLEAN_TRUE, _10 );
 
-        if ( finalFight.getDuoTeamRed() != null )
+        if ( halfFinalFight1.getDuoTeamRed() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getDuoTeamRed().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getTeamIdRed() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getDuoTeamRed().getName() + " / "+ halfFinalFight1.getDuoTeamRed().getName2(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getDuoTeamRed().getName() + " / "+ halfFinalFight1.getDuoTeamRed().getName2(), BOOLEAN_FALSE );
+            }
         }
         y -= 36;
         if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
         {
             if ( finalFight.getWinnerId() == finalFight.getTeamIdRed() )
             {
-                writeText( x + 120, y + 5, finalFight.getDuoTeamRed().getName(), BOOLEAN_TRUE );
+                writeText( x + 120, y + 5, finalFight.getDuoTeamRed().getName() + " / "+ finalFight.getDuoTeamRed().getName2(), BOOLEAN_TRUE );
+                writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
             }
             else
             {
-                writeText( x + 120, y + 5, finalFight.getDuoTeamBlue().getName(), BOOLEAN_TRUE );
+                writeText( x + 120, y + 5, finalFight.getDuoTeamRed().getName()+ " / "+ finalFight.getDuoTeamRed().getName2(), BOOLEAN_FALSE );
             }
         }
-        else
-        {
-            // if (DPool.FinalFight.getNameWhite ().equalsIgnoreCase ("&nbsp;"))
-            // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_TRUE);
-            // else writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_TRUE);
 
-        }
-        writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
-        // writeText(x+120,y+5,DPool.FinalFight.getNameRed(),BOOLEAN_FALSE);
+             
         y -= 36;
-        writeText( x, y + 23, "B1", BOOLEAN_TRUE, _10 );
-        if ( finalFight.getDuoTeamBlue() != null )
+        writeText( x, y + 23, "B2", BOOLEAN_TRUE, _10 );
+        if ( halfFinalFight1.getDuoTeamBlue() != null )
         {
-            writeText( x + _40, y + 5, finalFight.getDuoTeamBlue().getName(), BOOLEAN_FALSE );
+            if ( halfFinalFight1.getWinnerId() == halfFinalFight1.getTeamIdBlue() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getDuoTeamBlue().getName() + " / "+ halfFinalFight1.getDuoTeamBlue().getName2(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight1.getDuoTeamBlue().getName() + " / "+ halfFinalFight1.getDuoTeamBlue().getName2(), BOOLEAN_FALSE );
+            }
+            
         }
         y -= 31;
 
-        // y-=31;
-        // // Small Final
-        // writeText(x,y+23,"A2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(2),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
-        //    
-        //
-        // //writeText(x+120,y+5,DPool.FinalFight.getNameWhite(),BOOLEAN_FALSE);
-        // y-=36;
-        // writeText(x,y+23,"B2",BOOLEAN_TRUE,_10);
-        // // writeText(x+40,y+5,DPool.getPlaceStr(3),BOOLEAN_FALSE);
-        // writeText(x+120,y+5,rb.getString("pdf.3rdPlace"),BOOLEAN_FALSE);
-        // y-=36;
+        y -= 31;
+        
+        writeText(x,y+23,"B1",BOOLEAN_TRUE,_10);
+        if ( halfFinalFight2.getDuoTeamRed() != null )
+        {
+            if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getTeamIdRed() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getDuoTeamRed().getName()+ " / "+ halfFinalFight2.getDuoTeamRed().getName2(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getDuoTeamRed().getName() + " / "+ halfFinalFight2.getDuoTeamRed().getName2(), BOOLEAN_FALSE );
+            }
+        }
+       
+        y-=36;
+       
+        if ( finalFight.getWinnerId() != TypeUtil.LONG_MIN )
+        {
+            if ( finalFight.getWinnerId() == finalFight.getTeamIdBlue() )
+            {
+                writeText( x + 120, y + 5, finalFight.getDuoTeamBlue().getName() + " / "+ finalFight.getDuoTeamBlue().getName2(), BOOLEAN_TRUE );
+                writeText( x + 190, y + 5, rb_.getString( "pdf.1stPlace" ), BOOLEAN_FALSE );
+            }
+            else
+            {
+                writeText( x + 120, y + 5, finalFight.getDuoTeamBlue().getName() + " / "+ finalFight.getDuoTeamBlue().getName2(), BOOLEAN_FALSE );
+            }
+        }
+       
+      
+        y-=36;
+        writeText(x,y+23,"A2",BOOLEAN_TRUE,_10);
+        if ( halfFinalFight2.getDuoTeamBlue() != null )
+        {
+            if ( halfFinalFight2.getWinnerId() == halfFinalFight2.getTeamIdBlue() )
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getDuoTeamBlue().getName() + " / "+ halfFinalFight2.getDuoTeamBlue().getName2(), BOOLEAN_TRUE );
+            }
+            else
+            {
+                writeText( x + _40, y + 5, halfFinalFight2.getDuoTeamBlue().getName() + " / "+ halfFinalFight2.getDuoTeamBlue().getName2(), BOOLEAN_FALSE );
+            }
+            
+        }
+       
+        y-=36;
 
-        cb.stroke();
-        return;
-
+       cb.stroke();
+       return;
     }
 }
