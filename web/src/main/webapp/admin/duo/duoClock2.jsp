@@ -230,7 +230,7 @@ Anzeige: Wettkampfanzeige
 					  </tr>
 					  <tr>
 						<td valign="bottom" >
-						   <a href="#" onClick="toggleClock('left')"><img src="../images/clock/fusen_kiken.png" id="leftKiken"></a>	
+						   <a href="#" onClick="toggleClock('right')"><img src="../images/clock/fusen_kiken.png" id="rightKiken"></a>	
 						</td>
 					  </tr>
 				  </table>
@@ -377,7 +377,7 @@ Anzeige: Wettkampfanzeige
 					  </tr>
 					  <tr>
 						<td valign="bottom" >
-						   <a href="#" onClick="toggleClock('right')"><img src="../images/clock/fusen_kiken.png" id="righttKiken"></a>	
+						   <a href="#" onClick="toggleClock('left')"><img src="../images/clock/fusen_kiken.png" id="leftKiken"></a>	
 						</td>
 					  </tr>
 				  </table>
