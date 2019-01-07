@@ -69,8 +69,8 @@ public class NewaFightMapper
         }
         NewaFight ret = new NewaFight();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );
@@ -138,8 +138,8 @@ public class NewaFightMapper
         }
         NewaFightWeb ret = new NewaFightWeb();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );
@@ -203,8 +203,8 @@ public class NewaFightMapper
     public static void mapFightToDB( NewaFight fight, NewaFight fightDB, boolean deepMapping )
     {
 
-        fightDB.setChuiBlue( fight.getChuiBlue() );
-        fightDB.setChuiRed( fight.getChuiRed() );
+        fightDB.setAdvantageBlue( fight.getAdvantageBlue() );
+        fightDB.setAdvantageRed( fight.getAdvantageRed() );
         if ( deepMapping )
         {
             fightDB.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
@@ -256,8 +256,8 @@ public class NewaFightMapper
         }
         NewaFightWeb ret = new NewaFightWeb();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );
@@ -323,8 +323,8 @@ public class NewaFightMapper
     public static void mapFriendlyFightToDB( FriendlyNewaFight fight, FriendlyNewaFight fightDB, boolean deepMapping )
     {
 
-        fightDB.setChuiBlue( fight.getChuiBlue() );
-        fightDB.setChuiRed( fight.getChuiRed() );
+        fightDB.setAdvantageBlue( fight.getAdvantageBlue() );
+        fightDB.setAdvantageRed( fight.getAdvantageRed() );
         if ( deepMapping )
         {
             fightDB.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
@@ -376,8 +376,8 @@ public class NewaFightMapper
         }
         FriendlyNewaFight ret = new FriendlyNewaFight();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );
@@ -445,8 +445,8 @@ public class NewaFightMapper
         }
         NewaFightWeb ret = new NewaFightWeb();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );
@@ -517,8 +517,8 @@ public class NewaFightMapper
         }
         NewaFightWeb ret = new NewaFightWeb();
 
-        ret.setChuiBlue( fight.getChuiBlue() );
-        ret.setChuiRed( fight.getChuiRed() );
+        ret.setAdvantageBlue( fight.getAdvantageBlue() );
+        ret.setAdvantageRed( fight.getAdvantageRed() );
         ret.setFighterBlue( NewaFighterMapper.mapFighterFromDB( fight.getFighterBlue() ) );
         ret.setFighterRed( NewaFighterMapper.mapFighterFromDB( fight.getFighterRed() ) );
         ret.setFighterIdBlue( fight.getFighterIdBlue() );

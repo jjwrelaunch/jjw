@@ -83,7 +83,19 @@
             name="winnerId"
                     column="winnerId"
         >
+		</property>
+		   <property
+            name="advantageRed"
+                    column="advantageRed"
+        >
 
+        </property>
+
+        <property
+            name="advantageBlue"
+                    column="advantageBlue"
+        >
+        
         </property>
 
         <property
@@ -100,19 +112,7 @@
 
         </property>
 
-        <property
-            name="chuiRed"
-                    column="chuiRed"
-        >
-
-        </property>
-
-        <property
-            name="chuiBlue"
-                    column="chuiBlue"
-        >
-
-        </property>
+       
 
         <property
             name="hansokumakeRed"

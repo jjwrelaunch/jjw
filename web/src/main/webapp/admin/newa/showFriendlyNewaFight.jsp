@@ -85,8 +85,8 @@
 
   <h:inputHidden id="shidoRed" value="#{adminFriendlyNewaFightAction.fight.shidoRed}"/>
   <h:inputHidden id="shidoBlue" value="#{adminFriendlyNewaFightAction.fight.shidoBlue}"/>
-  <h:inputHidden id="chuiRed" value="#{adminFriendlyNewaFightAction.fight.chuiRed}"/>
-  <h:inputHidden id="chuiBlue" value="#{adminFriendlyNewaFightAction.fight.chuiBlue}"/>
+  <h:inputHidden id="advantageRed" value="#{adminFriendlyNewaFightAction.fight.advantageRed}"/>
+  <h:inputHidden id="advantageBlue" value="#{adminFriendlyNewaFightAction.fight.advantageBlue}"/>
   <h:inputHidden id="hansokumakeRed" value="#{adminFriendlyNewaFightAction.fight.hansokumakeRed}"/>
   <h:inputHidden id="hansokumakeBlue" value="#{adminFriendlyNewaFightAction.fight.hansokumakeBlue}"/>
   <h:inputHidden id="protokoll" value="#{adminFriendlyNewaFightAction.fight.protokoll}"/>

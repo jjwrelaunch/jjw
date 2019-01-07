@@ -90,10 +90,10 @@
   <h:inputHidden id="fightTimeWithBreaks" value="#{adminNewaFightAction.fight.fightTimeWithBreaks}"/>
   <h:inputHidden id="overallFightTime" value="#{adminNewaFightAction.fight.overallFightTime}"/>
 
+  <h:inputHidden id="advantageRed" value="#{adminNewaFightAction.fight.advantageRed}"/>
+  <h:inputHidden id="advantageBlue" value="#{adminNewaFightAction.fight.advantageBlue}"/>
   <h:inputHidden id="shidoRed" value="#{adminNewaFightAction.fight.shidoRed}"/>
   <h:inputHidden id="shidoBlue" value="#{adminNewaFightAction.fight.shidoBlue}"/>
-  <h:inputHidden id="chuiRed" value="#{adminNewaFightAction.fight.chuiRed}"/>
-  <h:inputHidden id="chuiBlue" value="#{adminNewaFightAction.fight.chuiBlue}"/>
   <h:inputHidden id="hansokumakeRed" value="#{adminNewaFightAction.fight.hansokumakeRed}"/>
   <h:inputHidden id="hansokumakeBlue" value="#{adminNewaFightAction.fight.hansokumakeBlue}"/>
   <h:inputHidden id="protokoll" value="#{adminNewaFightAction.fight.protokoll}"/>

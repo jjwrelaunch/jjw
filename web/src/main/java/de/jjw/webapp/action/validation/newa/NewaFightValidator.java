@@ -98,11 +98,6 @@ public class NewaFightValidator
             errors.add( new ErrorElement( FIELD_WINNER, FIGHT_WRONG_FIGHT_RESULT ) );
         }
 
-        if ( fightAction.getPointsRed() == INT_DEFAULT && fightAction.getPointsBlue() == INT_DEFAULT
-            && fightAction.getWinner() != INT_DEFAULT )
-        {
-            errors.add( new ErrorElement( FIELD_WINNER, FIGHT_WRONG_ZERO_POINTS ) );
-        }
 
         if ( errors.size() > 0 )
         {

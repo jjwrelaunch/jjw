@@ -71,6 +71,21 @@
         >
 
         </property>
+        
+        
+        <property
+            name="advantageRed"
+                    column="advantageRed"
+        >
+
+        </property>
+
+        <property
+            name="advantageBlue"
+                    column="advantageBlue"
+        >
+
+        </property>
 
         <property
             name="flag"
@@ -96,20 +111,6 @@
         <property
             name="shidoBlue"
                     column="shidoBlue"
-        >
-
-        </property>
-
-        <property
-            name="chuiRed"
-                    column="chuiRed"
-        >
-
-        </property>
-
-        <property
-            name="chuiBlue"
-                    column="chuiBlue"
         >
 
         </property>

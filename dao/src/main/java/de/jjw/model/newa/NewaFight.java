@@ -56,14 +56,14 @@ public class NewaFight
     protected String flag;
 
     protected Long winnerId = TypeUtil.LONG_MIN;
+    
+    protected int advantageRed = TypeUtil.INT_MIN;
+
+    protected int advantageBlue = TypeUtil.INT_MIN;    
 
     protected int shidoRed;
 
     protected int shidoBlue;
-
-    protected int chuiRed;
-
-    protected int chuiBlue;
 
     protected int hansokumakeRed;
 
@@ -271,6 +271,27 @@ public class NewaFight
         this.winnerId = winnerId;
     }
 
+    
+
+    public int getAdvantageRed()
+    {
+        return advantageRed;
+    }
+
+    public void setAdvantageRed( int advantageRed )
+    {
+        this.advantageRed = advantageRed;
+    }
+
+    public int getAdvantageBlue()
+    {
+        return advantageBlue;
+    }
+
+    public void setAdvantageBlue( int advantageBlue )
+    {
+        this.advantageBlue = advantageBlue;
+    }
 
     /**
      * @return the shidoRed
@@ -306,40 +327,7 @@ public class NewaFight
         this.shidoBlue = shidoBlue;
     }
 
-    /**
-     * @return the chuiRed
-     * @hibernate.property column="chuiRed"
-     */
-    public int getChuiRed()
-    {
-        return chuiRed;
-    }
-
-    /**
-     * @param chuiRed the chuiRed to set
-     */
-    public void setChuiRed( int chuiRed )
-    {
-        this.chuiRed = chuiRed;
-    }
-
-    /**
-     * @return the chuiBlue
-     * @hibernate.property column="chuiBlue"
-     */
-    public int getChuiBlue()
-    {
-        return chuiBlue;
-    }
-
-    /**
-     * @param chuiBlue the chuiBlue to set
-     */
-    public void setChuiBlue( int chuiBlue )
-    {
-        this.chuiBlue = chuiBlue;
-    }
-
+  
     /**
      * @return the hansokumakeRed
      * @hibernate.property column="hansokumakeRed"
@@ -630,8 +618,8 @@ public class NewaFight
 
         shidoRed = TypeUtil.INT_DEFAULT;
         shidoBlue = TypeUtil.INT_DEFAULT;
-        chuiRed = TypeUtil.INT_DEFAULT;
-        chuiBlue = TypeUtil.INT_DEFAULT;
+        advantageRed = TypeUtil.INT_DEFAULT;
+        advantageBlue = TypeUtil.INT_DEFAULT;
         hansokumakeRed = TypeUtil.INT_DEFAULT;
         hansokumakeBlue = TypeUtil.INT_DEFAULT;
         protokoll = null;
@@ -670,8 +658,8 @@ public class NewaFight
         winnerId = TypeUtil.LONG_MIN;
         shidoRed = TypeUtil.INT_DEFAULT;
         shidoBlue = TypeUtil.INT_DEFAULT;
-        chuiRed = TypeUtil.INT_DEFAULT;
-        chuiBlue = TypeUtil.INT_DEFAULT;
+        advantageRed = TypeUtil.INT_DEFAULT;
+        advantageBlue = TypeUtil.INT_DEFAULT;
         hansokumakeRed = TypeUtil.INT_DEFAULT;
         hansokumakeBlue = TypeUtil.INT_DEFAULT;
         protokoll = null;

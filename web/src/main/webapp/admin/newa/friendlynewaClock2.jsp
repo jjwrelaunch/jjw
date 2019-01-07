@@ -9,34 +9,49 @@
 <html>
 <head>
  <title>
-    <h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.description}"/>
+    <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.description}"/>
     &nbsp;
-    <h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.sexWeb}"/>
+    <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.sexWeb}"/>
     &nbsp;
-    <h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.weightclass}"/></title>
-<LINK REL="STYLESHEET" TYPE="text/css" HREF="../style_fighting_clock2.css" TITLE="classic"/>
-  <script type="text/javascript" src="../javascript_fighting2.js"/>  
+    <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.weightclass}"/></title>
+<LINK REL="STYLESHEET" TYPE="text/css" HREF="../style_newa_clock2.css" TITLE="classic"/>
+  <script type="text/javascript" src="../scripts/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="../scripts/RecordRTC.js"/></script>
+  <script type="text/javascript" src="../scripts/video.js"/></script>
+  <script type="text/javascript" src="../scripts/jjw_generals.js"/></script>
+  <script type="text/javascript" src="../javascript_newa2.js"/>  
   </script>
   <script>
-      var paraAgeDescription='<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.description}"/>';
-      isfriend=false;
+  	  var videoOn=<h:outputText value="#{adminFriendlyFightingClockAction.videoWeb}"/>;
+      var paraAgeDescription='<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.description}"/>';
+      var videoElement = document.getElementById('video');
+      var videoElementScreen = document.getElementById('videoScreen');
+	  var videoFightId='<h:outputText value="#{adminFriendlyFightingClockAction.fight.id}"/>';
+	  var videoDescription='<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.description}"/> <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.weightclass}"/> <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.sexWeb}"/>';
 </script>
 </head>
 <body oncontextmenu="return false" onLoad='startfight(
 		paraAgeDescription,
-		<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.fightingTime}"/>,
-		 <h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.overtime}"/>,
+		<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.fightingTimeNewa}"/>,
+		 <h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.overtime}"/>,
 		15, 
-		<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.injurytime}"/>); 'onunload="shutFriendlyClock();" >
+		<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.injurytime}"/>); 'onunload="shutClock();" >
 		
 
 <div id="time_frame" align="center"
      style="display:none; visibility:hidden; position:absolute; z-index:99; top:114px; left:433px; 
-	 height: auto; width:152px; background-color:#000000; border:2px solid black; color:#00FF00; font-size: 96px; font-weight:bold; font-family:Arial;">
+	 height: auto; width:152px; background-color:#000000; border:2px solid black; color:#00FF00; font-size: 96px; font-weight:bold; font-family:Arial;" onClick="javascript:timeframeclose()">
   T<br/> I<br/>M<br/>E
 </div>		
 		
 
+<!--
+####################################################################################################################
+Soundframe
+####################################################################################################################
+-->
+<iframe marginwidth="0" marginheight="0" name="sound_frame" id="sound_frame" frameborder="0" src="./leer" width="0" height="0"></iframe>
+        
 
 <div id="loadfield" style="width:100%; height:100%; display:block; background-color:#ffffff; padding:0px; margin:0px;"
      align="center">
@@ -58,7 +73,7 @@
     </table>
     <!-- Angaben in die vorangegangenen Spalten schreiben -->
     <script
-        language="javascript">showAK( '<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.age.description}" />', '<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.sexWeb}" />', '<h:outputText value="#{adminFriendlyFightingClockAction.fight.fightingclass.weightclass}" />' );</script>
+        language="javascript">showAK( '<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.age.description}" />', '<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.sexWeb}" />', '<h:outputText value="#{adminFriendlyFightingClockAction.fight.newaclass.weightclass}" />' );</script>
   </div>
 
   <div id="call_red_1" align="center"
@@ -223,7 +238,7 @@
                 <!-- up arrows -->
                 <tr>
                   <td class="clock">
-                    <a href="#" onClick="increaseClock('10', 'rightHoldingClock')"
+                    <a href="#" onClick="increaseAdvantage('10', 'right')"
                        onMouseOver="changeClockSettingsImage('rightHoldingClock.UpImage.1', 'up.png')"
                        onMouseOut="changeClockSettingsImage('rightHoldingClock.UpImage.1', 'up_draft.png')">
 
@@ -231,7 +246,7 @@
                   </td>
 
                   <td class="clock">
-                    <a href="#" onClick="increaseClock('1', 'rightHoldingClock')"
+                    <a href="#" onClick="increaseAdvantage('1', 'right')"
                        onMouseOver="changeClockSettingsImage('rightHoldingClock.UpImage.0', 'up.png')"
                        onMouseOut="changeClockSettingsImage('rightHoldingClock.UpImage.0', 'up_draft.png')">
 
@@ -241,19 +256,19 @@
                 <!-- clock -->
                 <tr>
                   <td class="clock">
-                    <img src="../images/clock/0.png" onMouseDown="startStopClock('rightHoldingClock')"
+                    <img src="../images/clock/bl_.png" onMouseDown="handleAdvantage(event,1,'right')"
                          id="rightHoldingClock.seconds.1" border="0">
                   </td>
 
                   <td class="clock">
-                    <img src="../images/clock/0.png" onMouseDown="startStopClock('rightHoldingClock')"
+                    <img src="../images/clock/0.png" onMouseDown="handleAdvantage(event,1,'right')"
                          id="rightHoldingClock.seconds.2" border="0">
                   </td>
                 </tr>
                 <!-- down arrows -->
                 <tr>
                   <td class="clock">
-                    <a href="#" onClick="decreaseClock('10', 'rightHoldingClock')"
+                    <a href="#" onClick="decreaseAdvantage('10', 'right')"
                        onMouseOver="changeClockSettingsImage('rightHoldingClock.DownImage.1', 'down.png')"
                        onMouseOut="changeClockSettingsImage('rightHoldingClock.DownImage.1', 'down_draft.png')">
 
@@ -261,7 +276,7 @@
                   </td>
 
                   <td class="clock">
-                    <a href="#" onClick="decreaseClock('1', 'rightHoldingClock')"
+                    <a href="#" onClick="decreaseAdvantage('1', 'right')"
                        onMouseOver="changeClockSettingsImage('rightHoldingClock.DownImage.0', 'down.png')"
                        onMouseOut="changeClockSettingsImage('rightHoldingClock.DownImage.0', 'down_draft.png')">
 
@@ -273,7 +288,7 @@
           </tr>
 		  <tr>
 			<td>
-				<span class="osaekomi">Osaekomi</span>
+				<span class="osaekomi">Advantage</span>
 			</td>		  
 		  </tr>
         </table>
@@ -285,65 +300,25 @@
           <td align="right" valign="top">
 			  <table cellpadding="0" cellspacing="0">
 			  <td>
-				<table cellpadding="0" cellspacing="0" border="0" width="200px" id="rightPenaltyTable">
+				<table cellpadding="0" cellspacing="0" border="0" width="250px" id="rightPenaltyTable">
+				   <tr>
+					<td width="100px" align="left"  onMouseDown="handleIppon(event,'1','right');"><span id="rightIppon" class="displayLabels">Submission</span>
+					</td>					
+				  </tr>
 				  <tr>
-					<td width="100px" align="left"  onMouseDown="handleShido(event,'right');" ><span class="displayLabels">Shido</span>
+					<td width="100px" align="left"  onMouseDown="handleShido(event,'right');" ><span class="displayLabels">Penalty</span>
 					</td>
-					<td width="65px" align="center" onMouseDown="handleShido(event,'right');" style="border:3px solid red; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="rightShido2ImageFlag" border="0" >
+					<td width="32px" id="rightPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'right');" style="border:3px solid red; background-color:#000000;">					  
 					  <img src="../images/clock/0_ippon.png" id="rightShidoImageFlag" border="0">
 					</td>
 				  </tr>
+				  
 				  <tr>
-					<td align="left" onMouseDown="handleChui(event,'right');"  ><span class="displayLabels">Chui</span>
-					</td>
-					<td width="65px" align="center"  onMouseDown="handleChui(event,'right');" style="border:3px solid red; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="rightChui2ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="rightChuiImageFlag" border="0">
-					</td>
-				  </tr>
-				  <tr>
-					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span class="displayLabels">Hans.</span>
-					</td>
-					<td width="65px" align="center"  onMouseDown="handleHansokumake(event,'right');" style="border:3px solid red; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="rightHansokumake2ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="rightHansokumakeImageFlag" border="0">
-					</td>
+					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span id="rightDQ" class="displayLabels">DQ</span>
+					</td>					
 				  </tr>
 				</table>
-			  </td>
-			  <td >
-				  <table cellpadding="0" cellspacing="0" width="210px" align="right" id="rightIppons">
-				  <tr>
-					<td width="100px" align="center"  onMouseDown="handleIppon(event,'right','1');"><span class="displayLabels">Part&nbsp;1</span>
-					</td>
-					<td width="65px" id="rightIppon1TDFlag" align="center" style="border:3px solid red; background-color:#000000;"
-						onMouseDown="handleIppon(event,'right','1');" >
-					  <img src="../images/clock/bl_ippon.png" id="rightIppon11ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="rightIppon1ImageFlag" border="0" >
-					</td>
-				  </tr>
-				  <tr>
-					<td align="center" onMouseDown="handleIppon(event,'right','2');"><span class="displayLabels">Part&nbsp;2</span>
-					</td>
-					<td width="60px" id="rightIppon2TDFlag" align="center" style="border:3px solid red; background-color:#000000;"
-						onMouseDown="handleIppon(event,'right','2');">
-					  <img src="../images/clock/bl_ippon.png" id="rightIppon22ImageFlag" border="0">
-					  <img src="../images/clock/0_ippon.png" id="rightIppon2ImageFlag" border="0">
-					</td>
-				  </tr>
-				  <tr>
-					<td align="center" onMouseDown="handleIppon(event,'right','3');"><span class="displayLabels">Part&nbsp;3</span>
-					</td>
-					<td width="60px" id="rightIppon3TDFlag" align="center" style="border:3px solid red; background-color:#000000;"
-						 onMouseDown="handleIppon(event,'right','3');">
-					  <img src="../images/clock/bl_ippon.png" id="rightIppon33ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="rightIppon3ImageFlag" border="0">
-					</td>
-				  </tr>
-				  </table>
-			  </td>		
-			  <td width = "1px" id="rightSpaceAfterIppon">&nbsp;</td>	  
+			  </td>	  
 			</table>
           </td>
 
@@ -358,6 +333,11 @@
           <td>                         <!-- Punktetabelle Rahmen innen-->
             <table cellspacing="0" cellpadding="0" class="points">        <!-- Punktetabelle -->
             <tr>
+              <td align="right"><a href="#" 
+                onMouseOver="changeImage('rightPointsUpImage.2','up_large.png')"
+                onMouseOut="changeImage('rightPointsUpImage.2','up_large_draft.png')">
+                <img id="rightPointsUpImage.2" src="../images/clock/up_large_draft.png" title="" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="increasePoints('10', 'right')"
                   onMouseOver="changeImage('rightPointsUpImage.1','up_large.png')"
                   onMouseOut="changeImage('rightPointsUpImage.1','up_large_draft.png')">
@@ -370,6 +350,9 @@
               </td>
             </tr>
             <tr>
+               <td>
+                <img src="../images/clock/bl_x_large.png" id="rightPoints.2" onMouseDown="handlePoints(event,'1','right')" border="0" height="200" >
+              </td>
               <td>
                 <img src="../images/clock/bl_x_large.png" id="rightPoints.1" onMouseDown="handlePoints(event,'1','right')" border="0" height="200" >
               </td>
@@ -378,6 +361,11 @@
               </td>
             </tr>
             <tr>
+               <td align="right"><a href="#" 
+                  onMouseOver="changeImage('rightPointsDownImage.2','down_large.png')"
+                  onMouseOut="changeImage('rightPointsDownImage.2','down_large_draft.png')">
+                  <img id="rightPointsDownImage.2" src="../images/clock/down_large_draft.png" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="decreasePoints('10', 'right')"
                   onMouseOver="changeImage('rightPointsDownImage.1','down_large.png')"
                   onMouseOut="changeImage('rightPointsDownImage.1','down_large_draft.png')">
@@ -412,7 +400,7 @@
               <h:outputText value="#{adminFriendlyFightingClockAction.fight.fighterBlue.firstname}"/>&nbsp;<h:outputText
             value="#{adminFriendlyFightingClockAction.fight.fighterBlue.name}"/>   </span>
             <br clear="all"/>
-             <span id="blueSpanTeam" class="Verein">Team
+             <span id="blueSpanTeam" class="Verein">
               <h:outputText value="#{adminFriendlyFightingClockAction.fight.fighterBlue.team.teamName}"/> </span>
           </td>
         </tr>
@@ -444,7 +432,7 @@
 					<!-- up arrows -->
 					<tr>
 					  <td class="clock">
-						<a href="#" onClick="increaseClock('10', 'leftHoldingClock')"
+						<a href="#" onClick="increaseAdvantage('10', 'left')"
 						   onMouseOver="changeClockSettingsImage('leftHoldingClock.UpImage.1', 'up.png')"
 						   onMouseOut="changeClockSettingsImage('leftHoldingClock.UpImage.1', 'up_draft.png')">
 
@@ -452,7 +440,7 @@
 					  </td>
 
 					  <td class="clock">
-						<a href="#" onClick="increaseClock('1', 'leftHoldingClock')"
+						<a href="#" onClick="increaseAdvantage('1', 'left')"
 						   onMouseOver="changeClockSettingsImage('leftHoldingClock.UpImage.0', 'up.png')"
 						   onMouseOut="changeClockSettingsImage('leftHoldingClock.UpImage.0', 'up_draft.png')">
 
@@ -462,19 +450,19 @@
 					<!-- clock -->
 					<tr>
 					  <td class="clock">
-						<img src="../images/clock/0.png" onMouseDown="startStopClock('leftHoldingClock')"
+						<img src="../images/clock/bl_.png" onMouseDown="handleAdvantage(event,1,'left')"
 							 id="leftHoldingClock.seconds.1" border="0">
 					  </td>
 
 					  <td class="clock">
-						<img src="../images/clock/0.png" onMouseDown="startStopClock('leftHoldingClock')"
+						<img src="../images/clock/0.png" onMouseDown="handleAdvantage(event,1,'left')"
 							 id="leftHoldingClock.seconds.2" border="0">
 					  </td>
 					</tr>
 					<!-- down arrows -->
 					<tr>
 					  <td class="clock">
-						<a href="#" onClick="decreaseClock('10', 'leftHoldingClock')"
+						<a href="#" onClick="decreaseAdvantage('10', 'left')"
 						   onMouseOver="changeClockSettingsImage('leftHoldingClock.DownImage.1', 'down.png')"
 						   onMouseOut="changeClockSettingsImage('leftHoldingClock.DownImage.1', 'down_draft.png')">
 
@@ -482,7 +470,7 @@
 					  </td>
 
 					  <td class="clock">
-						<a href="#" onClick="decreaseClock('1', 'leftHoldingClock')"
+						<a href="#" onClick="decreaseAdvantage('1', 'left')"
 						   onMouseOver="changeClockSettingsImage('leftHoldingClock.DownImage.0', 'down.png')"
 						   onMouseOut="changeClockSettingsImage('leftHoldingClock.DownImage.0', 'down_draft.png')">
 
@@ -494,7 +482,7 @@
 			  </tr>
 			  <tr>
 				<td>
-					<span class="osaekomi">Osaekomi</span>
+					<span class="osaekomi">Advantage</span>
 				</td>		  
 			</tr>
 			</table>
@@ -505,67 +493,24 @@
          <td align="right" >		
 			 <table  cellpadding="0" cellspacing="0">
 			 <td >
-				  <table cellpadding="0" cellspacing="0" border="0" width="200px" id="leftPenaltyTable">
+				  <table cellpadding="0" cellspacing="0" border="0" width="250px" id="leftPenaltyTable">
 				  <tr>
-					<td width="100px" align="left"  onMouseDown="handleShido(event,'left');"> <span class="displayLabels">Shido</span>
+					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','left');"><span id="leftIppon" class="displayLabels">Submission</span>
+					</td>					
+				  </tr>
+				  <tr>
+					<td width="100px" align="left"  onMouseDown="handleShido(event,'left');"> <span class="displayLabels">Penalty</span>
 					</td>
-					<td width="60px" align="center" onMouseDown="handleShido(event,'left');" style="border:3px solid blue; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="leftShido2ImageFlag" border="0" >
+					<td width="32px" id="leftPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'left');" style="border:3px solid blue; background-color:#000000;">
 					  <img src="../images/clock/0_ippon.png" id="leftShidoImageFlag" border="0">
 					</td>
-				  </tr>
+				  </tr>				 
 				  <tr>
-					<td align="left" onMouseDown="handleChui(event,'left');" ><span class="displayLabels">Chui</span>
-					</td>
-					<td width="60px" align="center"  onMouseDown="handleChui(event,'left');" style="border:3px solid blue; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="leftChui2ImageFlag" border="0">
-					  <img src="../images/clock/0_ippon.png" id="leftChuiImageFlag" border="0">
-					</td>
-				  </tr>
-				  <tr>
-					<td align="left" onMouseDown="handleHansokumake(event,'left');">
-					  <span class="displayLabels">Hans.</span>
-					</td>
-					<td width="60px" align="center" onMouseDown="handleHansokumake(event,'left');" style="border:3px solid blue; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="leftHansokumake2ImageFlag" border="0">
-					  <img src="../images/clock/0_ippon.png" id="leftHansokumakeImageFlag" border="0">
-					</td>
+					<td align="left" onMouseDown="handleHansokumake(event,'left');">  <span id="leftDQ" class="displayLabels">DQ</span>
+					</td>					
 				  </tr>
 				  </table>
-			  </td>			 
-			 
-			 <td >
-				 <table  cellpadding="0" cellspacing="0" align="right" width="210" id="leftIppons">
-				  <tr>
-					<td width="100px" align="center"  onMouseDown="handleIppon(event,'left','1');"><span class="displayLabels">Part&nbsp;1</span>
-					</td>
-					<td width="60px" id="leftIppon1TDFlag" align="center" style="border:3px solid blue; background-color:#000000;"
-						onMouseDown="handleIppon(event,'left','1');">
-					  <img src="../images/clock/bl_ippon.png" id="leftIppon11ImageFlag" border="0"  >
-					  <img src="../images/clock/0_ippon.png" id="leftIppon1ImageFlag" border="0">
-					</td>
-				  </tr>
-				  <tr>
-					<td align="center" onMouseDown="handleIppon(event,'left','2');"><span class="displayLabels">Part&nbsp;2</span>
-					</td>
-					<td width="60px" id="leftIppon2TDFlag" align="center" style="border:3px solid blue; background-color:#000000;"
-						onMouseDown="handleIppon(event,'left','2');">
-					  <img src="../images/clock/bl_ippon.png" id="leftIppon22ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="leftIppon2ImageFlag" border="0">
-					</td>
-				  </tr>
-				  <tr>
-					<td align="center" onMouseDown="handleIppon(event,'left','3');"><span class="displayLabels">Part&nbsp;3</span>
-					</td>
-					<td width="60px" id="leftIppon3TDFlag" align="center" style="border:3px solid blue; background-color:#000000;"
-						 onMouseDown="handleIppon(event,'left','3');">
-					  <img src="../images/clock/bl_ippon.png" id="leftIppon33ImageFlag" border="0">
-					  <img src="../images/clock/0_ippon.png" id="leftIppon3ImageFlag" border="0">
-					</td>
-				  </tr>
-				  </table>
-			  </td>
-			  <td width = "1px" id="leftSpaceAfterIppon">&nbsp;</td>
+			  </td>			 			 			 
 		   </table>
 		  </td>
         </tr>        
@@ -578,6 +523,11 @@
           <td>                         <!-- Punktetabelle Rahmen innen-->
             <table cellspacing="0" cellpadding="0" class="points">        <!-- Punktetabelle -->
             <tr>
+              <td align="right"><a href="#" 
+                  onMouseOver="changeImage('leftPointsUpImage.2','up_large.png')"
+                  onMouseOut="changeImage('leftPointsUpImage.2','up_large_draft.png')">
+                  <img id="leftPointsUpImage.2" src="../images/clock/up_large_draft.png" title="" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="increasePoints('10', 'left')"
                   onMouseOver="changeImage('leftPointsUpImage.1','up_large.png')"
                   onMouseOut="changeImage('leftPointsUpImage.1','up_large_draft.png')">
@@ -591,6 +541,9 @@
             </tr>
             <tr>
               <td>
+                <img src="../images/clock/bl_x_large.png" id="leftPoints.2" onMouseDown="handlePoints(event,'1','left')" border="0"  height="200">
+              </td>
+              <td>
                 <img src="../images/clock/bl_x_large.png" id="leftPoints.1" onMouseDown="handlePoints(event,'1','left')" border="0"  height="200">
               </td>
               <td>
@@ -598,6 +551,11 @@
               </td>
             </tr>
             <tr>
+              <td align="right"><a href="#" 
+                  onMouseOver="changeImage('leftPointsDownImage.2','down_large.png')"
+                  onMouseOut="changeImage('leftPointsDownImage.2','down_large_draft.png')">
+                  <img id="leftPointsDownImage.2" src="../images/clock/down_large_draft.png" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="decreasePoints('10', 'left')"
                   onMouseOver="changeImage('leftPointsDownImage.1','down_large.png')"
                   onMouseOut="changeImage('leftPointsDownImage.1','down_large_draft.png')">
@@ -628,11 +586,15 @@
 <td width="243px" valign="bottom" bgcolor="black">
 
 
-<div id="leftHoldingClock" bgcolor="black">
+<div id="leftHoldingClock" bgcolor="black" width="300px">
   <table cellpadding="4" cellspacing="0" >                     <!-- Rahmen außen linke Uhr Holding -->
     <tr>
       <td>                                   <!-- Rahmen außen linke Uhr Holding -->
-         Werbung oder next Fight
+         <!-- video screen -->
+			<div style="display:block; visibility:visible; background-color:#000000; padding:0px; margin:0px;">
+				<video  id="video" width="300"></video>
+				<video  id="videoScreen" width="0" heigth="0"></video>
+			</div>
       </td>
     </tr>
   </table>
@@ -1049,6 +1011,7 @@
   <!-- Ende KikenWinner -->
 
 <div style="display:none; visibility:hidden;">
+  <img src="../images/clock/0.png">
   <img src="../images/clock/1.png">
   <img src="../images/clock/2.png">
   <img src="../images/clock/3.png">
@@ -1058,23 +1021,35 @@
   <img src="../images/clock/7.png">
   <img src="../images/clock/8.png">
   <img src="../images/clock/9.png">
+  <img src="../images/clock/0_ippon.png">
+  <img src="../images/clock/0_ippon_gr.png">
+  <img src="../images/clock/0_large.png">
   <img src="../images/clock/1_ippon.png">
+  <img src="../images/clock/1_ippon_gr.png">
   <img src="../images/clock/1_large.png">
   <img src="../images/clock/2_ippon.png">
+  <img src="../images/clock/2_ippon_gr.png">
   <img src="../images/clock/2_large.png">
   <img src="../images/clock/3_ippon.png">
+  <img src="../images/clock/3_ippon_gr.png">
   <img src="../images/clock/3_large.png">
   <img src="../images/clock/4_ippon.png">
+  <img src="../images/clock/4_ippon_gr.png">
   <img src="../images/clock/4_large.png">
   <img src="../images/clock/5_ippon.png">
+  <img src="../images/clock/5_ippon_gr.png">
   <img src="../images/clock/5_large.png">
   <img src="../images/clock/6_ippon.png">
+  <img src="../images/clock/6_ippon_gr.png">
   <img src="../images/clock/6_large.png">
   <img src="../images/clock/7_ippon.png">
+  <img src="../images/clock/7_ippon_gr.png">
   <img src="../images/clock/7_large.png">
   <img src="../images/clock/8_ippon.png">
+  <img src="../images/clock/8_ippon_gr.png">
   <img src="../images/clock/8_large.png">
   <img src="../images/clock/9_ippon.png">
+  <img src="../images/clock/9_ippon_gr.png">
   <img src="../images/clock/9_large.png">
   <img src="../sound/klingel02.swf">
   <img src="../sound/alarm01.swf">

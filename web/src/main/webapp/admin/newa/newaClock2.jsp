@@ -300,27 +300,22 @@ Soundframe
           <td align="right" valign="top">
 			  <table cellpadding="0" cellspacing="0">
 			  <td>
-				<table cellpadding="0" cellspacing="0" border="0" width="200px" id="rightPenaltyTable">
+				<table cellpadding="0" cellspacing="0" border="0" width="250px" id="rightPenaltyTable">
 				   <tr>
-					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','right');"><span id="rightIppon" class="displayLabels">Submission</span>
+					<td width="100px" align="left"  onMouseDown="handleIppon(event,'1','right');"><span id="rightIppon" class="displayLabels">Submission</span>
 					</td>					
 				  </tr>
 				  <tr>
 					<td width="100px" align="left"  onMouseDown="handleShido(event,'right');" ><span class="displayLabels">Penalty</span>
 					</td>
-					<td width="65px" id="rightPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'right');" style="border:3px solid red; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="rightShido2ImageFlag" border="0" >
+					<td width="32px" id="rightPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'right');" style="border:3px solid red; background-color:#000000;">					  
 					  <img src="../images/clock/0_ippon.png" id="rightShidoImageFlag" border="0">
 					</td>
 				  </tr>
 				  
 				  <tr>
-					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span class="displayLabels">DQ</span>
-					</td>
-					<td width="65px" align="center"  onMouseDown="handleHansokumake(event,'right');" style="border:3px solid red; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="rightHansokumake2ImageFlag" border="0" >
-					  <img src="../images/clock/0_ippon.png" id="rightHansokumakeImageFlag" border="0">
-					</td>
+					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span id="rightDQ" class="displayLabels">DQ</span>
+					</td>					
 				  </tr>
 				</table>
 			  </td>	  
@@ -338,6 +333,11 @@ Soundframe
           <td>                         <!-- Punktetabelle Rahmen innen-->
             <table cellspacing="0" cellpadding="0" class="points">        <!-- Punktetabelle -->
             <tr>
+              <td align="right"><a href="#" 
+                onMouseOver="changeImage('rightPointsUpImage.2','up_large.png')"
+                onMouseOut="changeImage('rightPointsUpImage.2','up_large_draft.png')">
+                <img id="rightPointsUpImage.2" src="../images/clock/up_large_draft.png" title="" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="increasePoints('10', 'right')"
                   onMouseOver="changeImage('rightPointsUpImage.1','up_large.png')"
                   onMouseOut="changeImage('rightPointsUpImage.1','up_large_draft.png')">
@@ -350,6 +350,9 @@ Soundframe
               </td>
             </tr>
             <tr>
+               <td>
+                <img src="../images/clock/bl_x_large.png" id="rightPoints.2" onMouseDown="handlePoints(event,'1','right')" border="0" height="200" >
+              </td>
               <td>
                 <img src="../images/clock/bl_x_large.png" id="rightPoints.1" onMouseDown="handlePoints(event,'1','right')" border="0" height="200" >
               </td>
@@ -358,6 +361,11 @@ Soundframe
               </td>
             </tr>
             <tr>
+               <td align="right"><a href="#" 
+                  onMouseOver="changeImage('rightPointsDownImage.2','down_large.png')"
+                  onMouseOut="changeImage('rightPointsDownImage.2','down_large_draft.png')">
+                  <img id="rightPointsDownImage.2" src="../images/clock/down_large_draft.png" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="decreasePoints('10', 'right')"
                   onMouseOver="changeImage('rightPointsDownImage.1','down_large.png')"
                   onMouseOut="changeImage('rightPointsDownImage.1','down_large_draft.png')">
@@ -485,7 +493,7 @@ Soundframe
          <td align="right" >		
 			 <table  cellpadding="0" cellspacing="0">
 			 <td >
-				  <table cellpadding="0" cellspacing="0" border="0" width="200px" id="leftPenaltyTable">
+				  <table cellpadding="0" cellspacing="0" border="0" width="250px" id="leftPenaltyTable">
 				  <tr>
 					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','left');"><span id="leftIppon" class="displayLabels">Submission</span>
 					</td>					
@@ -493,19 +501,13 @@ Soundframe
 				  <tr>
 					<td width="100px" align="left"  onMouseDown="handleShido(event,'left');"> <span class="displayLabels">Penalty</span>
 					</td>
-					<td width="65px" id="leftPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'left');" style="border:3px solid blue; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="leftShido2ImageFlag" border="0" >
+					<td width="32px" id="leftPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'left');" style="border:3px solid blue; background-color:#000000;">
 					  <img src="../images/clock/0_ippon.png" id="leftShidoImageFlag" border="0">
 					</td>
 				  </tr>				 
 				  <tr>
-					<td align="left" onMouseDown="handleHansokumake(event,'left');">
-					  <span class="displayLabels">DQ</span>
-					</td>
-					<td width="60px" align="center" onMouseDown="handleHansokumake(event,'left');" style="border:3px solid blue; background-color:#000000;">
-					  <img src="../images/clock/bl_ippon.png" id="leftHansokumake2ImageFlag" border="0">
-					  <img src="../images/clock/0_ippon.png" id="leftHansokumakeImageFlag" border="0">
-					</td>
+					<td align="left" onMouseDown="handleHansokumake(event,'left');">  <span id="leftDQ" class="displayLabels">DQ</span>
+					</td>					
 				  </tr>
 				  </table>
 			  </td>			 			 			 
@@ -521,6 +523,11 @@ Soundframe
           <td>                         <!-- Punktetabelle Rahmen innen-->
             <table cellspacing="0" cellpadding="0" class="points">        <!-- Punktetabelle -->
             <tr>
+              <td align="right"><a href="#" 
+                  onMouseOver="changeImage('leftPointsUpImage.2','up_large.png')"
+                  onMouseOut="changeImage('leftPointsUpImage.2','up_large_draft.png')">
+                  <img id="leftPointsUpImage.2" src="../images/clock/up_large_draft.png" title="" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="increasePoints('10', 'left')"
                   onMouseOver="changeImage('leftPointsUpImage.1','up_large.png')"
                   onMouseOut="changeImage('leftPointsUpImage.1','up_large_draft.png')">
@@ -534,6 +541,9 @@ Soundframe
             </tr>
             <tr>
               <td>
+                <img src="../images/clock/bl_x_large.png" id="leftPoints.2" onMouseDown="handlePoints(event,'1','left')" border="0"  height="200">
+              </td>
+              <td>
                 <img src="../images/clock/bl_x_large.png" id="leftPoints.1" onMouseDown="handlePoints(event,'1','left')" border="0"  height="200">
               </td>
               <td>
@@ -541,6 +551,11 @@ Soundframe
               </td>
             </tr>
             <tr>
+              <td align="right"><a href="#" 
+                  onMouseOver="changeImage('leftPointsDownImage.2','down_large.png')"
+                  onMouseOut="changeImage('leftPointsDownImage.2','down_large_draft.png')">
+                  <img id="leftPointsDownImage.2" src="../images/clock/down_large_draft.png" border="0"></a>
+              </td>
               <td align="right"><a href="#" onClick="decreasePoints('10', 'left')"
                   onMouseOver="changeImage('leftPointsDownImage.1','down_large.png')"
                   onMouseOut="changeImage('leftPointsDownImage.1','down_large_draft.png')">
