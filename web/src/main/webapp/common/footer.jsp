@@ -23,7 +23,7 @@
   ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
   --%>
   
-<span id="legalNote"> Version 16.0.0 | &copy; 2016 <a href="http://www.ju-jutsu-web.de">ju-jutsu-web.de</a> 
+<span id="legalNote"> Version 19.0.0 | &copy; 2019 <a href="http://www.ju-jutsu-web.de">ju-jutsu-web.de</a> 
 <%-- c:if test="${applicationScope.userCounter != null}">
 
   <authz:authorize ifAllGranted="admin">
