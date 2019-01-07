@@ -833,15 +833,16 @@ public class FightingKo64ComplexListPDF
                 }
                 count++;
             }
+            
             // 7 to 14
             for ( int i = _7; i <= _14; i++ )
             {
-                if ( !( fc.getFightListMapPoolA().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolA().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolA().get( i ), count );
                 }
                 count++;
-                if ( !( fc.getFightListMapPoolB().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolB().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolB().get( i ), count );
                 }
@@ -850,12 +851,12 @@ public class FightingKo64ComplexListPDF
             // 3 to 6
             for ( int i = _3; i <= _6; i++ )
             {
-                if ( !( fc.getFightListMapPoolA().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolA().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolA().get( i ), count );
                 }
                 count++;
-                if ( !( fc.getFightListMapPoolB().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolB().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolB().get( i ), count );
                 }
@@ -864,18 +865,19 @@ public class FightingKo64ComplexListPDF
             // 1 to 2
             for ( int i = _1; i <= _2; i++ )
             {
-                if ( !( fc.getFightListMapPoolA().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolA().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolA().get( i ), count );
                 }
                 count++;
-                if ( !( fc.getFightListMapPoolB().get( i ).getFighterIdBlue() == TypeUtil.LONG_MIN ) )
+                if ( ( fc.getFightListMapPoolB().get( i ).getId() != null) )
                 {
                     createFightList( fc.getFightListMapPoolB().get( i ), count );
                 }
+                
                 count++;
             }
-
+            
             count = manageFightList( fc.getFightListMapPoolA(), _0, _0, count, BOOLEAN_FALSE );
             count = manageFightList( fc.getFightListMapPoolB(), _0, _0, count, BOOLEAN_FALSE );
 
