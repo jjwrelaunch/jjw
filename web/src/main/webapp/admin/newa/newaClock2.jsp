@@ -302,11 +302,11 @@ Soundframe
 			  <td>
 				<table cellpadding="0" cellspacing="0" border="0" width="200px" id="rightPenaltyTable">
 				   <tr>
-					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','right');"><span id="rightIppon" class="displayLabels">Ippon</span>
+					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','right');"><span id="rightIppon" class="displayLabels">Submission</span>
 					</td>					
 				  </tr>
 				  <tr>
-					<td width="100px" align="left"  onMouseDown="handleShido(event,'right');" ><span class="displayLabels">Shido</span>
+					<td width="100px" align="left"  onMouseDown="handleShido(event,'right');" ><span class="displayLabels">Penalty</span>
 					</td>
 					<td width="65px" id="rightPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'right');" style="border:3px solid red; background-color:#000000;">
 					  <img src="../images/clock/bl_ippon.png" id="rightShido2ImageFlag" border="0" >
@@ -315,7 +315,7 @@ Soundframe
 				  </tr>
 				  
 				  <tr>
-					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span class="displayLabels">Hans.</span>
+					<td align="left" onMouseDown="handleHansokumake(event,'right');" > <span class="displayLabels">DQ</span>
 					</td>
 					<td width="65px" align="center"  onMouseDown="handleHansokumake(event,'right');" style="border:3px solid red; background-color:#000000;">
 					  <img src="../images/clock/bl_ippon.png" id="rightHansokumake2ImageFlag" border="0" >
@@ -487,11 +487,11 @@ Soundframe
 			 <td >
 				  <table cellpadding="0" cellspacing="0" border="0" width="200px" id="leftPenaltyTable">
 				  <tr>
-					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','left');"><span id="leftIppon" class="displayLabels">Ippon</span>
+					<td width="100px" align="center"  onMouseDown="handleIppon(event,'1','left');"><span id="leftIppon" class="displayLabels">Submission</span>
 					</td>					
 				  </tr>
 				  <tr>
-					<td width="100px" align="left"  onMouseDown="handleShido(event,'left');"> <span class="displayLabels">Shido</span>
+					<td width="100px" align="left"  onMouseDown="handleShido(event,'left');"> <span class="displayLabels">Penalty</span>
 					</td>
 					<td width="65px" id="leftPenaltyTDFlag" align="center" onMouseDown="handleShido(event,'left');" style="border:3px solid blue; background-color:#000000;">
 					  <img src="../images/clock/bl_ippon.png" id="leftShido2ImageFlag" border="0" >
@@ -500,7 +500,7 @@ Soundframe
 				  </tr>				 
 				  <tr>
 					<td align="left" onMouseDown="handleHansokumake(event,'left');">
-					  <span class="displayLabels">Hans.</span>
+					  <span class="displayLabels">DQ</span>
 					</td>
 					<td width="60px" align="center" onMouseDown="handleHansokumake(event,'left');" style="border:3px solid blue; background-color:#000000;">
 					  <img src="../images/clock/bl_ippon.png" id="leftHansokumake2ImageFlag" border="0">

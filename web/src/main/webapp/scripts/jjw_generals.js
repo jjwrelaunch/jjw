@@ -203,7 +203,7 @@ if (window.XMLHttpRequest) {
 } else if (window.ActiveXObject) {
    http = new ActiveXObject("Microsoft.XMLHTTP");
 }
-        http.open('get','https://' +location.host  +url,true);
+        http.open('get','http://' +location.host  +url,true);
     http.send(null);
 
 }
@@ -211,7 +211,7 @@ if (window.XMLHttpRequest) {
 function handleLinkClick(event,urlStandard, urlSpecial)
 {
 	if (event.button==2) hiddenCall(urlSpecial);
-	else window.location.href ='https://' +location.host  +urlStandard;
+	else window.location.href ='http://' +location.host  +urlStandard;
 }
 
 
