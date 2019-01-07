@@ -203,7 +203,10 @@ public class FightingDPoolPDF
 
             }
 
-            createFightList( fightingclass.getFinalFight(), 21 );
+            createFightList( fightingclass.getHalfFinalFight1(), 21 );
+            createFightList( fightingclass.getHalfFinalFight2(), 22 );
+
+            createFightList( fightingclass.getFinalFight(), 23 );
 
             doc.close();
 

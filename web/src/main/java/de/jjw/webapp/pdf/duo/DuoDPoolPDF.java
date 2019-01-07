@@ -194,7 +194,9 @@ public class DuoDPoolPDF
 
             }
 
-            createFightList( duoclass.getFinalFight(), 21 );
+            createFightList( duoclass.getHalfFinalFight1(), 21 );
+            createFightList( duoclass.getHalfFinalFight2(), 22 );
+            createFightList( duoclass.getFinalFight(), 23 );
 
             doc.close();
 

@@ -206,7 +206,9 @@ public class NewaDPoolPDF
 
             }
 
-            createFightList( newaclass.getFinalFight(), 21, writer );
+            createFightList( newaclass.getHalfFinalFight1(), 21, writer );
+            createFightList( newaclass.getHalfFinalFight2(), 22, writer );
+            createFightList( newaclass.getFinalFight(), 23, writer );
 
             doc.close();
 
