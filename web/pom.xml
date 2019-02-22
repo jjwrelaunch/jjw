@@ -8,7 +8,7 @@
 	</parent>
 	<artifactId>web</artifactId>
 	<packaging>war</packaging>
-	<version>17.0.1-SNAPSHOT</version>
+	<version>19.0.1-SNAPSHOT</version>
 
 	<properties>
 		<spring.version>3.1.4.RELEASE</spring.version>
@@ -19,13 +19,13 @@
 		<dependency>
 			<groupId>de.jjw</groupId>
 			<artifactId>util</artifactId>
-			<version>17.0.1-SNAPSHOT</version>
+			<version>19.0.1-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>de.jjw</groupId>
 			<artifactId>service</artifactId>
-			<version>17.0.2-SNAPSHOT</version>
+			<version>19.0.1-SNAPSHOT</version>
 		</dependency>
 
 		<dependency>
