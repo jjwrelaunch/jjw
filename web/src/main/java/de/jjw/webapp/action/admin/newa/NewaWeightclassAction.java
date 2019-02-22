@@ -290,7 +290,7 @@ public class NewaWeightclassAction
 
     public String gotoCombineWeightclass()
     {
-        getRequest().setAttribute( WEB_ADMIN_WEIGHTCLASS_NEW, ( (Newaclass) dataTable.getRowData() ).getId() );
+        getRequest().setAttribute( WEB_ADMIN_NEWA_WEIGHTCLASS_NEW, ( (Newaclass) dataTable.getRowData() ).getId() );
         return COMBINE_NEWA_WEIGHTCLASS;
     }
     

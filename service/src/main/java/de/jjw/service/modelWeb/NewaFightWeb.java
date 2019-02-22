@@ -74,5 +74,21 @@ public class NewaFightWeb
         else
             return "";
     }
+    
+    public String getAdvantageBlueWeb()
+    {
+        if ( getAdvantageBlue() >= TypeUtil.INT_DEFAULT )
+            return String.valueOf( getAdvantageBlue() );
+        else
+            return "";
+    }
+
+    public String getAdvantageRedWeb()
+    {
+        if ( getAdvantageRed() >= TypeUtil.INT_DEFAULT )
+            return String.valueOf( getAdvantageRed() );
+        else
+            return "";
+    }
 
 }

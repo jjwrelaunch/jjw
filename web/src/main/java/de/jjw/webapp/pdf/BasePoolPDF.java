@@ -50,6 +50,8 @@ public class BasePoolPDF
     implements IValueConstants
 {
     protected ResourceBundle rbFighting;
+    
+    protected ResourceBundle rbNewa;
 
     protected ResourceBundle rbDuo;
 
@@ -171,6 +173,125 @@ public class BasePoolPDF
         }
         return konst;
     }
+    
+    /**
+     * erstellt die ErgebnisTabelle für einen Pool
+     * 
+     * @param konst
+     * @return gibt die unterste Position der Tabelle zurück
+     * @throws Exception
+     */
+    protected int createResultTableNewa( int konst )
+        throws Exception
+    {
+        cb.setColorStroke( new BaseColor( 0, 0, 0 ) );
+        cb.setLineWidth( 1f );
+        int height = _18; // konst
+
+        for ( int i = _0; i < 6; i++ )
+        {
+            int j = _24;
+            cb.rectangle( j, _540 - konst - i * height, _80, height );
+            if ( i == _0 )
+            {
+                writeText( j + _40, _545 - konst - i * height, rbNewa.getString( "pdf.pool.name" ), BOOLEAN_FALSE );
+            }
+
+            j += _80;
+            cb.rectangle( j, _540 - konst - i * height, _80, height );
+            if ( i == _0 )
+            {
+                writeText( j + _40, _545 - konst - i * height, rbNewa.getString( "pdf.pool.firstname" ), BOOLEAN_FALSE );
+            }
+
+            j += _80;
+            cb.rectangle( j, _540 - konst - i * height, _80, height );
+            if ( i == _0 )
+            {
+                writeText( j + _40, _545 - konst - i * height, rbNewa.getString( "pdf.pool.team" ), BOOLEAN_FALSE );
+            }
+
+            j += _80;
+            cb.rectangle( j, _540 - konst - i * height, _20, height );
+            if ( i == _0 )
+            {
+                writeText( j + _10, _545 - konst - i * height, rbNewa.getString( "pdf.pool.nb" ), BOOLEAN_FALSE );
+            }
+            else
+            {
+                writeText( j + _10, _545 - konst - i * height, String.valueOf( i ), BOOLEAN_FALSE );
+            }
+
+            // 1-5
+            j += _20;
+            if ( i == _0 )
+            { // Kopfzeile
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
+                writeText( j + _20, _545 - konst - i * height, "1", BOOLEAN_FALSE );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
+                writeText( j + _20, _545 - konst - i * height, "2", BOOLEAN_FALSE );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
+                writeText( j + _20, _545 - konst - i * height, "3", BOOLEAN_FALSE );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
+                writeText( j + _20, _545 - konst - i * height, "4", BOOLEAN_FALSE );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
+                writeText( j + _20, _545 - konst - i * height, "5", BOOLEAN_FALSE );
+            }
+            else
+            {
+                for ( int k = _0; k < 4; k++ )
+                {
+                    if ( i == ( k + _1 ) )
+                    {
+                        GrayOrDoubleFieldNewa( BOOLEAN_TRUE, j, _540 - konst - i * height, height );
+                        j += _34;
+                    }
+                    GrayOrDoubleFieldNewa( BOOLEAN_FALSE, j, _540 - konst - i * height, height );
+                    j += _34;
+                    if ( ( i == _5 ) && ( k == 3 ) )
+                    {
+                        GrayOrDoubleFieldNewa( BOOLEAN_TRUE, j, _540 - konst - i * height, height );
+                        j += _34;
+                    }
+                }
+                j -= _34;
+            }
+            // //
+            j += _34;
+            cb.rectangle( j, _540 - konst - i * height, _30, height );
+            if ( i == _0 )
+            {
+                writeText( j + _15, _545 - konst - i * height, rbNewa.getString( "pool.points.advantage" ), BOOLEAN_FALSE );
+            }
+
+            j += _30;
+            cb.rectangle( j, _540 - konst - i * height, _30, height );
+            if ( i == _0 )
+            {
+                writeText( j + _15, _545 - konst - i * height, rbNewa.getString( "pdf.pool.wins" ), BOOLEAN_FALSE );
+            }
+            
+            j += _30;
+            cb.rectangle( j, _540 - konst - i * height, _30, height );
+            if ( i == _0 )
+            {
+                writeText( j + _15, _545 - konst - i * height, rbNewa.getString( "pdf.pool.points" ), BOOLEAN_FALSE );
+            }
+
+            j += _30;
+            cb.rectangle( j, _540 - konst - i * height, _30, height );
+            if ( i == _0 )
+            {
+                writeText( j + _15, _545 - konst - i * height, rbNewa.getString( "pdf.pool.place" ), BOOLEAN_FALSE );
+            }
+            cb.stroke();
+        }
+        return konst;
+    }
 
     protected void fillResultTableFightingPool( int pdfHeight, List<FightingSimplePoolItem> fighterList )
         throws Exception
@@ -268,46 +389,50 @@ public class BasePoolPDF
 
             if ( i == ( _0 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight1() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight1() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( _1 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight2() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight2() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( 2 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight3() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight3() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( 3 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight4() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight4() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
 
             if ( i == ( 4 ) )
             {
-                j += _40;
+                j += _34;
             }
 
+            
+            writeText( j + _15, _545 - pdfHeight - i * height,
+                       String.valueOf( fighterList.get( i ).getResult().getUBAdvantageCount() ), BOOLEAN_FALSE );
+            j += _30;
             writeText( j + _15, _545 - pdfHeight - i * height,
                        String.valueOf( fighterList.get( i ).getResult().getWinCount() ), BOOLEAN_FALSE );
             j += _30;
@@ -490,46 +615,49 @@ public class BasePoolPDF
 
             if ( i == ( _0 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight1() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight1() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( _1 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight2() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight2() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( 2 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight3() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight3() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( 3 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + _7, _540 - pdfHeight - i * height + _5,
+            writeText( j + _6, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight4() ), BOOLEAN_FALSE );
-            writeText( j + _27, _540 - pdfHeight - i * height + _5,
+            writeText( j + _24, _540 - pdfHeight - i * height + _5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight4() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
 
             if ( i == ( 4 ) )
             {
-                j += _40;
+                j += _34;
             }
 
+            writeText( j + _15, _545 - pdfHeight - i * height,
+                       String.valueOf( fighterList.get( i ).getResult().getUBAdvantageCount() ), BOOLEAN_FALSE );
+            j += _30;
             writeText( j + _15, _545 - pdfHeight - i * height,
                        String.valueOf( fighterList.get( i ).getResult().getWinCount() ), BOOLEAN_FALSE );
             j += _30;

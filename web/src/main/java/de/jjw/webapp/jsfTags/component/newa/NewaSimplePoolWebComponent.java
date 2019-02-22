@@ -426,6 +426,7 @@ public class NewaSimplePoolWebComponent
                 }
                 doTableCell( out, "5%", VAL_CENTER, false, TypeUtil.toString( item.getResult().getWinCount() ) );
                 doTableCell( out, "6%", VAL_CENTER, false, TypeUtil.toString( item.getResult().getUBCount() ) );
+                doTableCell( out, "6%", VAL_CENTER, false, TypeUtil.toString( item.getResult().getUBAdvantageCount()) );
                 doTableCell( out, "9%", VAL_CENTER, false, TypeUtil.toString( item.getPlace() ) );
                 out.endElement( JSF_TR );
             }
@@ -543,6 +544,11 @@ public class NewaSimplePoolWebComponent
         out.startElement( JSF_TH, this );
         out.writeAttribute( ATTR_WIDTH, "80", null );
         writeText( out, rb.getString( "pool.points" ) );
+        out.endElement( JSF_TH );
+        
+        out.startElement( JSF_TH, this );
+        out.writeAttribute( ATTR_WIDTH, "80", null );
+        writeText( out, rb.getString( "pool.points.advantage" ) );
         out.endElement( JSF_TH );
 
         out.startElement( JSF_TH, this );

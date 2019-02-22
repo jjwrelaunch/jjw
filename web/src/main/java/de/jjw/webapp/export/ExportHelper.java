@@ -70,7 +70,7 @@ public class ExportHelper
 
         Map<Integer, Newaclass> nc = newaclassManager.getAllNewaclasses( false );
         ByteArrayOutputStream baos_class =
-            new AllClassesPDF( "de.jjw.webapp.messages.admin.fightingclass", "de.jjw.webapp.messages.admin.duoclass",
+            new AllClassesPDF( "de.jjw.webapp.messages.admin.fightingclass", "de.jjw.webapp.messages.admin.duoclass","de.jjw.webapp.messages.admin.newaclass",
                                fc, dc, nc, local ).createAsNewDocAsBAOS( local );
         entry.setSize( baos_class.size() );
         zos.putNextEntry( entry );

@@ -38,7 +38,7 @@ import de.jjw.service.modelWeb.NewaFightWeb;
 public interface NewaFightManager
 {
 
-    public NewaFight getFight( Long fightId )
+    public NewaFightWeb getFight( Long fightId )
         throws JJWManagerException;
 
     public NewaFightWeb getFightForClock( Long fightId, Locale local )

@@ -64,13 +64,13 @@ public class NewaFightManagerImpl
         this.newaFightDao = fightDao;
     }
 
-    public NewaFight getFight( Long fightId )
+    public NewaFightWeb getFight( Long fightId )
         throws JJWManagerException
     {
 
         try
         {
-            return NewaFightMapper.mapFightFromDB( newaFightDao.getFight( fightId ) );
+            return NewaFightMapper.mapFightFromDBForWeb( newaFightDao.getFight( fightId ) );
         }
         catch ( JJWDataLayerException e )
         {

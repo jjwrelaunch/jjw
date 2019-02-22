@@ -46,6 +46,14 @@ public class NewaSimplePoolItemResult
     private int ubFight3 = TypeUtil.INT_MIN;
 
     private int ubFight4 = TypeUtil.INT_MIN;
+    
+    private int ubAdvantageFight1 = TypeUtil.INT_MIN;
+
+    private int ubAdvantageFight2 = TypeUtil.INT_MIN;
+
+    private int ubAdvantageFight3 = TypeUtil.INT_MIN;
+
+    private int ubAdvantageFight4 = TypeUtil.INT_MIN;
 
     public int getWinCount()
     {
@@ -102,6 +110,35 @@ public class NewaSimplePoolItemResult
         }
         return ret;
     }
+    
+    public int getUBAdvantageCount()
+    {
+        if ( ubAdvantageFight1== TypeUtil.INT_MIN && ubAdvantageFight2== TypeUtil.INT_MIN && ubAdvantageFight3== TypeUtil.INT_MIN &&
+            ubAdvantageFight4== TypeUtil.INT_MIN )
+        {
+            return TypeUtil.INT_MIN;
+        }
+
+        int ret = 0;
+        if ( ubAdvantageFight1 != TypeUtil.INT_MIN )
+        {
+            ret += ubAdvantageFight1;
+        }
+        if ( ubAdvantageFight2 != TypeUtil.INT_MIN )
+        {
+            ret += ubAdvantageFight2;
+        }
+        if ( ubAdvantageFight3 != TypeUtil.INT_MIN )
+        {
+            ret += ubAdvantageFight3;
+        }
+        if ( ubAdvantageFight4 != TypeUtil.INT_MIN )
+        {
+            ret += ubAdvantageFight4;
+        }
+        return ret;
+    }
+
 
     public int getResultFight1()
     {
@@ -183,5 +220,46 @@ public class NewaSimplePoolItemResult
         this.ubFight4 = ubFight4;
     }
 
+    public int getUbAdvantageFight1()
+    {
+        return ubAdvantageFight1;
+    }
 
+    public void setUbAdvantageFight1( int ubAdvantageFight1 )
+    {
+        this.ubAdvantageFight1 = ubAdvantageFight1;
+    }
+
+    public int getUbAdvantageFight2()
+    {
+        return ubAdvantageFight2;
+    }
+
+    public void setUbAdvantageFight2( int ubAdvantageFight2 )
+    {
+        this.ubAdvantageFight2 = ubAdvantageFight2;
+    }
+
+    public int getUbAdvantageFight3()
+    {
+        return ubAdvantageFight3;
+    }
+
+    public void setUbAdvantageFight3( int ubAdvantageFight3 )
+    {
+        this.ubAdvantageFight3 = ubAdvantageFight3;
+    }
+
+    public int getUbAdvantageFight4()
+    {
+        return ubAdvantageFight4;
+    }
+
+    public void setUbAdvantageFight4( int ubAdvantageFight4 )
+    {
+        this.ubAdvantageFight4 = ubAdvantageFight4;
+    }
+
+
+    
 }

@@ -81,7 +81,31 @@
     <h:outputText value="#{msg['openClock']}"/>
   </h:commandLink>
 
-
+<p>&nbsp;</p>
+ <p align="center">
+ 
+ <c:if test="${offNewaFightAction.fight != null}">
+ <c:if test="${offNewaFightAction.fight.winnerId > 0}">
+	<table class="fancyTable">
+		<tr class="odd">
+			<td><t:outputText value="&nbsp;" escape="false"/></td>
+			<td><h:outputText value="#{msg['fighterRed'] }"/></td>
+			<td><h:outputText value="#{msg['fighterBlue'] }"/></td>
+		</tr>
+		<tr class="even">
+			<td><h:outputText value="#{newa['pool.points'] }"/></td>
+			<td><h:outputText value="#{offNewaFightAction.fight.pointsRed}"/></td>
+			<td><h:outputText value="#{offNewaFightAction.fight.pointsBlue}"/></td>
+		</tr>
+		<tr class="odd">
+			<td><h:outputText value="#{newa['pool.points.advantage'] }"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.advantageRedWeb}"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.advantageBlueWeb}"/></td>
+		</tr>
+	</table>	
+</c:if>
+</c:if>
+</p>
 
   <h:inputHidden id="fightTime" value="#{offNewaFightAction.fight.fightTime}"/>
   <h:inputHidden id="injuryTimeRed" value="#{offNewaFightAction.fight.injuryTimeRed}"/>

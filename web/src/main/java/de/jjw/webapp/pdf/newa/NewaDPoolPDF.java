@@ -290,19 +290,19 @@ public class NewaDPoolPDF
             j += _20;
             if ( i == _0 )
             { // Kopfzeile
-                cb.rectangle( j, _540 - konst - i * height, _40, height );
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
                 writeText( j + _20, _545 - konst - i * height, "1", BOOLEAN_FALSE );
-                j += _40;
-                cb.rectangle( j, _540 - konst - i * height, _40, height );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
                 writeText( j + _20, _545 - konst - i * height, "2", BOOLEAN_FALSE );
-                j += _40;
-                cb.rectangle( j, _540 - konst - i * height, _40, height );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
                 writeText( j + _20, _545 - konst - i * height, "3", BOOLEAN_FALSE );
-                j += _40;
-                cb.rectangle( j, _540 - konst - i * height, _40, height );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
                 writeText( j + _20, _545 - konst - i * height, "4", BOOLEAN_FALSE );
-                j += _40;
-                cb.rectangle( j, _540 - konst - i * height, _40, height );
+                j += _34;
+                cb.rectangle( j, _540 - konst - i * height, _34, height );
                 writeText( j + _20, _545 - konst - i * height, "5", BOOLEAN_FALSE );
             }
             else
@@ -312,20 +312,28 @@ public class NewaDPoolPDF
                     if ( i == ( k + _1 ) )
                     {
                         GrayOrDoubleField( BOOLEAN_TRUE, j, _540 - konst - i * height, height );
-                        j += _40;
+                        j += _34;
                     }
                     GrayOrDoubleField( BOOLEAN_FALSE, j, _540 - konst - i * height, height );
-                    j += _40;
+                    j += _34;
                     if ( ( i == 5 ) && ( k == 3 ) )
                     {
                         GrayOrDoubleField( BOOLEAN_TRUE, j, _540 - konst - i * height, height );
-                        j += _40;
+                        j += _34;
                     }
                 }
-                j -= _40;
+                j -= _34;
             }
             // //
-            j += _40;
+            j += _34;
+            
+            cb.rectangle( j, _540 - konst - i * height, _30, height );
+            if ( i == _0 )
+            {
+                writeText( j + _15, _545 - konst - i * height, rb.getString( "pool.points.advantage" ), BOOLEAN_FALSE );
+            }
+
+            j += _30;
             cb.rectangle( j, _540 - konst - i * height, _30, height );
             if ( i == _0 )
             {
@@ -472,46 +480,49 @@ public class NewaDPoolPDF
 
             if ( i == ( _0 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + 7, _540 - konst - i * height + 5,
+            writeText( j + 6, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight1() ), BOOLEAN_FALSE );
-            writeText( j + 27, _540 - konst - i * height + 5,
+            writeText( j + 24, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight1() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( _1 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + 7, _540 - konst - i * height + 5,
+            writeText( j + 6, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight2() ), BOOLEAN_FALSE );
-            writeText( j + 27, _540 - konst - i * height + 5,
+            writeText( j + 24, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight2() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( _2 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + 7, _540 - konst - i * height + 5,
+            writeText( j + 6, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight3() ), BOOLEAN_FALSE );
-            writeText( j + 27, _540 - konst - i * height + 5,
+            writeText( j + 24, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight3() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
             if ( i == ( 3 ) )
             {
-                j += _40;
+                j += _34;
             }
-            writeText( j + 7, _540 - konst - i * height + 5,
+            writeText( j + 6, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getResultFight4() ), BOOLEAN_FALSE );
-            writeText( j + 27, _540 - konst - i * height + 5,
+            writeText( j + 24, _540 - konst - i * height + 5,
                        String.valueOf( fighterList.get( i ).getResult().getUbFight4() ), BOOLEAN_FALSE );
-            j += _40;
+            j += _34;
 
             if ( i == ( 4 ) )
             {
-                j += _40;
+                j += _34;
             }
-
+            
+            writeText( j + _15, _545 - konst - i * height,
+                       String.valueOf( fighterList.get( i ).getResult().getUBAdvantageCount() ), BOOLEAN_FALSE );
+            j += _30;
             writeText( j + 15, _545 - konst - i * height,
                        String.valueOf( fighterList.get( i ).getResult().getWinCount() ), BOOLEAN_FALSE );
             j += _30;
@@ -647,14 +658,14 @@ public class NewaDPoolPDF
         if ( gray )
         {
             cb.stroke();
-            cb.rectangle( x, y, _40, height );
+            cb.rectangle( x, y, _34, height );
             cb.stroke();
         }
         else
         {
-            cb.rectangle( x, y, _14, height );
-            x += _14;
-            cb.rectangle( x, y, _26, height );
+            cb.rectangle( x, y, _12, height );
+            x += _12;
+            cb.rectangle( x, y, _22, height );
         }
     }
 

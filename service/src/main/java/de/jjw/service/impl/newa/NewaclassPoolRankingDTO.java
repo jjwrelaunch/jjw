@@ -34,6 +34,8 @@ public class NewaclassPoolRankingDTO
     private int wins = TypeUtil.INT_EMPTY;
 
     private int ubs = TypeUtil.INT_EMPTY;
+    
+    private int ubAdvantages = TypeUtil.INT_EMPTY;
 
     private int place = TypeUtil.INT_EMPTY;
 
@@ -75,6 +77,18 @@ public class NewaclassPoolRankingDTO
     public void setPlace( int place )
     {
         this.place = place;
+    }
+    
+    
+
+    public int getUbAdvantages()
+    {
+        return ubAdvantages;
+    }
+
+    public void setUbAdvantages( int ubAdvantages )
+    {
+        this.ubAdvantages = ubAdvantages;
     }
 
     public int compareTo( Object o )

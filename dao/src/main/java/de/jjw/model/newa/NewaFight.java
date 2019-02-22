@@ -57,9 +57,9 @@ public class NewaFight
 
     protected Long winnerId = TypeUtil.LONG_MIN;
     
-    protected int advantageRed = TypeUtil.INT_MIN;
+    protected int advantageRed = TypeUtil.INT_DEFAULT;
 
-    protected int advantageBlue = TypeUtil.INT_MIN;    
+    protected int advantageBlue = TypeUtil.INT_DEFAULT;    
 
     protected int shidoRed;
 

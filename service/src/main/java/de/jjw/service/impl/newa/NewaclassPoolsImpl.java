@@ -88,11 +88,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight1( diff );
                             }
+                            item.getResult().setUbAdvantageFight1( Math.abs( item.getFight1().getAdvantageBlue() - item.getFight1().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight1( FIGHT_LOST );
                             item.getResult().setUbFight1( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight1( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -122,11 +124,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight2( diff );
                             }
+                            item.getResult().setUbAdvantageFight2( Math.abs( item.getFight2().getAdvantageBlue() - item.getFight2().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight2( FIGHT_LOST );
                             item.getResult().setUbFight2( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight2( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -174,11 +178,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight3( diff );
                             }
+                            item.getResult().setUbAdvantageFight3( Math.abs( item.getFight3().getAdvantageBlue() - item.getFight3().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight3( FIGHT_LOST );
                             item.getResult().setUbFight3( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight3( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -230,11 +236,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight4( diff );
                             }
+                            item.getResult().setUbAdvantageFight4( Math.abs( item.getFight4().getAdvantageBlue() - item.getFight4().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight4( FIGHT_LOST );
                             item.getResult().setUbFight4( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight4( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -267,6 +275,7 @@ public class NewaclassPoolsImpl
                 ranking.setId( item.getFighter().getId() );
                 ranking.setWins( item.getResult().getWinCount() );
                 ranking.setUbs( item.getResult().getUBCount() );
+                ranking.setUbAdvantages( item.getResult().getUBAdvantageCount() );
                 rankingList.add( ranking );
             }
             if ( pool.getFighterList().size() > 1 )
@@ -337,11 +346,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight1( diff );
                             }
+                            item.getResult().setUbAdvantageFight1( Math.abs( item.getFight1().getAdvantageBlue() - item.getFight1().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight1( FIGHT_LOST );
                             item.getResult().setUbFight1( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight1( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -371,11 +382,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight2( diff );
                             }
+                            item.getResult().setUbAdvantageFight2( Math.abs( item.getFight2().getAdvantageBlue() - item.getFight2().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight2( FIGHT_LOST );
                             item.getResult().setUbFight2( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight2( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -411,11 +424,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight3( diff );
                             }
+                            item.getResult().setUbAdvantageFight3( Math.abs( item.getFight3().getAdvantageBlue() - item.getFight3().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight3( FIGHT_LOST );
                             item.getResult().setUbFight3( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight3( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -458,11 +473,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight4( diff );
                             }
+                            item.getResult().setUbAdvantageFight4( Math.abs( item.getFight4().getAdvantageBlue() - item.getFight4().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight4( FIGHT_LOST );
                             item.getResult().setUbFight4( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight4( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -495,6 +512,7 @@ public class NewaclassPoolsImpl
                 ranking.setId( item.getFighter().getId() );
                 ranking.setWins( item.getResult().getWinCount() );
                 ranking.setUbs( item.getResult().getUBCount() );
+                ranking.setUbAdvantages( item.getResult().getUBAdvantageCount() );
                 rankingList.add( ranking );
             }
             // triple place ranking
@@ -536,11 +554,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight1( diff );
                             }
+                            item.getResult().setUbAdvantageFight1( Math.abs( item.getFight1().getAdvantageBlue() - item.getFight1().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight1( FIGHT_LOST );
                             item.getResult().setUbFight1( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight1( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -570,11 +590,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight2( diff );
                             }
+                            item.getResult().setUbAdvantageFight2( Math.abs( item.getFight2().getAdvantageBlue() - item.getFight2().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight2( FIGHT_LOST );
                             item.getResult().setUbFight2( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight2( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -610,11 +632,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight3( diff );
                             }
+                            item.getResult().setUbAdvantageFight3( Math.abs( item.getFight3().getAdvantageBlue() - item.getFight3().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight3( FIGHT_LOST );
                             item.getResult().setUbFight3( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight3( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -657,11 +681,13 @@ public class NewaclassPoolsImpl
                             {
                                 item.getResult().setUbFight4( diff );
                             }
+                            item.getResult().setUbAdvantageFight4( Math.abs( item.getFight4().getAdvantageBlue() - item.getFight4().getAdvantageRed()) );
                         }
                         else
                         {
                             item.getResult().setResultFight4( FIGHT_LOST );
                             item.getResult().setUbFight4( FIGHT_LOST );
+                            item.getResult().setUbAdvantageFight4( FIGHT_LOST );
                         }
                     }
                     // set in FightListMap
@@ -694,6 +720,7 @@ public class NewaclassPoolsImpl
                 ranking.setId( item.getFighter().getId() );
                 ranking.setWins( item.getResult().getWinCount() );
                 ranking.setUbs( item.getResult().getUBCount() );
+                ranking.setUbAdvantages( item.getResult().getUBAdvantageCount() );
                 rankingList.add( ranking );
             }
             // triple place ranking

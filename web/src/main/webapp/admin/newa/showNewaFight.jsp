@@ -24,6 +24,7 @@
   --%>
 
 <f:loadBundle basename="de.jjw.webapp.messages.admin.fight" var="msg"/>
+<f:loadBundle basename="de.jjw.webapp.messages.admin.newaclass" var="newa"/>
 <t:htmlTag value="h3"><h:outputText value="#{msg['fightHeadline'] }"/></t:htmlTag>
 <h:form id="adminNewaFightAction">
   <h:inputHidden id="fightId" value="#{adminNewaFightAction.fight.id}"/>
@@ -82,6 +83,31 @@
     <h:outputText value="#{msg['openClock']}"/>
   </h:commandLink>
 
+ <p>&nbsp;</p>
+ <p align="center">
+ 
+ <c:if test="${adminNewaFightAction.fight != null}">
+ <c:if test="${adminNewaFightAction.fight.winnerId > 0}">
+	<table class="fancyTable">
+		<tr class="odd">
+			<td><t:outputText value="&nbsp;" escape="false"/></td>
+			<td><h:outputText value="#{msg['fighterRed'] }"/></td>
+			<td><h:outputText value="#{msg['fighterBlue'] }"/></td>
+		</tr>
+		<tr class="even">
+			<td><h:outputText value="#{newa['pool.points'] }"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.pointsRed}"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.pointsBlue}"/></td>
+		</tr>
+		<tr class="odd">
+			<td><h:outputText value="#{newa['pool.points.advantage'] }"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.advantageRedWeb}"/></td>
+			<td><h:outputText value="#{adminNewaFightAction.fight.advantageBlueWeb}"/></td>
+		</tr>
+	</table>	
+</c:if>
+</c:if>
+</p>
 
  
   <h:inputHidden id="fightTime" value="#{adminNewaFightAction.fight.fightTime}"/>

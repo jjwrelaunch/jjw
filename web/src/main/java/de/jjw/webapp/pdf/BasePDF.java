@@ -194,6 +194,23 @@ public class BasePDF
             cb.rectangle( x, y, 26, height );
         }
     }
+    
+    protected void GrayOrDoubleFieldNewa( boolean gray, int x, int y, int height )
+                    throws Exception
+    {
+        if ( gray )
+        {
+            cb.stroke();
+            cb.rectangle( x, y, _34, height );
+            cb.stroke();
+        }
+        else
+        {
+            cb.rectangle( x, y, 12, height );
+            x += 12;
+            cb.rectangle( x, y, 22, height );
+        }
+    }
 
     /**
      * verarbeitet die Ausgabe eines Textes linksorientiert an die gegebene Position

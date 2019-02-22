@@ -36,6 +36,7 @@ import de.jjw.model.generalhelper.CodestableMain;
 import de.jjw.model.newa.NewaFight;
 import de.jjw.service.ServiceExchangeContext;
 import de.jjw.service.exception.JJWManagerException;
+import de.jjw.service.modelWeb.NewaFightWeb;
 import de.jjw.service.newa.NewaFightManager;
 import de.jjw.service.newa.UserNewaclassManager;
 import de.jjw.util.IValueConstants;
@@ -55,7 +56,7 @@ public class NewaFightAction
 
     private NewaFightManager newaFightManager;
 
-    private NewaFight fight;
+    private NewaFightWeb fight;
 
     private int pointsRed;
 
