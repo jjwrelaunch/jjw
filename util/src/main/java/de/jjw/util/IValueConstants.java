@@ -291,6 +291,8 @@ public interface IValueConstants
     int _3 = 3;
 
     int _2 = 2;
+    
+    int _34 = 34;
 
     int _307 = 307;
 

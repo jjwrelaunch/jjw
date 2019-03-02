@@ -26,6 +26,7 @@ package de.jjw.webapp.action.admin;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
 
 import javax.faces.model.SelectItem;
@@ -37,6 +38,8 @@ import de.jjw.model.generalhelper.CodestableMain;
 import de.jjw.service.ServiceExchangeContext;
 import de.jjw.service.exception.JJWManagerException;
 import de.jjw.service.fighting.FightManager;
+import de.jjw.service.modelWeb.FightWeb;
+import de.jjw.service.modelWeb.FighterWeb;
 import de.jjw.util.IValueConstants;
 import de.jjw.util.TypeUtil;
 import de.jjw.webapp.IGlobalWebConstants;
@@ -44,6 +47,8 @@ import de.jjw.webapp.WebExchangeContextHelper;
 import de.jjw.webapp.action.BasePage;
 import de.jjw.webapp.action.validation.ErrorElement;
 import de.jjw.webapp.action.validation.fighting.FightValidator;
+import de.jjw.webapp.pdf.fighting.FightingVisualizelProtokollPDF;
+import javax.servlet.http.HttpServletResponse;
 
 public class FightAction
     extends BasePage
@@ -223,6 +228,37 @@ public class FightAction
         }
         return ret;
     }
+    
+    public String visualizeAllFights()
+    {
+        HttpServletResponse response = getResponseWithPDFHeader();
+        try
+        {            
+            Map<FighterWeb, List<FightWeb>> map =fightManager.getFightForVisualize(getFight().getId());
+            if (map.size()<1) return null;  // do nothing when no data 
+            new FightingVisualizelProtokollPDF( "de.jjw.webapp.messages.fighter", response, getLocale() ).visualizeAllProtokoll( map );
+            getFacesContext().responseComplete();
+        }
+        catch ( Exception e )
+        {
+            log.error( "FightAction", e );
+            addErrorElement( new ErrorElement( GEN_GERNERAL_ERROR ) );
+        }
+        return null;
+    }
+        
+    
+    private HttpServletResponse getResponseWithPDFHeader()
+    {
+        HttpServletResponse response = (HttpServletResponse) getFacesContext().getExternalContext().getResponse();
+
+        response.setHeader( "Expires", "0" );
+        response.setHeader( "Cache-Control", "must-revalidate, post-check=0, pre-check=0" );
+        response.setHeader( "Pragma", "public" );
+        response.setContentType( "application/pdf" );
+        return response;
+    }
+    
 
 
     public void setFightManager( FightManager fightManager )

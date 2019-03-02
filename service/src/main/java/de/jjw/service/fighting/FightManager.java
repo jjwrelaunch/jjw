@@ -28,12 +28,15 @@ import java.util.Locale;
 import java.util.Map;
 
 import de.jjw.dao.generalhelper.OptimisticLockingException;
+import de.jjw.dao.hibernate.JJWDataLayerException;
 import de.jjw.model.FastFight;
 import de.jjw.model.admin.FightTimes;
 import de.jjw.model.fighting.Fight;
+import de.jjw.model.fighting.Fighter;
 import de.jjw.service.ServiceExchangeContext;
 import de.jjw.service.exception.JJWManagerException;
 import de.jjw.service.modelWeb.FightWeb;
+import de.jjw.service.modelWeb.FighterWeb;
 
 public interface FightManager
 {
@@ -55,4 +58,10 @@ public interface FightManager
 
     public Map<Integer, List<FastFight>> getFastestFights()
         throws JJWManagerException;
+    
+    public Map<FighterWeb,List<FightWeb>> getFightsFromFighter() throws JJWManagerException;
+    
+    public Map<FighterWeb,List<FightWeb>>  getFightsFromOneFighter( Fighter fighter ) throws JJWManagerException;
+
+    Map<FighterWeb, List<FightWeb>> getFightForVisualize( long fightId )  throws JJWManagerException;
 }

@@ -66,4 +66,10 @@ public interface FightDao
 
     public boolean isDoneFightRegardlessRedBlue( Long fightingclassId, Long fighterIdRed, Long fighterIdBlue )
         throws JJWDataLayerException;
+    
+    public Map<Fighter,List<Fight>> getFightsFromFighter() throws JJWDataLayerException;
+    
+    public Map<Fighter,List<Fight>>  getFightsFromOneFighter( Fighter fighter ) throws JJWDataLayerException;
+    
+    public Map<Fighter,List<Fight>>  getFightForVisualize( long fightId ) throws JJWDataLayerException;
 }

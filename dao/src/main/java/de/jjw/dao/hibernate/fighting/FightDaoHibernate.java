@@ -58,6 +58,8 @@ public class FightDaoHibernate
     private static String FIGHTS_BY_FIGHTER =
         "from " + TABLE_FIGHT + " where " + FIGHTER_ID_RED + "=? OR " + FIGHTER_ID_BLUE + "=?";
 
+   
+    
     public boolean existFight( Long fightId )
     {
         Query q = getSession().createQuery( FIGHT_BY_ID );
@@ -495,4 +497,127 @@ public class FightDaoHibernate
             throw new JJWDataLayerException( e );
         }
     }
+    
+    
+    private static String ALL_FINISHED_FIGHTS =
+                    "from " + TABLE_FIGHT + " where " + FIGHTER_ID_RED + ">0 and " + FIGHTER_ID_BLUE + ">0 and " + WINNER_ID +" >0";
+    private static String ALL_FIGHTER =
+                    "from " + TABLE_FIGHTER;
+    
+    public Map<Fighter,List<Fight>> getFightsFromFighter() throws JJWDataLayerException
+    {
+        try
+        {
+            Query q = getSession().createQuery( ALL_FINISHED_FIGHTS );
+            List<Fight> fightList = (List<Fight>) q.list();
+            Map<Long, List<Fight>> myMap = new HashMap<Long, List<Fight>>();
+            List<Fight> newList = new ArrayList<Fight>();
+            Map<Fighter, List<Fight>> retMap = new HashMap<Fighter, List<Fight>>();
+            Fighter fighterRed;
+            Fighter fighterBlue;
+
+            for ( Fight item : fightList )
+            {                
+                fighterRed = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdRed() );
+                fighterBlue = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdBlue() );
+                item.setFighterRed( fighterRed );
+                item.setFighterBlue( fighterBlue );
+                
+                if ( myMap.containsKey( item.getFighterIdRed() ) )
+                    newList = myMap.get( item.getFighterIdRed() );
+                else
+                    newList = new ArrayList<Fight>();
+                newList.add( item );
+                myMap.put( item.getFighterIdRed(), newList );
+
+                if ( myMap.containsKey( item.getFighterIdBlue() ) )
+                    newList = myMap.get( item.getFighterIdBlue() );
+                else
+                    newList = new ArrayList<Fight>();
+                newList.add( item );
+                myMap.put( item.getFighterIdRed(), newList );
+            }
+
+            Query q2 = getSession().createQuery( ALL_FIGHTER );
+            List<Fighter> fighterList = (List<Fighter>) q2.list();
+            for ( Fighter item : fighterList )
+            {
+                if ( myMap.containsKey( item.getId() ) )
+                    retMap.put( item, myMap.get( item.getId() ) );
+            }
+
+            return retMap;
+        }
+        catch ( Exception e )
+        {
+            log.error( e.getMessage() );
+            throw new JJWDataLayerException( e );
+        }
+    }
+    
+    private static String FINISHED_FIGHTS_BY_FIGHTER =
+                    "from " + TABLE_FIGHT + " where " + FIGHTER_ID_RED + "=? OR " + FIGHTER_ID_BLUE + "=? and " + WINNER_ID +" >0";
+    
+    public Map<Fighter,List<Fight>>  getFightsFromOneFighter( Fighter fighter ) throws JJWDataLayerException
+    {
+        try
+        {
+            Query q = getSession().createQuery( FINISHED_FIGHTS_BY_FIGHTER );
+            q.setLong( 0, fighter.getId() );
+            q.setLong( 1, fighter.getId() );
+            List<Fight> fightList = (List<Fight>) q.list();
+            Map<Fighter, List<Fight>> retMap = new HashMap<Fighter, List<Fight>>();
+            Fighter myFighter = (Fighter) getHibernateTemplate().get( Fighter.class, fighter.getId() );
+            Fighter fighterRed;
+            Fighter fighterBlue;
+            
+            for ( Fight item : fightList )
+            {                
+                fighterRed = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdRed() );
+                fighterBlue = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdBlue() );
+                item.setFighterRed( fighterRed );
+                item.setFighterBlue( fighterBlue );                
+            }
+
+            retMap.put( myFighter, fightList );
+
+            return retMap;
+        }
+        catch ( Exception e )
+        {
+            log.error( e.getMessage() );
+            throw new JJWDataLayerException( e );
+        }
+    }
+    
+    public Map<Fighter,List<Fight>>  getFightForVisualize( long fightId ) throws JJWDataLayerException
+    {
+        try
+        {
+
+            Fight myFight = (Fight) getHibernateTemplate().get( Fight.class, fightId );
+            List<Fight> fightList = new ArrayList<Fight>();
+            
+            Map<Fighter, List<Fight>> retMap = new HashMap<Fighter, List<Fight>>();
+            
+            Fighter fighterRed;
+            Fighter fighterBlue;
+
+            fighterRed = (Fighter) getHibernateTemplate().get( Fighter.class, myFight.getFighterIdRed() );
+            fighterBlue = (Fighter) getHibernateTemplate().get( Fighter.class, myFight.getFighterIdBlue() );
+            myFight.setFighterRed( fighterRed );
+            myFight.setFighterBlue( fighterBlue );
+            fightList.add( myFight );
+
+            retMap.put( fighterRed, fightList );
+
+            return retMap;
+        }
+        catch ( Exception e )
+        {
+            log.error( e.getMessage() );
+            throw new JJWDataLayerException( e );
+        }
+    }
+    
 }

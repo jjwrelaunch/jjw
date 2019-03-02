@@ -39,6 +39,7 @@ import de.jjw.model.Preview;
 import de.jjw.model.admin.FightTimes;
 import de.jjw.model.admin.Fightsystem;
 import de.jjw.model.fighting.Fight;
+import de.jjw.model.fighting.Fighter;
 import de.jjw.service.ServiceExchangeContext;
 import de.jjw.service.exception.JJWManagerException;
 import de.jjw.service.fighting.FightManager;
@@ -46,6 +47,7 @@ import de.jjw.service.impl.BaseManager;
 import de.jjw.service.mapper.fighting.FastFightMapper;
 import de.jjw.service.mapper.fighting.FightMapper;
 import de.jjw.service.modelWeb.FightWeb;
+import de.jjw.service.modelWeb.FighterWeb;
 import de.jjw.util.IValueConstants;
 
 public class FightManagerImpl
@@ -208,6 +210,48 @@ public class FightManagerImpl
     public void setPreviewDao( PreviewDao previewDao )
     {
         this.previewDao = previewDao;
+    }
+
+    @Override
+    public Map<FighterWeb, List<FightWeb>> getFightsFromFighter()
+        throws JJWManagerException
+    {
+        try
+        {
+            return FightMapper.mapFightMapFromDB( fightDao.getFightsFromFighter() );
+        }
+        catch ( JJWDataLayerException e )
+        {
+            throw new JJWManagerException( e );
+        }
+    }
+
+    @Override
+    public Map<FighterWeb, List<FightWeb>> getFightsFromOneFighter( Fighter fighter )
+        throws JJWManagerException
+    {
+        try
+        {
+            return FightMapper.mapFightMapFromDB( fightDao.getFightsFromOneFighter(fighter) );
+        }
+        catch ( JJWDataLayerException e )
+        {
+            throw new JJWManagerException( e );
+        }
+    }
+    
+    @Override
+    public Map<FighterWeb, List<FightWeb>> getFightForVisualize( long fightId )
+        throws JJWManagerException
+    {
+        try
+        {
+            return FightMapper.mapFightMapFromDB( fightDao.getFightForVisualize(fightId) );
+        }
+        catch ( JJWDataLayerException e )
+        {
+            throw new JJWManagerException( e );
+        }
     }
 
 }

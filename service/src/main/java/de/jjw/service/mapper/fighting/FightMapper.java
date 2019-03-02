@@ -25,13 +25,17 @@ package de.jjw.service.mapper.fighting;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import de.jjw.model.fighting.Fight;
+import de.jjw.model.fighting.Fighter;
 import de.jjw.model.fighting.FriendlyFight;
 import de.jjw.model.generalhelper.CodestableMain;
 import de.jjw.service.modelWeb.FightWeb;
+import de.jjw.service.modelWeb.FighterWeb;
 import de.jjw.service.util.IGlobalProjectConstants;
 import de.jjw.util.ICodestableTypeConstants;
 import de.jjw.util.TypeUtil;
@@ -40,6 +44,38 @@ public class FightMapper
     implements ICodestableTypeConstants, IGlobalProjectConstants
 {
 
+    
+    public static Map<FighterWeb, List<FightWeb>> mapFightMapFromDB( Map<Fighter, List<Fight>> myMap )
+    {
+        Map<FighterWeb, List<FightWeb>> retMap = new HashMap<FighterWeb, List<FightWeb>>();
+        FighterWeb fighterWeb;
+        List<FightWeb> fightListWeb = new ArrayList<FightWeb>();
+        List<Fight> fightsFromDB;
+        FightWeb fightWeb = null;
+        for(Fighter item: myMap.keySet())
+        {
+            fighterWeb = FighterMapper.mapFighterFromDB( item );
+            fightsFromDB= myMap.get( item );
+            
+            fightListWeb= new ArrayList<FightWeb>();
+            for ( Fight fightItem : fightsFromDB )
+            {
+                fightWeb = mapFightFromDBForWeb( fightItem );
+                if ( fightItem.getWinnerId() >= TypeUtil.LONG_DEFAULT )
+                {
+                    fightWeb.setFightReady( IMAGE_JJW_DIR + OK_GIF );
+                }
+                else
+                {
+                    fightWeb.setFightReady( IMAGE_JJW_DIR + X_GIF );
+                }
+                fightListWeb.add( fightWeb );
+            }
+            retMap.put( fighterWeb, fightListWeb );
+        }                        
+        return retMap;        
+    }
+    
     public static List<FightWeb> mapFriendlyFightListFromDB( List<FriendlyFight> fights )
     {
         List<FightWeb> ret = new ArrayList<FightWeb>( fights.size() + 1 );
