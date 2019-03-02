@@ -49,11 +49,12 @@ public class AllClassesPDF
 
     private Map<Integer, Duoclass> dc;
 
-    public AllClassesPDF( String resourceBundleFighting, String resourceBundleDuo, Map<Integer, Fightingclass> fc,
+    public AllClassesPDF( String resourceBundleFighting, String resourceBundleDuo,String resourceBundleNewa, Map<Integer, Fightingclass> fc,
                           Map<Integer, Duoclass> dc, Map<Integer, Newaclass> nc, Locale local )
     {
         this.rbFighting = ResourceBundle.getBundle( resourceBundleFighting, local );
         this.rbDuo = ResourceBundle.getBundle( resourceBundleDuo, local );
+        this.rbNewa = ResourceBundle.getBundle( resourceBundleNewa, local );
         this.fc = fc;
         this.dc = dc;
         this.nc = nc;
@@ -427,7 +428,7 @@ public class AllClassesPDF
                 if ( item3.getFightsystem() == Fightsystem.SIMPLE_POOL )
                 {
                     writeNormalHeadlineAndFooterForNewa( local, item3 );
-                    createResultTable( 150 );
+                    createResultTableNewa( 150 );
                     NewaSimplePoolClass fspc = (NewaSimplePoolClass) item3;
 
                     fillResultTableNewaPool( 150, fspc.getFighterList() );
@@ -439,12 +440,12 @@ public class AllClassesPDF
                 {
                     writeNormalHeadlineAndFooterForNewa( local, item3 );
                     NewaDoublePoolClass fdpc = (NewaDoublePoolClass) item3;
-                    createResultTable( _0 );
+                    createResultTableNewa( _0 );
                     fillResultTableNewaDPool( _0, fdpc.getFighterListPoolA() );
                     createFightTable( 130, _0 );
                     fillFightTableNewa( 130, fdpc.getFightListMapPoolA() );
 
-                    createResultTable( 264 );
+                    createResultTableNewa( 264 );
                     fillResultTableNewaDPool( 264, fdpc.getFighterListPoolB() );
                     createFightTable( 394, _1 );
                     fillFightTableNewa( 394, fdpc.getFightListMapPoolB() );

@@ -29,7 +29,7 @@ public interface IConfigDatabaseConstants
 
     String TABLE_CONFIG = "Config";
 
-    String SQL_TABLE_CONFIG = "Config";
+    String SQL_TABLE_CONFIG = "config";
 
     String EVENT_NAME = "eventName";
 

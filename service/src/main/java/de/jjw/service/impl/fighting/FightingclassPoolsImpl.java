@@ -52,7 +52,7 @@ public class FightingclassPoolsImpl
 
     private static int FIGHT_LOST = 0;
 
-    private static int FIGHT_DIFFERENT_BORDER = 14;
+    private static int FIGHT_DIFFERENT_BORDER = 999;
 
     public FightingSimplePoolClass getFightingclassSimplePool( Long fightingclassId, FightingclassDao fightingclassDao,
                                                                int revenge )
