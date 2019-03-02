@@ -578,7 +578,7 @@ function checkFusenKikenResult()
             fusengachi = 2;	// Blau hat Fusen/Kiken
             fusengachi_winner = 1;
             retLeftPoints = 0;
-            retRightPoints = 0;
+            retRightPoints = 12;
             retWinner = 1;
             return;
 
@@ -587,7 +587,7 @@ function checkFusenKikenResult()
         {
             fusengachi = 1;	// Rot hat Fusen/Kiken
             fusengachi_winner = 2;
-            retLeftPoints = 0;
+            retLeftPoints = 12;
             retRightPoints = 0;
             retWinner = 0;
             return;
@@ -605,13 +605,13 @@ function checkFusenKikenResult()
         if ( fusengachi_winner == 1 )
         {
             retLeftPoints = 0;
-            retRightPoints = 0;
+            retRightPoints = 12;
             retWinner = 1;
             return;
         }
         if ( fusengachi_winner == 2 )
         {
-            retLeftPoints = 0;
+            retLeftPoints = 12;
             retRightPoints = 0;
             retWinner = 0;
             return;
@@ -684,6 +684,19 @@ function getSeconds( clockType )
     }
 }
 
+function getWholeSeconds( clockType )
+{
+    if ( isActiveClock[clockType] )
+    {
+        return Math.floor( (new Date().getTime() - startTime[clockType] + milliseconds[clockType]) / 1000 );
+    }
+    else
+    {
+        return Math.floor( milliseconds[clockType] / 1000 );
+    }
+}
+
+
 //clockType In (main, leftInjury, rightInjury, leftHolding, rightHolding)
 function updateClock( clockType )
 {
@@ -697,7 +710,7 @@ function updateClock( clockType )
                     ((clockType == "mainClock") ? "_large.png" : ".png");
     document.getElementById( clockType + '.seconds.2' ).src =
             "../images/clock/" + getSeconds( clockType ) % 10 + ((clockType == "mainClock") ? "_large.png" : ".png");
-    if ( getSeconds( clockType ) >= injury_time )
+    if ( getWholeSeconds( clockType ) >= injury_time )
     {
         startStopClock( clockType );
     }
@@ -716,11 +729,11 @@ function startStopClock( clockType )
     }
     else
     {
-        if ( (clockType == "leftInjuryClock") && (getSeconds( clockType ) >= injury_time ) )
+        if ( (clockType == "leftInjuryClock") && (getWholeSeconds( clockType ) >= injury_time ) )
         {
             return;
         }
-        if ( (clockType == "rightInjuryClock") && (getSeconds( clockType ) >= injury_time ) )
+        if ( (clockType == "rightInjuryClock") && (getWholeSeconds( clockType ) >= injury_time ) )
         {
             return;
         }

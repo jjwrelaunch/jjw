@@ -327,6 +327,10 @@ function giveBackResult()
         //Punktestand nach Regelwerk
         opener.document.getElementById( "main:adminNewaFightAction:pointsRed" ).value = retRightPoints;
         opener.document.getElementById( "main:adminNewaFightAction:pointsBlue" ).value = retLeftPoints;
+        
+        opener.document.getElementById( "main:adminNewaFightAction:advantageRed" ).value = rightAdvantage;
+        opener.document.getElementById( "main:adminNewaFightAction:advantageBlue" ).value = leftAdvantage;
+               
         //Punktestand tatsaechlich / Statistik
         opener.document.getElementById( "main:adminNewaFightAction:pointsRedOnClock" ).value = rightPoints;
         opener.document.getElementById( "main:adminNewaFightAction:pointsBlueOnClock" ).value = leftPoints;
@@ -348,7 +352,7 @@ function giveBackResult()
 
      
 
-        if ( penalties["right"][penaltyOrder[3] ] )
+        if ( isHansokumakeRight)
         {
             opener.document.getElementById( "main:adminNewaFightAction:hansokumakeRed" ).value = 1;
         }
@@ -356,7 +360,7 @@ function giveBackResult()
         {
             opener.document.getElementById( "main:adminNewaFightAction:hansokumakeRed" ).value = 0;
         }
-        if ( penalties["left"][penaltyOrder[3] ] )
+        if ( isHansokumakeLeft)
         {
             opener.document.getElementById( "main:adminNewaFightAction:hansokumakeBlue" ).value = 1;
         }
@@ -392,6 +396,10 @@ function giveBackResult()
     	//Punktestand nach Regelwerk
         opener.document.getElementById( "main:offNewaFightAction:pointsRed" ).value = retRightPoints;
         opener.document.getElementById( "main:offNewaFightAction:pointsBlue" ).value = retLeftPoints;
+        
+        opener.document.getElementById( "main:offNewaFightAction:advantageRed" ).value = rightAdvantage;
+        opener.document.getElementById( "main:offNewaFightAction:advantageBlue" ).value = leftAdvantage;
+        
         //Punktestand tatsaechlich / Statistik
         opener.document.getElementById( "main:offNewaFightAction:pointsRedOnClock" ).value = rightPoints;
         opener.document.getElementById( "main:offNewaFightAction:pointsBlueOnClock" ).value = leftPoints;
@@ -412,7 +420,7 @@ function giveBackResult()
                 Math.floor( (new Date().getTime() - pageCallTime) / 1000 );
 
 
-        if ( penalties["right"][penaltyOrder[3] ] )
+        if ( isHansokumakeRight )
         {
             opener.document.getElementById( "main:offNewaFightAction:hansokumakeRed" ).value = 1;
         }
@@ -420,7 +428,7 @@ function giveBackResult()
         {
             opener.document.getElementById( "main:offNewaFightAction:hansokumakeRed" ).value = 0;
         }
-        if ( penalties["left"][penaltyOrder[3] ] )
+        if ( isHansokumakeLeft )
         {
             opener.document.getElementById( "main:offNewaFightAction:hansokumakeBlue" ).value = 1;
         }
@@ -481,10 +489,9 @@ function giveBackFriendlyResult()
 
         opener.document.getElementById( "main:adminFriendlyNewaFightAction:shidoRed" ).value = penaltyList["right"] ["shido"];
         opener.document.getElementById( "main:adminFriendlyNewaFightAction:shidoBlue" ).value = penaltyList["left"]  ["shido"];
-        opener.document.getElementById( "main:adminFriendlyNewaFightAction:chuiRed" ).value = penaltyList["right"] ["chui"];
-        opener.document.getElementById( "main:adminFriendlyNewaFightAction:chuiBlue" ).value = penaltyList["left"]  ["chui"];
+        
 
-        if ( penalties["right"][penaltyOrder[3] ] )
+        if ( isHansokumakeRight )
         {
             opener.document.getElementById( "main:adminFriendlyNewaFightAction:hansokumakeRed" ).value = 1;
         }
@@ -492,7 +499,7 @@ function giveBackFriendlyResult()
         {
             opener.document.getElementById( "main:adminFriendlyNewaFightAction:hansokumakeRed" ).value = 0;
         }
-        if ( penalties["left"][penaltyOrder[3] ] )
+        if ( isHansokumakeLeft )
         {
             opener.document.getElementById( "main:adminFriendlyNewaFightAction:hansokumakeBlue" ).value = 1;
         }
@@ -549,10 +556,9 @@ function giveBackFriendlyResult()
 
         opener.document.getElementById( "main:offFriendlyNewaFightAction:shidoRed" ).value = penaltyList["right"] ["shido"];
         opener.document.getElementById( "main:offFriendlyNewaFightAction:shidoBlue" ).value = penaltyList["left"]  ["shido"];
-        opener.document.getElementById( "main:offFriendlyNewaFightAction:chuiRed" ).value = penaltyList["right"] ["chui"];
-        opener.document.getElementById( "main:offFriendlyNewaFightAction:chuiBlue" ).value = penaltyList["left"]  ["chui"];
+        
 
-        if ( penalties["right"][penaltyOrder[3] ] )
+        if ( isHansokumakeRight )
         {
             opener.document.getElementById( "main:offFriendlyNewaFightAction:hansokumakeRed" ).value = 1;
         }
@@ -560,7 +566,7 @@ function giveBackFriendlyResult()
         {
             opener.document.getElementById( "main:offFriendlyNewaFightAction:hansokumakeRed" ).value = 0;
         }
-        if ( penalties["left"][penaltyOrder[3] ] )
+        if ( isHansokumakeLeft)
         {
             opener.document.getElementById( "main:offFriendlyNewaFightAction:hansokumakeBlue" ).value = 1;
         }
@@ -725,7 +731,7 @@ function shutFriendlyClock()
 
 function doResult()
 {
-    if ( penalties["right"][penaltyOrder[3]] || penalties["left"][penaltyOrder[3]] )
+    if ( isHansokumakeRight || isHansokumakeLeft )
     {
         checkPenalties();
     }
@@ -740,21 +746,21 @@ function doResult()
 
 function checkPenalties()
 {
-    if ( penalties["right"][penaltyOrder[3]] && penalties["left"][penaltyOrder[3]] )
+    if ( isHansokumakeRight && isHansokumakeLeft )
     {
         retLeftPoints = 0;
         retRightPoints = 0;
         retWinner = -1;
         return;
     }
-    if ( penalties["right"][penaltyOrder[3]] )
+    if (isHansokumakeRight)
     {
         retLeftPoints = 14;
         retRightPoints = 0;
         retWinner = 0;
         return;
     }
-    if ( penalties["left"][penaltyOrder[3]] )
+    if ( isHansokumakeLeft)
     {
         retLeftPoints = 0;
         retRightPoints = 14;
@@ -1552,8 +1558,10 @@ function increaseIppon( value, side, isLog )
     	decreaseIppon( value, "right", isLog );
     	leftIppon =1;
     	document.getElementById( "leftIppon" ).style.color = "#00FF00";
-    	document.getElementById( "leftPoints.1" ).src = "../images/clock/9_x_large.png";
-        document.getElementById( "leftPoints.0" ).src = "../images/clock/9_x_large.png";
+    	document.getElementById( "leftPoints.2" ).src = "../images/clock/1_x_large.png";
+    	document.getElementById( "leftPoints.1" ).src = "../images/clock/0_x_large.png";
+        document.getElementById( "leftPoints.0" ).src = "../images/clock/0_x_large.png";
+        document.getElementById( "rightPoints.2" ).src = "../images/clock/bl_x_large.png";
         document.getElementById( "rightPoints.1" ).src = "../images/clock/bl_x_large.png";
         document.getElementById( "rightPoints.0" ).src = "../images/clock/0_x_large.png";
     }
@@ -1562,8 +1570,10 @@ function increaseIppon( value, side, isLog )
     	decreaseIppon( value, "left", isLog );
     	rightIppon=1;
     	document.getElementById( "rightIppon" ).style.color = "#00FF00";
-    	document.getElementById( "rightPoints.1" ).src = "../images/clock/9_x_large.png";
-        document.getElementById( "rightPoints.0" ).src = "../images/clock/9_x_large.png";
+    	document.getElementById( "rightPoints.2" ).src = "../images/clock/1_x_large.png";
+    	document.getElementById( "rightPoints.1" ).src = "../images/clock/0_x_large.png";
+        document.getElementById( "rightPoints.0" ).src = "../images/clock/0_x_large.png";
+        document.getElementById( "leftPoints.2" ).src = "../images/clock/bl_x_large.png";
         document.getElementById( "leftPoints.1" ).src = "../images/clock/bl_x_large.png";
         document.getElementById( "leftPoints.0" ).src = "../images/clock/0_x_large.png";
     }
@@ -1754,6 +1764,17 @@ function updatePoints( side )
     document.getElementById( side + "PointsBorderTable" ).style.backgroundColor = hiLightColor;
     side = "left";
 	
+    if(getPoints( side ) < 100){
+        document.getElementById( side + "Points.2" ).src =
+              "../images/clock/bl_x_large.png";
+    }
+    else
+    {
+      document.getElementById( side + "Points.1" ).src =
+            "../images/clock/" + Math.floor( (getPoints( side ) % 100) ) + "_x_large.png";
+    }
+    
+    
     if(getPoints( side ) < 10){
       document.getElementById( side + "Points.1" ).src =
             "../images/clock/bl_x_large.png";
@@ -1767,6 +1788,19 @@ function updatePoints( side )
             "../images/clock/" + ((getPoints( side ) % 100) % 10) + "_x_large.png";
     
     side = "right";
+   
+
+    if(getPoints( side ) < 100){
+        document.getElementById( side + "Points.2" ).src =
+              "../images/clock/bl_x_large.png";
+    }
+    else
+    {
+      document.getElementById( side + "Points.1" ).src =
+            "../images/clock/" + Math.floor( (getPoints( side ) % 100) ) + "_x_large.png";
+    }
+    
+    
     if(getPoints( side ) < 10){
       document.getElementById( side + "Points.1" ).src =
             "../images/clock/bl_x_large.png";
@@ -1842,43 +1876,28 @@ function updatePoints( side )
 
 var penaltyOrder = new Array();
 penaltyOrder[0] = "Shido";
-penaltyOrder[1] = "Chui";
-penaltyOrder[2] = "Keikoku";
-penaltyOrder[3] = "Hansokumake";
 
-var penalties = new Array();
-penalties["left"] = new Array();
-penalties["right"] = new Array();
-penalties["right"][penaltyOrder[0] ] = false;
-penalties["left"][penaltyOrder[0] ] = false;
-penalties["right"][penaltyOrder[1] ] = false;
-penalties["left"][penaltyOrder[1] ] = false;
-penalties["right"][penaltyOrder[2] ] = false;
-penalties["left"][penaltyOrder[2] ] = false;
-penalties["right"][penaltyOrder[3] ] = false;
-penalties["left"][penaltyOrder[3] ] = false;
+isHansokumakeLeft=false;
+isHansokumakeRight=false;
 
 var penaltyList = new Array();
 penaltyList["left"] = new Array();
 penaltyList["right"] = new Array();
 penaltyList["left"]  ["shido"] = 0;
 penaltyList["right"] ["shido"] = 0;
-penaltyList["left"]  ["chui"] = 0;
-penaltyList["right"] ["chui"] = 0;
+
 
 function checkHansokumake( side )
 {
-    if ( penalties[side][penaltyOrder[3] ] )
-    {
-        return true;
-    }
+    if ( side == "left" && isHansokumakeLeft ) return true;
+    if ( side == "right" && isHansokumakeRight ) return true;
     return false;
 }
 
 function proofHansokumake()
 {
     // Liefert TRUE wenn einer oder beide Kämpfer disqualifiziert wurden
-    if ( (penalties["left"][penaltyOrder[3] ]) || (penalties["right"][penaltyOrder[3] ]) )
+    if ( isHansokumakeLeft || isHansokumakeRight )
     {
         return true;
     }
@@ -1916,17 +1935,17 @@ function increaseShido( side )
     }
    
 
-    if ( "left" == side )
-    {
-        increasePoints( '2', "right", false );
-    }              // add Points to opponent
-    else
-    {
-        if ( "right" == side )
-        {
-            increasePoints( '2', "left", false );
-        }
-    }  		// add Points to opponent
+//    if ( "left" == side )
+//    {
+//        increasePoints( '2', "right", false );
+//    }              // add Points to opponent
+//    else
+//    {
+//        if ( "right" == side )
+//        {
+//            increasePoints( '2', "left", false );
+//        }
+//    }  		// add Points to opponent
     passthrough = false;
 }
 
@@ -1938,6 +1957,9 @@ function decreaseShido( side )
     }
     passthrough = true;
     penaltyList[side]["shido"]--;
+	
+	if(penaltyList[side]["shido"] == 3) decreaseHansokumake(side); //if we cam from 4 shido, we have to reduce hansokumake
+	
     if ( penaltyList[side]["shido"] < 0 )
     {
         penaltyList[side]["shido"] = 0;
@@ -1948,17 +1970,17 @@ function decreaseShido( side )
        changeImage(side + "ShidoImageFlag", penaltyList[side]["shido"] % 10 + "_ippon.png" );
 
    
-        if ( "left" == side )
-        {
-            decreasePoints( '2', "right", false );
-        }  // decreasePoints  to opponent
-        else
-        {
-            if ( "right" == side )
-            {
-                decreasePoints( '2', "left", false );
-            }
-        }  // decreasePoints  to opponent
+//        if ( "left" == side )
+//        {
+//            decreasePoints( '2', "right", false );
+//        }  // decreasePoints  to opponent
+//        else
+//        {
+//            if ( "right" == side )
+//            {
+//                decreasePoints( '2', "left", false );
+//            }
+//        }  // decreasePoints  to opponent
     }
     passthrough = false;
 }
@@ -1979,33 +2001,29 @@ function handleHansokumake( event, side )
 
 function increaseHansokumake( side )
 {
-    penalties[side][penaltyOrder[3] ] = true;
-    changeImage( side + penaltyOrder[3] + "ImageFlag",  "1_ippon.png" );
+	if ( side == "left")  isHansokumakeLeft = true;
+    if ( side == "right") isHansokumakeRight = true;
+	
     if ( (proofHansokumake) && (isActiveClock['mainClock']) )
     {
         startStopClock( "mainClock" );
     }
+	document.getElementById( side +"DQ" ).style.color = "#00FF00";
     updatePoints( side )				// muss aufgerufen werden, um Hansokumake anzueigen
     user_input_log( "PHi" + getSideShort( side ) );			// User Input Log
 }
 
 function decreaseHansokumake( side )
 {
-    if ( penaltyList[side]["chui"] == 2 )
-    {
-        decreaseChui( side );
-        return;
-    }
-    if ( penalties[side][penaltyOrder[3]] )
-    {
-        if ( penalties[side][penaltyOrder[3] ] )
-        {
-            user_input_log( "PHd" + getSideShort( side ) );
-        }			// User Input Log
-        penalties[side][penaltyOrder[3] ] = false;        
-        changeImage( side + penaltyOrder[3] + "ImageFlag",  "0_ippon.png" );
-        updatePoints( side );			// muss aufgerufen werden, um Punkte wieder anzuzeigen
-    }
+	if (penaltyList[side]["shido"] == 4) return; // do nothing, when we have 4 shido
+	if ( side == "left")  isHansokumakeLeft = false;
+    if ( side == "right") isHansokumakeRight = false;
+	
+    document.getElementById( side +"DQ" ).style.color = "#FFFFFF";
+    
+    user_input_log( "PHd" + getSideShort( side ) );
+        
+    updatePoints( side );			// muss aufgerufen werden, um Punkte wieder anzuzeigen
 }
 
 //========================================================================================

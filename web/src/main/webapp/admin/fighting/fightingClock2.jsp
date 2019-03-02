@@ -193,6 +193,20 @@ Soundframe
 </div>
 
 
+<!-- log screen-->
+<div id="log" style="height: 210px;width: 260px; border-color: black; border-style: solid;overflow-y : auto; font-size:14px; position: absolute;top: 50%;
+left: 50%;
+margin-top: -105px;
+margin-left: -130px;
+display:none; visibility:hidden;
+z-index: 100;
+background-color: white;">
+&nbsp;
+</div>
+
+
+
+
 
 <!-- clock screen-->
 <div id="mainbody" style="display:none; visibility:hidden; padding:0px; margin:0px;">

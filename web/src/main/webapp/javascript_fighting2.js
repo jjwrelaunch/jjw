@@ -895,7 +895,7 @@ function checkIppons()
 {
     if ( ipponList["left"] ["1"] && ipponList["left"]["3"] && ipponList["left"] ["2"] )
     {
-        retLeftPoints = 14;
+        retLeftPoints = 50;
         retRightPoints = 0;
         retWinner = 0;
         return;
@@ -903,7 +903,7 @@ function checkIppons()
     if ( ipponList["right"]["2"] && ipponList["right"] ["1"] && ipponList["right"]["3"] )
     {
         retLeftPoints = 0;
-        retRightPoints = 14;
+        retRightPoints = 50;
         retWinner = 1;
         return;
     }
@@ -1847,21 +1847,21 @@ function updatePoints( side )
         return
     }
 
-    // Wenn FullIppon dann muss die Anzeige auf 14:0 gesetzt werden
+    // Wenn FullIppon dann muss die Anzeige auf 50:0 gesetzt werden
     if ( proofFullIppon() )
     {
         if ( checkFullIppon( "left" ) )
         {
-            document.getElementById( "leftPoints.1" ).src = "../images/clock/1_x_large.png";
-            document.getElementById( "leftPoints.0" ).src = "../images/clock/4_x_large.png";
+            document.getElementById( "leftPoints.1" ).src = "../images/clock/5_x_large.png";
+            document.getElementById( "leftPoints.0" ).src = "../images/clock/0_x_large.png";
 
             document.getElementById( "rightPoints.1" ).src = "../images/clock/0_x_large.png";
             document.getElementById( "rightPoints.0" ).src = "../images/clock/0_x_large.png";
         }
         else
         {
-            document.getElementById( "rightPoints.1" ).src = "../images/clock/1_x_large.png";
-            document.getElementById( "rightPoints.0" ).src = "../images/clock/4_x_large.png";
+            document.getElementById( "rightPoints.1" ).src = "../images/clock/5_x_large.png";
+            document.getElementById( "rightPoints.0" ).src = "../images/clock/0_x_large.png";
 
             document.getElementById( "leftPoints.1" ).src = "../images/clock/0_x_large.png";
             document.getElementById( "leftPoints.0" ).src = "../images/clock/0_x_large.png";
@@ -2626,25 +2626,22 @@ function myKeyDownFunction( event )
     } 				//leer			HKZ starten/stoppen
     if ( event.keyCode == 32 && event.shiftKey && event.ctrlKey )
     {
-        resetClock( "mainClock" );
-    } 		//SHIFT + CTRL + leer   HKZ resetten
+        resetClock( "mainClock" );    } 		//SHIFT + CTRL + leer   HKZ resetten
     if ( event.keyCode == 70 && !event.shiftKey )
     {
-        startStopClock( clockDisplayed ["left"] );
-    }  	// f	linke Uhr starten/stoppen
+        startStopClock( clockDisplayed ["left"] );    }  	// f	linke Uhr starten/stoppen
     if ( event.keyCode == 74 && !event.shiftKey )
     {
-        startStopClock( clockDisplayed ["right"] );
-    }  	// j	rechte Uhr starten/stoppen
+        startStopClock( clockDisplayed ["right"] );    }  	// j	rechte Uhr starten/stoppen
 
     if ( event.keyCode == 70 && event.shiftKey )
     {
-        resetClock( "left" );
-    }  							// SHIFT + f	linke Uhr resetten
+        resetClock( "left" ); // SHIFT + f	linke Uhr resetten
+    }  							
     if ( event.keyCode == 74 && event.shiftKey )
     {
-        resetClock( "right" );
-    }  							// SHIFT + j	rechte Uhr resetten
+        resetClock( "right" );  // SHIFT + j	rechte Uhr resetten
+    }  							
 
     if ( event.keyCode == 86 && event.shiftKey )
     {
@@ -2820,6 +2817,10 @@ function myKeyDownFunction( event )
     {
         shutClock();
     }
+	 if ( event.keyCode == 76 && event.shiftKey && event.ctrlKey )
+    {
+        toggleLogScreen();
+    } 
 }
 //========================================================================================
 // Hintergrundfarben functions
@@ -2957,6 +2958,139 @@ function showAK( _altersklasse, _geschlecht, _gwklasse )
 
     
 }
+
+function toggleLogScreen()
+{
+	 // only show injury time when mainclock is stopped
+	if( document.getElementById("log" ).style.display == "none" )
+	{
+		calcForLogScreen();
+		document.getElementById("log" ).style.display = "block";
+		document.getElementById( "log" ).style.visibility ="visible";
+	}
+	else
+	{	
+		document.getElementById("log").style.display = "none";
+		document.getElementById("log" ).style.visibility ="hidden";		
+	}	
+}
+
+function calcForLogScreen() {
+var map1 = new Map();  
+map1.set("Cr_L","<font color=\"blue\">Blue</font> Reset Clock");
+map1.set("Cr_R","<font color=\"red\">Red</font> Reset Clock");
+map1.set("Cr__","");
+map1.set("CSHL","<font color=\"blue\">Blue</font> StartStop HoldingClock");
+map1.set("CSHR","<font color=\"red\">Red</font> StartStop HoldingClock");
+map1.set("CSIL","<font color=\"blue\">Blue</font> StartStop InjuryClock");
+map1.set("CSIR","<font color=\"red\">Red</font> StartStop InjuryClock");
+map1.set("CSM","StartStop mainClock");
+map1.set("CSM_","StartStop mainClock");
+map1.set("DP0_","change screens");
+map1.set("DP1_","change screens");
+map1.set("DP2_","change screens");
+map1.set("GO__","StartToken");
+map1.set("Hd","");
+map1.set("Hd1L","<font color=\"blue\">Blue</font> HoldingTime Decrease 1s ");
+map1.set("Hd1R","<font color=\"red\">Red</font> HoldingTime Decrease 1s ");
+map1.set("HdXL","<font color=\"blue\">Blue</font> HoldingTime Decrease 10s ");
+map1.set("HdXR","<font color=\"red\">Red</font> HoldingTime Decrease 10s ");
+map1.set("HdYL","<font color=\"blue\">Blue</font> HoldingTime Decrease 60s");
+map1.set("HdYR","<font color=\"red\">Red</font> HoldingTime Decrease 60s");
+map1.set("HdZL","<font color=\"blue\">Blue</font> HoldingTime Decrease 600s");
+map1.set("HdZR","<font color=\"red\">Red</font> HoldingTime Decrease 600s");
+map1.set("Hi1L","<font color=\"blue\">Blue</font> HoldingTime Increase 1s");
+map1.set("Hi1R","<font color=\"red\">Red</font> HoldingTime Increase 1s");
+map1.set("HiXL","<font color=\"blue\">Blue</font> HoldingTime Increase 10s");
+map1.set("HiXR","<font color=\"red\">Red</font> HoldingTime Increase 10s");
+map1.set("HiYL","<font color=\"blue\">Blue</font> HoldingTime Increase 60s");
+map1.set("HiYR","<font color=\"red\">Red</font> HoldingTime Increase 60s");
+map1.set("HiZL","<font color=\"blue\">Blue</font> HoldingTime Increase 600s");
+map1.set("HiZR","<font color=\"red\">Red</font> HoldingTime Increase 600s");
+map1.set("Id1L","<font color=\"blue\">Blue</font> Decrease Ippon Part 1 ");
+map1.set("Id1R","<font color=\"red\">Red</font> Decrease Ippon Part 1 ");
+map1.set("Id2L","<font color=\"blue\">Blue</font> Decrease Ippon Part 2");
+map1.set("Id2R","<font color=\"red\">Red</font> Decrease Ippon Part 2");
+map1.set("Id3L","<font color=\"blue\">Blue</font> Decrease Ippon Part 3");
+map1.set("Id3R","<font color=\"red\">Red</font> Decrease Ippon Part 3");
+map1.set("IFAL","<font color=\"blue\">Blue</font> Set Fusengachi");
+map1.set("IFAR","<font color=\"red\">Red</font> Set Fusengachi");
+map1.set("IFDL","<font color=\"blue\">Blue</font> Delete Fusengachi");
+map1.set("IFDR","<font color=\"red\">Red</font> Delete Fusengachi");
+map1.set("Ii1L","<font color=\"blue\">Blue</font> Increase Ippon Part 1");
+map1.set("Ii1R","<font color=\"red\">Red</font> Increase Ippon Part 1");
+map1.set("Ii2L","<font color=\"blue\">Blue</font> Increase Ippon Part 2");
+map1.set("Ii2R","<font color=\"red\">Red</font> Increase Ippon Part 2");
+map1.set("Ii3L","<font color=\"blue\">Blue</font> Increase Ippon Part 3");
+map1.set("Ii3R","<font color=\"red\">Red</font> Increase Ippon Part 3");
+map1.set("IKAL","<font color=\"blue\">Blue</font> Set Kikengachi");
+map1.set("IKAR","<font color=\"red\">Red</font> Set Kikengachi");
+map1.set("IKDL","<font color=\"blue\">Blue</font> Delete Kikengachi");
+map1.set("IKDR","<font color=\"red\">Red</font> Delete Kikengachi");
+map1.set("Md1_","MainTime Decrease 1s");
+map1.set("MdX_","MainTime Decrease 10s");
+map1.set("MdY_","MainTime Decrease 60s");
+map1.set("MdZ_","MainTime Decrease 600s");
+map1.set("Mi1_","MainTime Increase 1s");
+map1.set("MiX_","MainTime Increase 10s");
+map1.set("MiY_","MainTime Increase 60s");
+map1.set("MiZ_","MainTime Increase 600s");
+map1.set("ND1_","Close Clock");
+map1.set("ND1_;","Close Clock");
+map1.set("ND2_","Close Clock");
+map1.set("ND2_;","Close Clock");
+map1.set("PCdL","<font color=\"blue\">Blue</font> Decrease Chui");
+map1.set("PCdR","<font color=\"red\">Red</font> Decrease Chui");
+map1.set("PCiL","<font color=\"blue\">Blue</font> Increase Chui");
+map1.set("PCiR","<font color=\"red\">Red</font> Increase Chui");
+map1.set("Pd1L","<font color=\"blue\">Blue</font> Decrease Points");
+map1.set("Pd1R","<font color=\"red\">Red</font> Decrease Points");
+map1.set("PHdL","<font color=\"blue\">Blue</font> Decrease Hansokumake");
+map1.set("PHdR","<font color=\"red\">Red</font> Decrease Hansokumake");
+map1.set("PHiL","<font color=\"blue\">Blue</font> Increase Hansokumake");
+map1.set("PHiR","<font color=\"red\">Red</font> Increase Hansokumake");
+map1.set("Pi1L","<font color=\"blue\">Blue</font> Increase Points");
+map1.set("Pi1R","<font color=\"red\">Red</font> Increase Points");
+map1.set("PSdL","<font color=\"blue\">Blue</font> Decrease Shido");
+map1.set("PSdR","<font color=\"red\">Red</font> Decrease Shido");
+map1.set("PSiL","<font color=\"blue\">Blue</font> Increase Shido");
+map1.set("PSiR","<font color=\"red\">Red</font> Increase Shido");
+map1.set("TIE_","TIE");
+map1.set("Wd1L","<font color=\"blue\">Blue</font> InjuryTime Decrease 1s");
+map1.set("Wd1R","<font color=\"red\">Red</font> InjuryTime Decrease 1s");
+map1.set("WdXL","<font color=\"blue\">Blue</font> InjuryTime Decrease 10s");
+map1.set("WdXR","<font color=\"red\">Red</font> InjuryTime Decrease 10s");
+map1.set("WdYL","<font color=\"blue\">Blue</font> InjuryTime Decrease 60s");
+map1.set("WdYR","<font color=\"red\">Red</font> InjuryTime Decrease 60s");
+map1.set("WdZL","<font color=\"blue\">Blue</font> InjuryTime Decrease 600s");
+map1.set("WdZR","<font color=\"red\">Red</font> InjuryTime Decrease 600s");
+map1.set("Wi1L","<font color=\"blue\">Blue</font> InjuryTime Increase 1s");
+map1.set("Wi1R","<font color=\"red\">Red</font> InjuryTime Increase 1s");
+map1.set("WiXL","<font color=\"blue\">Blue</font> InjuryTime Increase 10s");
+map1.set("WiXR","<font color=\"red\">Red</font> InjuryTime Increase 10s");
+map1.set("WiYL","<font color=\"blue\">Blue</font> InjuryTime Increase 60s");
+map1.set("WiYR","<font color=\"red\">Red</font> InjuryTime Increase 60s");
+map1.set("WiZL","<font color=\"blue\">Blue</font> InjuryTime Increase 600s");
+map1.set("WiZR","<font color=\"red\">Red</font> InjuryTime Increase 600s");
+
+
+    var ende="<table>";
+	var column=1;
+    //var user_input = "GO__;DP0_;CSM_:0;Pi1L:6;Pi1L:7;CSM_:11;CSM_:11;Ii1R:18;Pi1L:20;Pi1L:21;Pi1L:46;CSM_:51;CSM_:51;CSHL:51;CSHL:52;CSHL:53;CSHL:67;CSM_:67;Cr_L:67;Ii3L:67;CSM_:67;Pi1L:75;CSM_:87;PCiL:87;CSM_:87;Ii2L:97;CSM_:97;ND2_;";
+    
+    var res = user_input.split(";").forEach( function(element) {
+    if(element.split(":")[1]!=NaN && element.split(":")[1]!=undefined)
+    {
+			ende=ende+"<tr><td width=\"250px\">";
+			ende=ende+element.split(":")[1]+"s:&nbsp;"+map1.get(element.split(":")[0])
+			ende=ende+"</td></tr>";
+		
+		//ende=ende+element.split(":")[1]+"s:&nbsp;"+map1.get(element.split(":")[0])+"<br>"
+  }
+  });
+    document.getElementById("log").innerHTML = ende;
+}
+
 
 document.onmousemove = updateInfo;  				
 document.onkeydown = myKeyDownFunction;
