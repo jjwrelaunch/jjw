@@ -78,6 +78,12 @@
     <h:outputText value="#{msg['openClock']}"/>
   </h:commandLink>
 
+  
+ <p>&nbsp;</p>
+  <t:commandLink action="#{offFightAction.visualizeAllFights}"
+			value="#{msg.visualize}" target="_blank" />
+ 
+ 
 
   <h:inputHidden id="ipponRedI" value="#{offFightAction.fight.ipponRedI}"/>
   <h:inputHidden id="ipponRedII" value="#{offFightAction.fight.ipponRedII}"/>
