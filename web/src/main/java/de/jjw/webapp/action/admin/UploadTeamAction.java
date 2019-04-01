@@ -443,9 +443,9 @@ public class UploadTeamAction
     {
         Team teamForFighter;
         if ( TypeUtil.isEmptyOrDefault( teamId ) )
-            teamForFighter = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString() );
+            teamForFighter = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString(),false );
         else
-            teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString()  );
+            teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         FighterWeb newFighter = new FighterWeb();
 
@@ -469,9 +469,9 @@ public class UploadTeamAction
     {
         Team teamForDuo;
         if ( TypeUtil.isEmptyOrDefault( teamId ) )
-            teamForDuo = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString()  );
+            teamForDuo = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString() ,false );
         else
-            teamForDuo = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString()  );
+            teamForDuo = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         DuoTeamWeb newDuoteam = new DuoTeamWeb();
 
@@ -497,9 +497,9 @@ public class UploadTeamAction
     {
         Team teamForFighter;
         if ( TypeUtil.isEmptyOrDefault( teamId ) )
-            teamForFighter = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString()  );
+            teamForFighter = getTeamForUpload( item.get( "teamId" ).getAsInt(), teamList,item.get( "team" ).getAsString(),false  );
         else
-            teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString()  );
+            teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         NewaFighterWeb newFighter = new NewaFighterWeb();
 
@@ -689,11 +689,13 @@ public class UploadTeamAction
         return null;
     }
 
-    private Team getTeamForUpload( int teamId, List<Team> teamList, String teamName  ) throws IllegalTeamException
+    private Team getTeamForUpload( int teamId, List<Team> teamList, String teamName, boolean teamFromDB  ) throws IllegalTeamException
     {
         for ( Team item : teamList )
         {
             if ( item.getId() == teamId ){
+                if(teamFromDB) return item;
+                
                 if(!item.getTeamName().equals( teamName ))
                     throw new IllegalTeamException("wrong team: "+ teamName + " to teamId: "+teamId);
                 return item;
