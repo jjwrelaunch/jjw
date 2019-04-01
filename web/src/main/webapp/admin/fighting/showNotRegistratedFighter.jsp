@@ -23,34 +23,7 @@
   ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
   --%>
 
-<f:verbatim>
-  <script type="text/javascript" src="<c:url value='/scripts/jquery-1.4.2.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/scripts/picnet.table.filter.min.js'/>"></script>
-  <script type="text/javascript" src="<c:url value='/scripts/jquery.highlighter.0.1.js'/>"></script>
-  <script type="text/javascript">
-    $( document ).ready( function()
-    {
-      function highlight( column )
-      {
-        $( "#showFighterTable > tbody > tr" ).separator( function()
-        {
-          return $( "td:nth-child(" + column + ")", this ).text();
-        } );
-      }
 
-      highlight( "<h:outputText value="#{adminShowFighterAction.sortColumn}"/>" );
-
-      var alert = 0;
-
-      // Initialise Plugin
-      var options = {
-        clearFiltersControls: [$( '#cleanfilters' )],
-        additionalFilterTriggers: [$( '#quickfind' )]
-      };
-      $( '#showFighterTable' ).tableFilter( options );
-    } );
-  </script>
-</f:verbatim>
 
 <f:loadBundle basename="de.jjw.webapp.messages.fighter" var="msg"/>
 <t:htmlTag value="h3"><h:outputText value="#{msg['admin.allNotRegistratedFighterHeadline'] }"/></t:htmlTag>
@@ -61,9 +34,7 @@
 
     <c:if test="${fn:length(adminShowFighterAction.notRegistratedFighters) > 0}">
 
-      <f:verbatim>
-        <p>Quick Find: <input type="text" id="quickfind"/> <a id="cleanfilters" href="#">Clear Filters</a></p>
-      </f:verbatim>
+     
       <t:dataTable sortColumn="#{adminShowFighterAction.sortColumn}"
                    value="#{adminShowFighterAction.notRegistratedFighters}" var="cty" border="0" cellspacing="0"
                    cellpadding="0" styleClass="fancyTable" rowClasses="odd,even" width="800px"
