@@ -121,10 +121,13 @@
 		<t:commandLink action="#{adminStatisticAction.gotoMarkNewaForExport}"
 			value="#{msg.markNewaForExport}"/>
 			
-		<t:outputText value="&nbsp;" escape="false"/>
-		
+		<t:outputText value="&nbsp;" escape="false"/>		
 		<t:commandLink action="#{adminStatisticAction.extortToJSON}"
 			value="#{msg.extortToJSON}" />
+			
+		<t:outputText value="&nbsp;" escape="false"/>		
+		<t:commandLink action="#{adminStatisticAction.visualizeAllFights}"
+			value="#{msg.fighting_visualize_results}" target="_blank"/>
 	</t:panelGrid>
 
 </h:form>

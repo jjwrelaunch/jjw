@@ -83,6 +83,7 @@ import de.jjw.webapp.pdf.fighting.FightingKo32ComplexListPDF;
 import de.jjw.webapp.pdf.fighting.FightingKo64ComplexListPDF;
 import de.jjw.webapp.pdf.fighting.FightingPoolPDF;
 import de.jjw.webapp.pdf.fighting.FightingResultsPDF;
+import de.jjw.webapp.pdf.fighting.FightingVisualizelProtokollPDF;
 import de.jjw.webapp.pdf.fighting.LogListPDF;
 import de.jjw.webapp.pdf.newa.FastestNewaFightPDF;
 import de.jjw.webapp.pdf.newa.NewaResultsPDF;
@@ -147,7 +148,7 @@ public class StatisticAction
 
             Map<Integer, Newaclass> nc = newaclassManager.getAllNewaclasses( false );
 
-            new AllClassesPDF( "de.jjw.webapp.messages.admin.fightingclass", "de.jjw.webapp.messages.admin.duoclass",
+            new AllClassesPDF( "de.jjw.webapp.messages.admin.fightingclass", "de.jjw.webapp.messages.admin.duoclass", "de.jjw.webapp.messages.admin.newaclass",
                                fc, dc, nc, getLocale() ).createAsNewDoc( response );
             getFacesContext().responseComplete();
         }
@@ -703,6 +704,23 @@ public class StatisticAction
             addErrorElement( new ErrorElement( GEN_GERNERAL_ERROR ) );
         }
 
+        return null;
+    }
+    
+    
+    public String visualizeAllFights()
+    {
+        HttpServletResponse response = getResponseWithPDFHeader();
+        try
+        {
+            new FightingVisualizelProtokollPDF( "de.jjw.webapp.messages.fighter", response, getLocale() ).visualizeAllProtokoll( fightManager.getFightsFromFighter() );
+            getFacesContext().responseComplete();
+        }
+        catch ( Exception e )
+        {
+            log.error( "StatisticAction", e );
+            addErrorElement( new ErrorElement( GEN_GERNERAL_ERROR ) );
+        }
         return null;
     }
 
