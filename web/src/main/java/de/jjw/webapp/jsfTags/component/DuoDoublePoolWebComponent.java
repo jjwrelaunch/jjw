@@ -41,7 +41,9 @@ import de.jjw.model.LabelValue;
 import de.jjw.model.User;
 import de.jjw.model.duo.DuoDoublePoolClass;
 import de.jjw.model.duo.DuoDoublePoolItem;
+import de.jjw.model.duo.DuoFight;
 import de.jjw.model.duo.DuoTeam;
+import de.jjw.model.fighting.Fight;
 import de.jjw.util.IValueConstants;
 import de.jjw.util.TypeUtil;
 import de.jjw.webapp.IGlobalWebConstants;
@@ -249,10 +251,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getHalfFinalFight1().getDuoTeamBlue() != null
                 && duoclass.getHalfFinalFight1().getDuoTeamBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight1().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight1().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight1().getDuoTeamRed().getName2() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getHalfFinalFight1().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight1().getDuoTeamRed().getName2(),duoclass.getHalfFinalFight1(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight1().getId().longValue(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight1().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight1().getDuoTeamRed().getName2() );
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -287,10 +290,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getHalfFinalFight1().getDuoTeamRed() != null
                 && duoclass.getHalfFinalFight1().getDuoTeamRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight1().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight1().getDuoTeamBlue().getName()+ " / " + duoclass.getHalfFinalFight1().getDuoTeamBlue().getName2() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getHalfFinalFight1().getDuoTeamBlue().getName() + " / " + duoclass.getHalfFinalFight1().getDuoTeamBlue().getName2(),duoclass.getHalfFinalFight1(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight1().getId().longValue(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight1().getDuoTeamBlue().getName()+ " / " + duoclass.getHalfFinalFight1().getDuoTeamBlue().getName2() );
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -326,10 +330,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getHalfFinalFight2().getDuoTeamBlue() != null
                 && duoclass.getHalfFinalFight2().getDuoTeamBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight2().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight2().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight2().getDuoTeamRed().getName2());
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getHalfFinalFight2().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight2().getDuoTeamRed().getName2(),duoclass.getHalfFinalFight2(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight2().getId().longValue(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight2().getDuoTeamRed().getName() + " / " + duoclass.getHalfFinalFight2().getDuoTeamRed().getName2());
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -364,10 +369,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getHalfFinalFight2().getDuoTeamRed() != null
                 && duoclass.getHalfFinalFight2().getDuoTeamRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight2().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight2().getDuoTeamBlue().getName()+ " / " + duoclass.getHalfFinalFight2().getDuoTeamBlue().getName2() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getHalfFinalFight2().getDuoTeamBlue().getName() + " / " + duoclass.getHalfFinalFight2().getDuoTeamBlue().getName2(),duoclass.getHalfFinalFight2(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getHalfFinalFight2().getId().longValue(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getHalfFinalFight2().getDuoTeamBlue().getName()+ " / " + duoclass.getHalfFinalFight2().getDuoTeamBlue().getName2() );
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -411,10 +417,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getFinalFight().getDuoTeamBlue() != null
                 && duoclass.getFinalFight().getDuoTeamBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getFinalFight().getId(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getFinalFight().getDuoTeamRed().getName() + " / " + duoclass.getFinalFight().getDuoTeamRed().getName2());
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getFinalFight().getDuoTeamRed().getName() + " / " + duoclass.getFinalFight().getDuoTeamRed().getName2(),duoclass.getFinalFight(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getFinalFight().getId(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getFinalFight().getDuoTeamRed().getName() + " / " + duoclass.getFinalFight().getDuoTeamRed().getName2());
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -449,10 +456,11 @@ public class DuoDoublePoolWebComponent
             if ( editAccess && duoclass.getFinalFight().getDuoTeamRed() != null
                 && duoclass.getFinalFight().getDuoTeamRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getFinalFight().getId(), null );
-                PoolWebComponentHelper.writeText( out, duoclass.getFinalFight().getDuoTeamBlue().getName()+ " / " + duoclass.getFinalFight().getDuoTeamBlue().getName2() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,duoclass.getFinalFight().getDuoTeamBlue().getName() + " / " + duoclass.getFinalFight().getDuoTeamBlue().getName2(),duoclass.getFinalFight(),context,sb.toString());
+//                out.startElement( JSF_A, this );
+//                out.writeAttribute( ATTR_HREF, sb.toString() + duoclass.getFinalFight().getId(), null );
+//                PoolWebComponentHelper.writeText( out, duoclass.getFinalFight().getDuoTeamBlue().getName()+ " / " + duoclass.getFinalFight().getDuoTeamBlue().getName2() );
+//                out.endElement( JSF_A );
             }
             else
             {
@@ -531,6 +539,30 @@ public class DuoDoublePoolWebComponent
         out.endElement( JSF_PARAGRAPH );
     }
 
+    private  void doLink4Finals(ResponseWriter out, String text, DuoFight fight,
+                                FacesContext context,  String linkToFight) throws IOException
+        {
+            out.startElement( JSF_A, this );
+            out.writeAttribute( ATTR_HREF, linkToFight + fight.getId().longValue(), null );
+            out.writeAttribute( ATTR_ONCONTEXTMENUE, "return false;", null );
+            String contextPath = ( (HttpServletRequest) context.getExternalContext().getRequest() ).getContextPath();
+
+            StringBuffer sb2 = new StringBuffer();
+            sb2.append( HANDLE_LINK_CLICK );
+            sb2.append( "(event,'" );
+            sb2.append( linkToFight + fight.getId().longValue() );
+            sb2.append( "','" );
+            sb2.append( contextPath );
+            sb2.append( PREVIEW_URL );
+            sb2.append( "?system=F&id=" );
+            sb2.append( fight.getId().longValue() );
+            sb2.append( "');" );
+
+            out.writeAttribute( ATTR_ONMOUSEDOWN, sb2.toString(), null );
+            out.write( text );
+            out.endElement( JSF_A );
+        }
+    
     private List<ResultTable> getResultTableList( DuoDoublePoolClass duoclass )
     {
         List<ResultTable> retList = new ArrayList<ResultTable>( 4 );

@@ -39,6 +39,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 import de.jjw.model.LabelValue;
 import de.jjw.model.User;
+import de.jjw.model.fighting.Fight;
 import de.jjw.model.fighting.Fighter;
 import de.jjw.model.fighting.FightingDoublePoolClass;
 import de.jjw.model.fighting.FightingDoublePoolItem;
@@ -214,7 +215,7 @@ public class FightingDoublePoolWebComponent
 
 
 
-        // Final
+     // Final
         out.startElement( JSF_TABLE, null );// outer table for structure
         out.writeAttribute( ATTR_CLASS, FANCY_TABLE, null );
         out.writeAttribute( ATTR_BORDER, TABLE_BORDER, null );
@@ -258,10 +259,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getHalfFinalFight1().getFighterBlue() != null
                 && fightingclass.getHalfFinalFight1().getFighterBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getHalfFinalFight1().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getHalfFinalFight1().getFighterRed().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getHalfFinalFight1().getFighterRed().getName(),fightingclass.getHalfFinalFight1(),context,sb.toString());
             }
             else
             {
@@ -296,10 +294,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getHalfFinalFight1().getFighterRed() != null
                 && fightingclass.getHalfFinalFight1().getFighterRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getHalfFinalFight1().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getHalfFinalFight1().getFighterBlue().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getHalfFinalFight1().getFighterBlue().getName(),fightingclass.getHalfFinalFight1(),context,sb.toString());
             }
             else
             {
@@ -335,10 +330,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getHalfFinalFight2().getFighterBlue() != null
                 && fightingclass.getHalfFinalFight2().getFighterBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getHalfFinalFight2().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getHalfFinalFight2().getFighterRed().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getHalfFinalFight2().getFighterRed().getName(),fightingclass.getHalfFinalFight2(),context,sb.toString());
             }
             else
             {
@@ -373,10 +365,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getHalfFinalFight2().getFighterRed() != null
                 && fightingclass.getHalfFinalFight2().getFighterRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getHalfFinalFight2().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getHalfFinalFight2().getFighterBlue().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getHalfFinalFight2().getFighterBlue().getName(),fightingclass.getHalfFinalFight2(),context,sb.toString());
             }
             else
             {
@@ -420,10 +409,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getFinalFight().getFighterBlue() != null
                 && fightingclass.getFinalFight().getFighterBlue().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getFinalFight().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getFinalFight().getFighterRed().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getFinalFight().getFighterRed().getName(),fightingclass.getFinalFight(),context,sb.toString());
             }
             else
             {
@@ -458,10 +444,7 @@ public class FightingDoublePoolWebComponent
             if ( editAccess && fightingclass.getFinalFight().getFighterRed() != null
                 && fightingclass.getFinalFight().getFighterRed().getId() != null )
             {
-                out.startElement( JSF_A, this );
-                out.writeAttribute( ATTR_HREF, sb.toString() + fightingclass.getFinalFight().getId().longValue(), null );
-                PoolWebComponentHelper.writeText( out, fightingclass.getFinalFight().getFighterBlue().getName() );
-                out.endElement( JSF_A );
+                doLink4Finals(out,fightingclass.getFinalFight().getFighterBlue().getName(),fightingclass.getFinalFight(),context,sb.toString());
             }
             else
             {
@@ -532,7 +515,7 @@ public class FightingDoublePoolWebComponent
         PoolWebComponentHelper.writeText( out, resultList.get( 3 ).name );
         out.endElement( JSF_TD );
         out.endElement( JSF_TR );
-
+        
         out.endElement( JSF_TABLE );
         out.endElement( JSF_TD );
         out.endElement( JSF_TR );
@@ -540,6 +523,30 @@ public class FightingDoublePoolWebComponent
 
         out.endElement( JSF_PARAGRAPH );
     }
+    
+    private  void doLink4Finals(ResponseWriter out, String text, Fight fight,
+                                FacesContext context,  String linkToFight) throws IOException
+        {
+            out.startElement( JSF_A, this );
+            out.writeAttribute( ATTR_HREF, linkToFight + fight.getId().longValue(), null );
+            out.writeAttribute( ATTR_ONCONTEXTMENUE, "return false;", null );
+            String contextPath = ( (HttpServletRequest) context.getExternalContext().getRequest() ).getContextPath();
+
+            StringBuffer sb2 = new StringBuffer();
+            sb2.append( HANDLE_LINK_CLICK );
+            sb2.append( "(event,'" );
+            sb2.append( linkToFight + fight.getId().longValue() );
+            sb2.append( "','" );
+            sb2.append( contextPath );
+            sb2.append( PREVIEW_URL );
+            sb2.append( "?system=F&id=" );
+            sb2.append( fight.getId().longValue() );
+            sb2.append( "');" );
+
+            out.writeAttribute( ATTR_ONMOUSEDOWN, sb2.toString(), null );
+            out.write( text );
+            out.endElement( JSF_A );
+        }
 
     private List<ResultTable> getResultTableList( FightingDoublePoolClass fightingclass )
     {
