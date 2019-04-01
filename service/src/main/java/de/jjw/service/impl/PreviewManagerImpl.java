@@ -168,7 +168,7 @@ public class PreviewManagerImpl
                 } 
                 
                 Collections.sort(previewItemList);
-                
+                remainingTimeOnTatamiFighting=0;
                 for ( PreviewItem item : previewItemList )
                 {
                     previewClass = new PreviewWebTatamiClasses();
