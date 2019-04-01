@@ -517,7 +517,8 @@ public class FightDaoHibernate
             Fighter fighterBlue;
 
             for ( Fight item : fightList )
-            {                
+            {               
+                newList = new ArrayList<Fight>();
                 fighterRed = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdRed() );
                 fighterBlue = (Fighter) getHibernateTemplate().get( Fighter.class, item.getFighterIdBlue() );
                 item.setFighterRed( fighterRed );
@@ -530,12 +531,13 @@ public class FightDaoHibernate
                 newList.add( item );
                 myMap.put( item.getFighterIdRed(), newList );
 
+                newList = new ArrayList<Fight>();
                 if ( myMap.containsKey( item.getFighterIdBlue() ) )
                     newList = myMap.get( item.getFighterIdBlue() );
                 else
                     newList = new ArrayList<Fight>();
                 newList.add( item );
-                myMap.put( item.getFighterIdRed(), newList );
+                myMap.put( item.getFighterIdBlue(), newList );
             }
 
             Query q2 = getSession().createQuery( ALL_FIGHTER );
