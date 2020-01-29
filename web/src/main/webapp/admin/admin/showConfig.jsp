@@ -53,6 +53,11 @@
     <h:inputText value="#{adminConfigAction.config.websiteHeadLine2}" id="websiteHeadLine2" required="false" size="30"
                  tabindex="5" maxlength="30"/>
 
+	<h:outputLabel for="deadline" value="#{msg['deadline']}"/>
+    <h:outputText value=""/>
+    <h:inputText value="#{adminConfigAction.config.deadline}" id="deadline" required="false" size="5"
+                 tabindex="5" maxlength="5"/>
+                 
     <h:outputLabel for="pdfHeadLine1" value="#{msg['pdfHeadLine1']}"/>
     <h:outputText value=""/>
     <h:inputText value="#{adminConfigAction.config.pdfHeadLine1}" id="pdfHeadLine1" required="false" size="30"

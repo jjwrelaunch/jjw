@@ -59,6 +59,7 @@ public class ConfigMapper
         ret.setModificationDate( new Timestamp( config.getModificationDate().getTime() ) );
         ret.setModificationId( Long.valueOf( config.getModificationId() ) );
         ret.setId( Long.valueOf( config.getId() ) );
+        ret.setDeadline( new String( config.getDeadline() ) );
         return ret;
     }
 
@@ -87,5 +88,6 @@ public class ConfigMapper
 
         configDB.setModificationDate( new Timestamp( config.getModificationDate().getTime() ) );
         configDB.setModificationId( new Long( config.getModificationId() ) );
+        configDB.setDeadline( new String( config.getDeadline() ) );
     }
 }

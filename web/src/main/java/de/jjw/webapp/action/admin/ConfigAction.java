@@ -70,18 +70,30 @@ public class ConfigAction
         Vector<ErrorElement> errors = new Vector<ErrorElement>();
         try
         {
-
-            configManager.saveConfig( new ServiceExchangeContext(
+        	String[] deadline= config.getDeadline().split("/");
+        	int day =Integer.valueOf(deadline[0]);
+        	int month =Integer.valueOf(deadline[1]);
+            if (day<1 || day> 31 || month < 1 || month> 10) throw new Exception("wrong deadline"); 
+            
+        	configManager.saveConfig( new ServiceExchangeContext(
                 WebExchangeContextHelper.getWebExchangeContext( getSession() ).getUserId() ), config );
 
         }
         catch ( JJWManagerException e )
         {
+        	errors.add( new ErrorElement( GEN_GERNERAL_ERROR ) );
+            setErrorMessageVector( errors );
             return null;
         }
         catch ( OptimisticLockingException e )
         {
             errors.add( new ErrorElement( GLO_OPTIMISTIC_LOCKING ) );
+            setErrorMessageVector( errors );
+            return null;
+        }
+        catch ( Exception e )
+        {
+            errors.add( new ErrorElement( GEN_GERNERAL_ERROR ) );
             setErrorMessageVector( errors );
             return null;
         }

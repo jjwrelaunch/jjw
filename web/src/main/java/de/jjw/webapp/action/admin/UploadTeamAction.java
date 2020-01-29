@@ -45,12 +45,14 @@ import de.jjw.dao.generalhelper.OptimisticLockingException;
 import de.jjw.model.Preview;
 import de.jjw.model.Team;
 import de.jjw.model.admin.Age;
+import de.jjw.model.admin.ConfigJJW;
 import de.jjw.model.duo.DuoTeam;
 import de.jjw.model.fighting.Fighter;
 import de.jjw.model.generalhelper.CodestableMain;
 import de.jjw.model.newa.NewaFighter;
 import de.jjw.service.TeamManager;
 import de.jjw.service.admin.AgeManager;
+import de.jjw.service.admin.ConfigManager;
 import de.jjw.service.duo.DuoTeamManager;
 import de.jjw.service.exception.DuoTeamIllegalReadyException;
 import de.jjw.service.exception.FighterIllegalReadyException;
@@ -119,6 +121,10 @@ public class UploadTeamAction
     protected UIData dataTable2; // duo
 
     protected UIData dataTable3; // newa
+    
+    ConfigManager configManager = null;
+    
+    private ConfigJJW config;
 
 
     public String saveTeam()
@@ -305,9 +311,11 @@ public class UploadTeamAction
         this.fighterList = new ArrayList<FighterWeb>();
         this.duoteamList = new ArrayList<DuoTeamWeb>();
         this.newaFighterList = new ArrayList<NewaFighterWeb>();
-
+        
         try
         {
+        	config = configManager.getConfig();
+        	
             List<Age> ageList = ageManager.getAllAges();
             List<Team> teamList = teamManager.getAllTeams();
             JsonElement element = readJsonInput();
@@ -660,11 +668,26 @@ public class UploadTeamAction
         return newFighter;                        
     }
     
-    private Age getAge( String yearOfBirth, List<Age> ageList )
+    private Age getAge( String birthDate, List<Age> ageList)
     {
-        Calendar rightNow = Calendar.getInstance();
-        int actualAge = rightNow.get( Calendar.YEAR ) - Integer.valueOf( yearOfBirth.trim() );
+    	String[]  birthDateArry = birthDate.trim().split(".");
+    	int dayBirth =Integer.valueOf(birthDateArry[0]);
+    	int monthBirth =Integer.valueOf(birthDateArry[1]);
+    	
+    	Calendar rightNow = Calendar.getInstance();
+        int actualAge = rightNow.get( Calendar.YEAR ) - Integer.valueOf( birthDateArry[2].trim() );
+        actualAge--;
 
+        //test if we are before or after deadline
+        String [] deadline = config.getDeadline().split("/");
+        int dayDeadline =Integer.valueOf(deadline[0]);
+    	int monthDeadline =Integer.valueOf(deadline[1]);            	
+        
+        if(monthBirth > monthDeadline)actualAge++;
+        else {
+        	if(monthBirth == monthDeadline && dayBirth>dayDeadline)actualAge++;
+        }
+        
         for(Age item: ageList){
 
             if ( item.getAgeLimit() >= actualAge && item.getStartAge() <= actualAge )
@@ -673,12 +696,52 @@ public class UploadTeamAction
         return null;
     }
 
-    private Age getAge( String yearOfBirth, String yearOfBirth2, List<Age> ageList )
+    private Age getAge( String birthDate, String birthDate2, List<Age> ageList )
     {
-        if ( Integer.valueOf( yearOfBirth.trim() ) < Integer.valueOf( yearOfBirth2.trim() ) )
-            yearOfBirth = yearOfBirth2;
+    	String[]  birthDateArry = birthDate.trim().split(".");
+    	int dayBirth =Integer.valueOf(birthDateArry[0]);
+    	int monthBirth =Integer.valueOf(birthDateArry[1]);
+    	int yearBirth =Integer.valueOf(birthDateArry[2]);    	
+    	
+    	String[]  birthDateArr2y = birthDate2.trim().split(".");
+    	int dayBirth2 =Integer.valueOf(birthDateArr2y[0]);
+    	int monthBirth2 =Integer.valueOf(birthDateArr2y[1]);
+    	int yearBirth2 =Integer.valueOf(birthDateArr2y[2]);
+    	
+    	//test of year
+    	if ( yearBirth < yearBirth2 ) {
+    		yearBirth = yearBirth2;
+    		monthBirth=monthBirth2;
+    		dayBirth=dayBirth2;
+    	}
+    	else {//test of month
+    		if ( yearBirth == yearBirth2 && monthBirth< monthBirth2) {
+    			yearBirth = yearBirth2;
+        		monthBirth=monthBirth2;
+        		dayBirth=dayBirth2;
+        	}
+    		else {//test of day
+        		if (monthBirth == monthBirth2 && dayBirth< dayBirth2) {
+        			yearBirth = yearBirth2;
+            		monthBirth=monthBirth2;
+            		dayBirth=dayBirth2;
+            	}    			
+    		}    		
+    	}
+    	
         Calendar rightNow = Calendar.getInstance();
-        int actualAge = rightNow.get( Calendar.YEAR ) - Integer.valueOf( yearOfBirth.trim() );
+        int actualAge = rightNow.get( Calendar.YEAR ) - yearBirth;
+        actualAge--;
+
+        //test if we are before or after deadline
+        String [] deadline = config.getDeadline().split("/");
+        int dayDeadline =Integer.valueOf(deadline[0]);
+    	int monthDeadline =Integer.valueOf(deadline[1]);            	
+        
+        if(monthBirth > monthDeadline)actualAge++;
+        else {
+        	if(monthBirth == monthDeadline && dayBirth>dayDeadline)actualAge++;
+        }
 
         for ( Age item : ageList )
         {
@@ -822,5 +885,10 @@ public class UploadTeamAction
     public void setNewaFighterManager( NewaFighterManager newaFighterManager )
     {
         this.newaFighterManager = newaFighterManager;
+    }
+    
+    public void setConfigManager( ConfigManager configManager )
+    {
+        this.configManager = configManager;
     }
 }

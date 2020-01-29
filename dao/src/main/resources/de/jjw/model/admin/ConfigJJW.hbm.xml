@@ -164,6 +164,14 @@
         >
 
         </property>
+        
+        <property
+            name="deadline"
+                    column="deadline"
+                not-null="true"
+        >
+
+        </property>
 
     </class>    
 

@@ -70,6 +70,8 @@ public class ConfigJJW
     protected Timestamp dumpSend;
     
     protected boolean videoOn;
+    
+    protected String deadline;
 
     /**
      * @return Returns the id.
@@ -300,6 +302,17 @@ public class ConfigJJW
         // TODO Auto-generated method stub
         return null;
     }
+
+    /**
+     * @hibernate.property column="deadline"
+     */
+	public String getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
 
 
 }

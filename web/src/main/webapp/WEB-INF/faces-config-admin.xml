@@ -214,6 +214,10 @@
       <property-name>newaFighterManager</property-name>
       <value>#{newaFighterManager}</value>
     </managed-property>
+    <managed-property>
+      <property-name>configManager</property-name>
+      <value>#{configManager}</value>
+    </managed-property>
   </managed-bean>
   
   <managed-bean>
