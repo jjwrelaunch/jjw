@@ -26,7 +26,7 @@ package de.jjw.service.impl;
 import java.sql.Timestamp;
 import java.util.List;
 
-import org.springframework.dao.DataIntegrityViolationException;
+
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import de.jjw.dao.RoleDao;
@@ -181,7 +181,7 @@ public class UserManagerImpl
             }
 
         }
-        catch ( DataIntegrityViolationException e )
+        catch ( Exception e )
         {
             throw new UserExistsException( "User '" + user.getUsername() + "' already exists!" );
         }
