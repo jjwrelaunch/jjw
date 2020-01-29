@@ -59,6 +59,7 @@ public class FightingClockAction
     long fightId;
 
     protected UIData dataTable2;
+    protected UIData dataTable3;
 
     public FightWeb getFight()
     {
@@ -242,5 +243,14 @@ public class FightingClockAction
     public boolean isVideoWeb()
     {
         return (ConfigMain.getInstance().getEventConfiguration().isVideoOn()?true:false);
-    }  
+    }
+
+	public UIData getDataTable3() {
+		return dataTable3;
+	}
+
+	public void setDataTable3(UIData dataTable3) {
+		this.dataTable3 = dataTable3;
+	}
+    
 }

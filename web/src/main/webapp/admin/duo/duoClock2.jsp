@@ -225,8 +225,7 @@ Anzeige: Wettkampfanzeige
 			  <td>
 				  <table>
 					  <tr>
-						<td><t:graphicImage value="#{adminDuoClockAction.imageCommandRed}" id="rightFlag" height="100" width="100" style="border:3px solid white;" alt=""/>						  
-						</td>
+						<td><a href="#" onClick="shutClock();"><t:graphicImage value="#{adminDuoClockAction.imageCommandRed}" id="rightFlag" height="100" width="100" style="border:3px solid white;" alt=""/></a></td>
 					  </tr>
 					  <tr>
 						<td valign="bottom" >
@@ -267,15 +266,7 @@ Anzeige: Wettkampfanzeige
 				  <font style="font-size: 18px;  font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #FFFFFF;">C</font>
 				</td>
 				<td width="10">&nbsp;</td>
-				<td align="center">
-				  <input type="text" tabindex="36" onFocus="this.select()" onChange="updatePoints('right')" class="sets" id="rSet4_1" size=1 maxlength=3 ondrop="this.value=''">
-				  <input type="text" tabindex="37" onFocus="this.select()" onChange="updatePoints('right')" class="sets" id="rSet4_2" size=1 maxlength=3 ondrop="this.value=''">
-				  <input type="text" tabindex="38" onFocus="this.select()" onChange="updatePoints('right')" class="sets" id="rSet4_3" size=1 maxlength=3 ondrop="this.value=''">
-				  <input type="text" tabindex="39" onFocus="this.select()" onChange="updatePoints('right')" class="sets" id="rSet4_4" size=1 maxlength=3 ondrop="this.value=''">
-				  <input type="text" tabindex="40" onFocus="this.select()" onChange="updatePoints('right')" class="sets" id="rSet4_5" size=1 maxlength=3 ondrop="this.value=''">
-				  <br/><br/>
-				  <font style="font-size: 18px;  font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #FFFFFF;">D</font>
-				</td>			  					   
+							  					   
 			</table>			
 		  </td>
 
@@ -373,7 +364,7 @@ Anzeige: Wettkampfanzeige
 			<td>
 				  <table>
 					  <tr>
-						<td><t:graphicImage value="#{adminDuoClockAction.imageCommandBlue}" id="leftFlag" height="100" width="100" style="border:3px solid white;" alt=""/></td>
+						<td><a href="#" onClick="shutClock();"> <t:graphicImage value="#{adminDuoClockAction.imageCommandBlue}" id="leftFlag" height="100" width="100" style="border:3px solid white;" alt=""/></a></td>
 					  </tr>
 					  <tr>
 						<td valign="bottom" >
@@ -414,15 +405,7 @@ Anzeige: Wettkampfanzeige
                 <font style="font-size: 18px;  font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #FFFFFF;">C</font>
               </td>
 		  	  <td width="10">&nbsp;</td>
-              <td align="center">
-                <input type="text" tabindex="31" onFocus="this.select()" onChange="updatePoints('left')" class="sets" id="lSet4_1" size=1 maxlength=3 ondrop="this.value=''">
-                <input type="text" tabindex="32" onFocus="this.select()" onChange="updatePoints('left')" class="sets" id="lSet4_2" size=1 maxlength=3 ondrop="this.value=''">
-                <input type="text" tabindex="33" onFocus="this.select()" onChange="updatePoints('left')" class="sets" id="lSet4_3" size=1 maxlength=3 ondrop="this.value=''">
-                <input type="text" tabindex="34" onFocus="this.select()" onChange="updatePoints('left')" class="sets" id="lSet4_4" size=1 maxlength=3 ondrop="this.value=''">
-                <input type="text" tabindex="35" onFocus="this.select()" onChange="updatePoints('left')" class="sets" id="lSet4_5" size=1 maxlength=3 ondrop="this.value=''">
-                <br/><br/>
-                <font style="font-size: 18px;  font-family: Tahoma, Arial, Helvetica, sans-serif; font-size: 18px; font-weight: bold; color: #FFFFFF;">D</font>
-              </td>
+             
             
           
           </table>

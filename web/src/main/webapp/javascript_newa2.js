@@ -698,27 +698,22 @@ function shutClock()
     giveBackResult();
     
     var exit = confirm("schließen / close?");
-
-	if (videoOn == true){
-		
-		try{
-			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.audioVideoRecorder.getBlob() });
-			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.screenRecorder.getBlob() });
-		}
-		catch (e){}
-		
-	}
-		
-	
-    if(!exit){
+	if(!exit){
         window.stop();
     }
     else
 	{
+	if (videoOn == true){		
+		try{
+			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.audioVideoRecorder.getBlob() });
+			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'N',	'data' : this.opener.screenRecorder.getBlob() });
+		}
+		catch (e){}		
+	}	
     this.opener.focus();
-    this.close();
-	}
+    this.close();	
 	isShutClockOnce=true;
+	}
 }
 
 function shutFriendlyClock()
@@ -2104,6 +2099,21 @@ function handleAnzeige( displayForm )
 		}
 		catch (e){}
 	}
+	
+		var docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            }
+            else if (docElm.msRequestFullscreen) {
+                docElm = document.body; //overwrite the element (for IE)
+                docElm.msRequestFullscreen();
+            }
+            else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            }
+            else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            }
 	
     // if (isActiveAnzeige)
     user_input = user_input + "DP" + displayForm + "_;";

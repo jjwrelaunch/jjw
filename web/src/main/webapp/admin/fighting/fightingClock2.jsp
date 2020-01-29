@@ -775,7 +775,30 @@ background-color: white;">
   <table cellpadding="4" cellspacing="0">                     <!-- Rahmen außen rechte Uhr Holding -->
     <tr>
       <td >                                   <!-- Rahmen außen rechte Uhr Holding -->
-         Werbung oder next Fight
+         <!--Werbung oder next Fight -->
+		 <a href="#" onClick="shutClock()"> 
+		 <c:if test="${fn:length(adminFightingClockAction.previewForTatami) > 0}">
+		 <t:dataTable value="#{adminFightingClockAction.previewForTatami}" var="cty3" rows="1"
+                   border="0" cellspacing="0" cellpadding="0" binding="#{adminFightingClockAction.dataTable3}"  >
+			<t:column width="100%" style="text-align: center;">         
+				<h:outputText value="next" style="font-size:12px !important;color:white;"/> 
+				<h:outputText value="<br/>" escape="false"/> 
+				<h:outputText value="#{cty3.nameRed}" styleClass="font_red td_preparation"  style="font-size:35px !important;"/>
+				<h:outputText value="<br/>" escape="false"/> 
+				<h:outputText value="#{cty3.classDescription}" style="font-size:12px !important;color:white;"/>
+				<h:outputText value="<br/>" escape="false"/> 
+				<h:outputText value="#{cty3.nameBlue}" styleClass="font_blue td_preparation"  style="font-size:35px !important;"/>
+				<h:outputText value="<br/>" escape="false"/> 
+				<h:outputText value="&nbsp;" escape="false"/> 
+				<h:outputText value="<br/>" escape="false"/> 
+				<h:outputText value="&nbsp;" escape="false"/> 
+			</t:column>
+		</t:dataTable>  
+		</c:if>
+		<c:if test="${fn:length(adminFightingClockAction.previewForTatami) == 0}">
+			<img src="../images/error-icon.png">
+		</c:if>
+		</a>
       </td>
     </tr>
   </table>

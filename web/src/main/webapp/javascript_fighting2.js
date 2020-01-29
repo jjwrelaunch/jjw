@@ -817,6 +817,11 @@ function shutClock()
     	
 	var exit = confirm("schließen / close?");
 
+	if(!exit){
+        window.stop();
+    }
+    else
+	{
 	if (videoOn == true)
 	{
 		try{
@@ -826,15 +831,12 @@ function shutClock()
 		catch (e){}
 	}
 	
-    if(!exit){
-        window.stop();
-    }
-    else
-	{
+    
     this.opener.focus();
     this.close();
-	}
 	isShutClockOnce=true;
+	}
+	
 }
 
 function shutFriendlyClock()
@@ -2550,6 +2552,20 @@ function handleAnzeige( displayForm )
 		catch (e){}
 	}
 		
+	var docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            }
+            else if (docElm.msRequestFullscreen) {
+                docElm = document.body; //overwrite the element (for IE)
+                docElm.msRequestFullscreen();
+            }
+            else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            }
+            else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            }
 	
 	// if (isActiveAnzeige)
     user_input = user_input + "DP" + displayForm + "_;";
@@ -2928,6 +2944,7 @@ function setMaxTimeBackgroundColor()
 <!-- Die maximale Kampfzeit, Haltegriffzeit und Verletzungszeit werden ins Cookie geschrieben -->
 function startfight( _altersklasse, _fightingtime, _fightingOverTime, _holdingtime, _injurytime )
 {
+	
     var altersklasse = _altersklasse;
     fighting_time=parseInt(_fightingtime);
     

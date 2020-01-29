@@ -166,26 +166,24 @@ function shutClock()
     giveBackResult();
 
     var exit = confirm("schließen / close?");
-	if (videoOn == true ){
-		
-		
-		try{
-			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.audioVideoRecorder.getBlob() });
-			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.screenRecorder.getBlob() });
-		}
-		catch (e){}
-				
-    }
-    
+	
 	if(!exit){
 	    window.stop();
 	}
 	else
 	{
-	    this.opener.focus();
+	if (videoOn == true ){				
+		try{
+			this.opener.jjw_sendVideo({'fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.audioVideoRecorder.getBlob() });
+			this.opener.jjw_sendScreen({'isScreen' : 'true','fightId' : videoFightId,'videoDescription' : videoDescription, 'discipline' : 'D',	'data' : this.opener.screenRecorder.getBlob() });
+		}
+		catch (e){}			
+    }
+        this.opener.focus();
 	    this.close();
+		isShutClockOnce=true;
 	}
-	isShutClockOnce=true;
+	
 }
 
 function shutFriendlyClock()
@@ -243,16 +241,16 @@ function giveBackResult()
         opener.document.getElementById( "main:adminDuoFightAction:blueSeriesCrefIV" ).value =  (document.getElementById( "lSet3_4" ).value != '') ? document.getElementById( "lSet3_4" ).value : 0.0;
         opener.document.getElementById( "main:adminDuoFightAction:blueSeriesCrefV" ).value =  (document.getElementById( "lSet3_5" ).value != '')  ? document.getElementById( "lSet3_5" ).value : 0.0;
 
-        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefI" ).value =  (document.getElementById( "rSet4_1" ).value != '')   ? document.getElementById( "rSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefII" ).value =  (document.getElementById( "rSet4_2" ).value != '')  ? document.getElementById( "rSet4_2" ).value : 0.0; 
-        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefIII" ).value =  (document.getElementById( "rSet4_3" ).value != '') ? document.getElementById( "rSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefIV" ).value =  (document.getElementById( "rSet4_4" ).value != '')  ? document.getElementById( "rSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefV" ).value =  (document.getElementById( "rSet4_5" ).value != '')   ? document.getElementById( "rSet4_5" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefI" ).value =  (document.getElementById( "lSet4_1" ).value != '')  ? document.getElementById( "lSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefII" ).value =  (document.getElementById( "lSet4_2" ).value != '') ? document.getElementById( "lSet4_2" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefIII" ).value =  (document.getElementById( "lSet4_3" ).value != '')? document.getElementById( "lSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefIV" ).value =  (document.getElementById( "lSet4_4" ).value != '') ? document.getElementById( "lSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefV" ).value =  (document.getElementById( "lSet4_5" ).value != '')  ? document.getElementById( "lSet4_5" ).value : 0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefI" ).value =  0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefII" ).value = 0.0; 
+        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefIII" ).value =0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefIV" ).value = 0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:redSeriesDrefV" ).value =  0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefI" ).value = 0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefII" ).value =0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefIII" ).value = 0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefIV" ).value =  0.0;
+        opener.document.getElementById( "main:adminDuoFightAction:blueSeriesDrefV" ).value =  0.0;
         // zeit von oeffnen bis schlie�en der Uhr
         opener.document.getElementById( "main:adminDuoFightAction:overallFightTime" ).value = 
                 Math.floor( (new Date().getTime() - pageCallTime) / 1000 );
@@ -320,16 +318,16 @@ function giveBackResult()
         opener.document.getElementById( "main:offDuoFightAction:blueSeriesCrefIV" ).value =  (document.getElementById( "lSet3_4" ).value != '') ? document.getElementById( "lSet3_4" ).value : 0.0;
         opener.document.getElementById( "main:offDuoFightAction:blueSeriesCrefV" ).value =  (document.getElementById( "lSet3_5" ).value != '')  ? document.getElementById( "lSet3_5" ).value : 0.0;
 
-        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefI" ).value =  (document.getElementById( "rSet4_1" ).value != '')   ? document.getElementById( "rSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefII" ).value =  (document.getElementById( "rSet4_2" ).value != '')  ? document.getElementById( "rSet4_2" ).value : 0.0; 
-        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefIII" ).value =  (document.getElementById( "rSet4_3" ).value != '') ? document.getElementById( "rSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefIV" ).value =  (document.getElementById( "rSet4_4" ).value != '')  ? document.getElementById( "rSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefV" ).value =  (document.getElementById( "rSet4_5" ).value != '')   ? document.getElementById( "rSet4_5" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefI" ).value =  (document.getElementById( "lSet4_1" ).value != '')  ? document.getElementById( "lSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefII" ).value =  (document.getElementById( "lSet4_2" ).value != '') ? document.getElementById( "lSet4_2" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefIII" ).value =  (document.getElementById( "lSet4_3" ).value != '')? document.getElementById( "lSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefIV" ).value =  (document.getElementById( "lSet4_4" ).value != '') ? document.getElementById( "lSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefV" ).value =  (document.getElementById( "lSet4_5" ).value != '')  ? document.getElementById( "lSet4_5" ).value : 0.0;
+        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefI" ).value = 0.0;
+        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefII" ).value =0.0; 
+        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefIII" ).value = 0.0;
+        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefIV" ).value =  0.0;
+        opener.document.getElementById( "main:offDuoFightAction:redSeriesDrefV" ).value =  0.0;
+        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefI" ).value = 0.0;
+        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefII" ).value =0.0;
+        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefIII" ).value = 0.0;
+        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefIV" ).value =  0.0;
+        opener.document.getElementById( "main:offDuoFightAction:blueSeriesDrefV" ).value =  0.0;
 
         // zeit von oeffnen bis schlie�en der Uhr
         opener.document.getElementById( "main:offDuoFightAction:overallFightTime" ).value = 
@@ -403,16 +401,16 @@ function giveBackFriendlyResult()
         opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesCrefIV" ).value =  (document.getElementById( "lSet3_4" ).value != '') ? document.getElementById( "lSet3_4" ).value : 0.0;
         opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesCrefV" ).value =  (document.getElementById( "lSet3_5" ).value != '')  ? document.getElementById( "lSet3_5" ).value : 0.0;
 
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefI" ).value =  (document.getElementById( "rSet4_1" ).value != '')   ? document.getElementById( "rSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefII" ).value =  (document.getElementById( "rSet4_2" ).value != '')  ? document.getElementById( "rSet4_2" ).value : 0.0; 
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefIII" ).value =  (document.getElementById( "rSet4_3" ).value != '') ? document.getElementById( "rSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefIV" ).value =  (document.getElementById( "rSet4_4" ).value != '')  ? document.getElementById( "rSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefV" ).value =  (document.getElementById( "rSet4_5" ).value != '')   ? document.getElementById( "rSet4_5" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefI" ).value =  (document.getElementById( "lSet4_1" ).value != '')  ? document.getElementById( "lSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefII" ).value =  (document.getElementById( "lSet4_2" ).value != '') ? document.getElementById( "lSet4_2" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefIII" ).value =  (document.getElementById( "lSet4_3" ).value != '')? document.getElementById( "lSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefIV" ).value =  (document.getElementById( "lSet4_4" ).value != '') ? document.getElementById( "lSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefV" ).value =  (document.getElementById( "lSet4_5" ).value != '')  ? document.getElementById( "lSet4_5" ).value : 0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefI" ).value =  0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefII" ).value = 0.0; 
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefIII" ).value =0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefIV" ).value = 0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:redSeriesDrefV" ).value =  0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefI" ).value = 0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefII" ).value =0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefIII" ).value =  0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefIV" ).value = 0.0;
+        opener.document.getElementById( "main:adminFriendlyDuoFightAction:blueSeriesDrefV" ).value =  0.0;
         // zeit von oeffnen bis schlie�en der Uhr
         opener.document.getElementById( "main:adminFriendlyDuoFightAction:overallFightTime" ).value = 
                 Math.floor( (new Date().getTime() - pageCallTime) / 1000 );
@@ -480,16 +478,16 @@ function giveBackFriendlyResult()
         opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesCrefIV" ).value =  (document.getElementById( "lSet3_4" ).value != '') ? document.getElementById( "lSet3_4" ).value : 0.0;
         opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesCrefV" ).value =  (document.getElementById( "lSet3_5" ).value != '')  ? document.getElementById( "lSet3_5" ).value : 0.0;
 
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefI" ).value =  (document.getElementById( "rSet4_1" ).value != '')   ? document.getElementById( "rSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefII" ).value =  (document.getElementById( "rSet4_2" ).value != '')  ? document.getElementById( "rSet4_2" ).value : 0.0; 
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefIII" ).value =  (document.getElementById( "rSet4_3" ).value != '') ? document.getElementById( "rSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefIV" ).value =  (document.getElementById( "rSet4_4" ).value != '')  ? document.getElementById( "rSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefV" ).value =  (document.getElementById( "rSet4_5" ).value != '')   ? document.getElementById( "rSet4_5" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefI" ).value =  (document.getElementById( "lSet4_1" ).value != '')  ? document.getElementById( "lSet4_1" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefII" ).value =  (document.getElementById( "lSet4_2" ).value != '') ? document.getElementById( "lSet4_2" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefIII" ).value =  (document.getElementById( "lSet4_3" ).value != '')? document.getElementById( "lSet4_3" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefIV" ).value =  (document.getElementById( "lSet4_4" ).value != '') ? document.getElementById( "lSet4_4" ).value : 0.0;
-        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefV" ).value =  (document.getElementById( "lSet4_5" ).value != '')  ? document.getElementById( "lSet4_5" ).value : 0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefI" ).value =  0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefII" ).value =   0.0; 
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefIII" ).value =  0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefIV" ).value =   0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:redSeriesDrefV" ).value =  0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefI" ).value =  0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefII" ).value =  0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefIII" ).value =   0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefIV" ).value =   0.0;
+        opener.document.getElementById( "main:offFriendlyDuoFightAction:blueSeriesDrefV" ).value =  0.0;
 
         // zeit von oeffnen bis schlie�en der Uhr
         opener.document.getElementById( "main:offFriendlyDuoFightAction:overallFightTime" ).value = 
@@ -876,11 +874,7 @@ pointFieldRight["rSet3_3"] = "";
 pointFieldRight["rSet3_4"] = "";
 pointFieldRight["rSet3_5"] = "";
 
-pointFieldRight["rSet4_1"] = "";
-pointFieldRight["rSet4_2"] = "";
-pointFieldRight["rSet4_3"] = "";
-pointFieldRight["rSet4_4"] = "";
-pointFieldRight["rSet4_5"] = "";
+
 
 var pointFieldLeft = new Array();
 pointFieldLeft["lSet1_1"] = "";
@@ -901,11 +895,6 @@ pointFieldLeft["lSet3_3"] = "";
 pointFieldLeft["lSet3_4"] = "";
 pointFieldLeft["lSet3_5"] = "";
 
-pointFieldLeft["lSet4_1"] = "";
-pointFieldLeft["lSet4_2"] = "";
-pointFieldLeft["lSet4_3"] = "";
-pointFieldLeft["lSet4_4"] = "";
-pointFieldLeft["lSet4_5"] = "";
 
 /*
 * sets point to array and let calculate
@@ -955,7 +944,7 @@ function setDuoPoints( side,id ){
 function getSetPoints( side )
 {	
     setPoints = 0;
-	for ( var j = 1; j < 5; j++ )
+	for ( var j = 1; j < 4; j++ )
 	{
 		count = 0;
 		SeriesPoints = 0;
@@ -1427,7 +1416,20 @@ function handleAnzeige( displayForm )
 		}
 		catch (e){}
 	}
-	
+	var docElm = document.documentElement;
+            if (docElm.requestFullscreen) {
+                docElm.requestFullscreen();
+            }
+            else if (docElm.msRequestFullscreen) {
+                docElm = document.body; //overwrite the element (for IE)
+                docElm.msRequestFullscreen();
+            }
+            else if (docElm.mozRequestFullScreen) {
+                docElm.mozRequestFullScreen();
+            }
+            else if (docElm.webkitRequestFullScreen) {
+                docElm.webkitRequestFullScreen();
+            }
     // if (isActiveAnzeige)
     // nur in FightingAnzeige
     // user_input = user_input + "DSP" + displayForm + ";";
