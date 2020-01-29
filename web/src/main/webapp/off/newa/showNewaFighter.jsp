@@ -38,7 +38,7 @@
         } );
       }
 
-      highlight( "<h:outputText value="#{tatamiShowFighter.sortColumn}"/>" );
+      highlight( "<h:outputText value="#{tatamiShowNewaFighter.sortColumn}"/>" );
 
       var alert = 0;
 
@@ -57,19 +57,19 @@
 <h:form id="offShowFighterAction">
 
   <h:outputText value="#{offShowFighterAction.text}"/>
-  <c:if test="${tatamiShowFighter.fighters != null}">
+  <c:if test="${tatamiShowNewaFighter.fighters != null}">
 
-    <c:if test="${fn:length(tatamiShowFighter.fighters) > 0}">
+    <c:if test="${fn:length(tatamiShowNewaFighter.fighters) > 0}">
 
       <f:verbatim>
         <p>Quick Find: <input type="text" id="quickfind"/> <a id="cleanfilters" href="#">Clear Filters</a></p>
       </f:verbatim>
 
-      <t:dataTable sortColumn="#{tatamiShowFighter.sortColumn}"
-                   value="#{tatamiShowFighter.fighters}" var="cty" border="0"
+      <t:dataTable sortColumn="#{tatamiShowNewaFighter.sortColumn}"
+                   value="#{tatamiShowNewaFighter.fighters}" var="cty" border="0"
                    cellspacing="0" cellpadding="0" id="showFighterTable" forceId="true"
                    styleClass="fancyTable" rowClasses="odd,even" width="800px"
-                   binding="#{tatamiShowFighter.dataTable}">
+                   binding="#{tatamiShowNewaFighter.dataTable}">
         <t:column defaultSorted="true" sortable="true">
           <f:facet name="header">
             <t:commandSortHeader columnName="1" arrow="true">
@@ -92,10 +92,10 @@
               <h:outputText value="#{msg.team}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{tatamiShowFighter.fighterPerTeam}">
+          <h:commandLink action="#{tatamiShowNewaFighter.fighterPerTeam}">
             <h:outputText value="#{cty.team.teamName}"/>
-            <f:param id="fighterPerTeam" name="fighterPer" value="#{tatamiShowFighter.fighterPer}"/>
-            <f:param id="fighterPerIdTeam" name="fighterPerId" value="#{tatamiShowFighter.fighterPerId}"/>
+            <f:param id="fighterPerTeam" name="fighterPer" value="#{tatamiShowNewaFighter.fighterPer}"/>
+            <f:param id="fighterPerIdTeam" name="fighterPerId" value="#{tatamiShowNewaFighter.fighterPerId}"/>
           </h:commandLink>
         </t:column>
         <t:column sortable="true">
@@ -104,10 +104,10 @@
               <h:outputText value="#{msg.age}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{tatamiShowFighter.fighterPerAge}">
+          <h:commandLink action="#{tatamiShowNewaFighter.fighterPerAge}">
             <h:outputText value="#{cty.age.ageShort}"/>
-            <f:param id="fighterPerAge" name="fighterPer" value="#{tatamiShowFighter.fighterPer}"/>
-            <f:param id="fighterPerIdAge" name="fighterPerId" value="#{tatamiShowFighter.fighterPerId}"/>
+            <f:param id="fighterPerAge" name="fighterPer" value="#{tatamiShowNewaFighter.fighterPer}"/>
+            <f:param id="fighterPerIdAge" name="fighterPerId" value="#{tatamiShowNewaFighter.fighterPerId}"/>
           </h:commandLink>
         </t:column>
         <t:column sortable="true">
@@ -124,10 +124,10 @@
               <h:outputText value="#{msg.region}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{tatamiShowFighter.fighterPerRegion}">
+          <h:commandLink action="#{tatamiShowNewaFighter.fighterPerRegion}">
             <h:outputText value="#{cty.team.region.regionShort}"/>
-            <f:param id="fighterPerRegion" name="fighterPer" value="#{tatamiShowFighter.fighterPer}"/>
-            <f:param id="fighterPerIdRegion" name="fighterPerId" value="#{tatamiShowFighter.fighterPerId}"/>
+            <f:param id="fighterPerRegion" name="fighterPer" value="#{tatamiShowNewaFighter.fighterPer}"/>
+            <f:param id="fighterPerIdRegion" name="fighterPerId" value="#{tatamiShowNewaFighter.fighterPerId}"/>
           </h:commandLink>
         </t:column>
         <t:column sortable="true">
@@ -136,10 +136,10 @@
               <h:outputText value="#{msg.country}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{tatamiShowFighter.fighterPerCountry}">
+          <h:commandLink action="#{tatamiShowNewaFighter.fighterPerCountry}">
             <h:outputText value="#{cty.team.country.countryShort}"/>
-            <f:param id="fighterPerCountry" name="fighterPer" value="#{tatamiShowFighter.fighterPer}"/>
-            <f:param id="fighterPerIdCountry" name="fighterPerId" value="#{tatamiShowFighter.fighterPerId}"/>
+            <f:param id="fighterPerCountry" name="fighterPer" value="#{tatamiShowNewaFighter.fighterPer}"/>
+            <f:param id="fighterPerIdCountry" name="fighterPerId" value="#{tatamiShowNewaFighter.fighterPerId}"/>
           </h:commandLink>
         </t:column>
         <t:column sortable="true">
@@ -148,10 +148,10 @@
               <h:outputText value="#{msg.weightclass}"/>
             </t:commandSortHeader>
           </f:facet>
-          <h:commandLink action="#{tatamiShowFighter.fighterPerNewaclass}">
+          <h:commandLink action="#{tatamiShowNewaFighter.fighterPerNewaclass}">
             <h:outputText value="#{cty.newaclass.weightclass}"/>
-            <f:param id="fighterPer" name="fighterPer" value="#{tatamiShowFighter.fighterPer}"/>
-            <f:param id="fighterPerId" name="fighterPerId" value="#{tatamiShowFighter.fighterPerId}"/>
+            <f:param id="fighterPer" name="fighterPer" value="#{tatamiShowNewaFighter.fighterPer}"/>
+            <f:param id="fighterPerId" name="fighterPerId" value="#{tatamiShowNewaFighter.fighterPerId}"/>
           </h:commandLink>
           <h:outputText value=" " escape="true"/>
         </t:column>

@@ -23,27 +23,27 @@
   ~ along with Ju Jutsu Web.  If not, see <http://www.gnu.org/licenses/>.
   --%>
 
-<f:loadBundle basename="de.jjw.webapp.messages.admin.fightingclass" var="msg"/>
+<f:loadBundle basename="de.jjw.webapp.messages.admin.newaclass" var="msg"/>
 <t:htmlTag value="h3"><h:outputText value="#{msg['fightingclassOverviewHeadline'] }"/></t:htmlTag>
 <h:form id="offNewaclassAction">
 
-  <h:inputHidden id="fightclassId" value="#{offNewaclassAction.newaclass.id}"/>
+  <h:inputHidden id="newaclassId" value="#{offNewaclassAction.newaclass.id}"/>
   <c:if test="${offNewaclassAction.newaclass != null}"> </c:if>
 
   <c:if test="${offNewaclassAction.newaSimplePoolWebComponent != null}">
-    <jjw:newaSimplePoolWeb messageResource="de.jjw.webapp.messages.admin.fightingclass"
+    <jjw:newaSimplePoolWeb messageResource="de.jjw.webapp.messages.admin.newaclass"
                                binding="#{offNewaclassAction.newaSimplePoolWebComponent}"
                                readOnly="#{offNewaclassAction.readOnly}"/>
   </c:if>
 
   <c:if test="${offNewaclassAction.newaDoublePoolWebComponent != null}">
-    <jjw:newaDoublePoolWeb messageResource="de.jjw.webapp.messages.admin.fightingclass"
+    <jjw:newaDoublePoolWeb messageResource="de.jjw.webapp.messages.admin.newaclass"
                                binding="#{offNewaclassAction.newaDoublePoolWebComponent}"
                                readOnly="#{offNewaclassAction.readOnly}"/>
   </c:if>
 
   <c:if test="${offNewaclassAction.newaKoWebComponent != null}">
-    <jjw:newaKoWeb messageResource="de.jjw.webapp.messages.admin.fightingclass"
+    <jjw:newaKoWeb messageResource="de.jjw.webapp.messages.admin.newaclass"
                        binding="#{offNewaclassAction.newaKoWebComponent}"
                        readOnly="#{offNewaclassAction.readOnly}"/>
   </c:if>

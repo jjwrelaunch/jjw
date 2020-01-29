@@ -142,7 +142,7 @@ public class NewaclassOverviewAction
             if ( fightingclass.getFightsystem() == Fightsystem.SIMPLE_POOL )
 
             {
-                new NewaPoolPDF( "de.jjw.webapp.messages.admin.fightingclass",
+                new NewaPoolPDF( "de.jjw.webapp.messages.admin.newaclass",
                                  newaclassManager.getNewaclassSimplePool( fightingclass.getId() ),
                                      response, ConfigMain.getInstance().getEventConfiguration().getPdfHeadLine1(),
                                      getLocale() );
@@ -151,7 +151,7 @@ public class NewaclassOverviewAction
             if ( fightingclass.getFightsystem() == Fightsystem.DOUBLE_POOL )
 
             {
-                new NewaDPoolPDF( "de.jjw.webapp.messages.admin.fightingclass",
+                new NewaDPoolPDF( "de.jjw.webapp.messages.admin.newaclass",
                                   newaclassManager.getNewaclassDoublePool( fightingclass.getId() ),
                                       response, ConfigMain.getInstance().getEventConfiguration().getPdfHeadLine1(),
                                       getLocale() );
@@ -163,19 +163,19 @@ public class NewaclassOverviewAction
                 NewaKoClass ko = newaclassManager.getNewaclassKo( fightingclass.getId() );
                 if ( ko.getFighterListPoolA().size() < 9 )
                 {
-                    new NewaKo16ComplexListPDF( "de.jjw.webapp.messages.admin.fightingclass", ko, response,
+                    new NewaKo16ComplexListPDF( "de.jjw.webapp.messages.admin.newaclass", ko, response,
                                                     ConfigMain.getInstance().getEventConfiguration().getPdfHeadLine1(),
                                                     getLocale() );
                 }
                 if ( ko.getFighterListPoolA().size() < 17 && ko.getFighterListPoolA().size() > 8 )
                 {
-                    new NewaKo32ComplexListPDF( "de.jjw.webapp.messages.admin.fightingclass", ko, response,
+                    new NewaKo32ComplexListPDF( "de.jjw.webapp.messages.admin.newaclass", ko, response,
                                                     ConfigMain.getInstance().getEventConfiguration().getPdfHeadLine1(),
                                                     getLocale() );
                 }
                 if ( ko.getFighterListPoolA().size() < 33 && ko.getFighterListPoolA().size() > 16 )
                 {
-                    new NewaKo64ComplexListPDF( "de.jjw.webapp.messages.admin.fightingclass", ko, response,
+                    new NewaKo64ComplexListPDF( "de.jjw.webapp.messages.admin.newaclass", ko, response,
                                                     ConfigMain.getInstance().getEventConfiguration().getPdfHeadLine1(),
                                                     getLocale() );
                 }
