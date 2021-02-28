@@ -72,6 +72,10 @@ public class NewaFighter
     protected long originalNewaclassId;
 
     protected int yearOfBirth;
+    
+    protected int monthOfBirth;
+    
+    protected int dayOfBirth;
 
     protected boolean markForExport;
     
@@ -417,8 +421,24 @@ public class NewaFighter
     {
         this.yearOfBirth = yearOfBirth;
     }
+    
+    public int getMonthOfBirth() {
+		return monthOfBirth;
+	}
 
-    public boolean isMarkForExport()
+	public void setMonthOfBirth(int monthOfBirth) {
+		this.monthOfBirth = monthOfBirth;
+	}
+
+	public int getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(int dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
+
+	public boolean isMarkForExport()
     {
         return markForExport;
     }

@@ -72,7 +72,15 @@ public class DuoTeam
 
     protected int yearOfBirth;    
 
+    protected int monthOfBirth;
+    
+    protected int dayOfBirth;
+
     protected int yearOfBirth2;
+
+    protected int monthOfBirth2;
+    
+    protected int dayOfBirth2;
 
     protected boolean markForExport;
     
@@ -453,8 +461,41 @@ public class DuoTeam
     {
         this.yearOfBirth2 = yearOfBirth2;
     }
+    
 
-    public boolean isMarkForExport()
+    public int getMonthOfBirth() {
+		return monthOfBirth;
+	}
+
+	public void setMonthOfBirth(int monthOfBirth) {
+		this.monthOfBirth = monthOfBirth;
+	}
+
+	public int getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(int dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
+
+	public int getMonthOfBirth2() {
+		return monthOfBirth2;
+	}
+
+	public void setMonthOfBirth2(int monthOfBirth2) {
+		this.monthOfBirth2 = monthOfBirth2;
+	}
+
+	public int getDayOfBirth2() {
+		return dayOfBirth2;
+	}
+
+	public void setDayOfBirth2(int dayOfBirth2) {
+		this.dayOfBirth2 = dayOfBirth2;
+	}
+
+	public boolean isMarkForExport()
     {
         return markForExport;
     }

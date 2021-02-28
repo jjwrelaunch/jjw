@@ -221,6 +221,17 @@
   </managed-bean>
   
   <managed-bean>
+    <managed-bean-name>adminSDataAction</managed-bean-name>
+    <managed-bean-class>de.jjw.webapp.action.admin.SDataAction</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>sDataInputManager</property-name>
+      <value>#{sDataInputManager}</value>
+    </managed-property>   
+   
+  </managed-bean>
+  
+  <managed-bean>
     <managed-bean-name>adminWeightclassAction</managed-bean-name>
     <managed-bean-class>de.jjw.webapp.action.admin.WeightclassAction</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>

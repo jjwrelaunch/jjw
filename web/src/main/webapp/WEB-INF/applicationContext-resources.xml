@@ -42,7 +42,7 @@
 
   <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    <property name="url" value="jdbc:mysql://localhost/gotest?useUnicode=true&amp;characterEncoding=utf-8"/>
+    <property name="url" value="jdbc:mysql://localhost/pdp24?useUnicode=true&amp;characterEncoding=utf-8"/>
     <property name="username" value="root"/>
     <property name="password" value="root"/>
     <property name="maxActive" value="45"/>

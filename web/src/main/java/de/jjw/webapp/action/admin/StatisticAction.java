@@ -635,7 +635,7 @@ public class StatisticAction
                 jsonObject.addProperty( "name", item.getName() );
                 jsonObject.addProperty( "firstname", item.getFirstname() );
                 jsonObject.addProperty( "gender", item.getSex() );
-                jsonObject.addProperty( "yearOfBirth", item.getYearOfBirth() );
+                jsonObject.addProperty( "yearOfBirth", item.getDayOfBirth() +"."+ item.getMonthOfBirth()+"."+ item.getYearOfBirth() );
                 jsonObject.addProperty( "teamId", item.getTeam().getId() );
                 jsonObject.addProperty( "team", item.getTeam().getTeamName() );
                 jsonObject.addProperty( "weight", item.getWeight() );
@@ -650,8 +650,8 @@ public class StatisticAction
                 jsonObject.addProperty( "name2", item.getName2() );
                 jsonObject.addProperty( "firstname2", item.getFirstname2() );
                 jsonObject.addProperty( "gender", item.getSex() );
-                jsonObject.addProperty( "yearOfBirth", item.getYearOfBirth() );
-                jsonObject.addProperty( "yearOfBirth2", item.getYearOfBirth2() );
+                jsonObject.addProperty( "yearOfBirth", item.getDayOfBirth() +"."+ item.getMonthOfBirth()+"."+item.getYearOfBirth() );
+                jsonObject.addProperty( "yearOfBirth2",item.getDayOfBirth2() +"."+ item.getMonthOfBirth2()+"."+ item.getYearOfBirth2() );
                 jsonObject.addProperty( "teamId", item.getTeam().getId() );
                 jsonObject.addProperty( "team", item.getTeam().getTeamName() );
                 jsonDuos.add( jsonObject );
@@ -663,7 +663,7 @@ public class StatisticAction
                 jsonObject.addProperty( "name", item.getName() );
                 jsonObject.addProperty( "firstname", item.getFirstname() );
                 jsonObject.addProperty( "gender", item.getSex() );
-                jsonObject.addProperty( "yearOfBirth", item.getYearOfBirth() );
+                jsonObject.addProperty( "yearOfBirth", item.getDayOfBirth() +"."+ item.getMonthOfBirth()+"."+ item.getYearOfBirth() );
                 jsonObject.addProperty( "teamId", item.getTeam().getId() );
                 jsonObject.addProperty( "team", item.getTeam().getTeamName() );
                 jsonObject.addProperty( "weight", item.getWeight() );

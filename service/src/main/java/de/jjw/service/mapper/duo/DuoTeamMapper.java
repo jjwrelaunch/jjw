@@ -95,7 +95,11 @@ public class DuoTeamMapper
         ret.setTeamId( duoTeam.getTeamId() );
         ret.setDuoclassId( duoTeam.getDuoclassId() );
         ret.setYearOfBirth( duoTeam.getYearOfBirth() );
+        ret.setMonthOfBirth( duoTeam.getMonthOfBirth() );
+        ret.setDayOfBirth( duoTeam.getDayOfBirth() );
         ret.setYearOfBirth2( duoTeam.getYearOfBirth2() );
+        ret.setMonthOfBirth2( duoTeam.getMonthOfBirth2() );
+        ret.setDayOfBirth2( duoTeam.getDayOfBirth2() );
         ret.setMarkForExport( duoTeam.isMarkForExport() );
         try
         {
@@ -145,6 +149,10 @@ public class DuoTeamMapper
 
         duoTeamDB.setYearOfBirth( duoTeam.getYearOfBirth() );
         duoTeamDB.setYearOfBirth2( duoTeam.getYearOfBirth2() );
+        duoTeamDB.setMonthOfBirth( duoTeam.getMonthOfBirth() );
+        duoTeamDB.setDayOfBirth( duoTeam.getDayOfBirth() );
+        duoTeamDB.setMonthOfBirth2( duoTeam.getMonthOfBirth2() );
+        duoTeamDB.setDayOfBirth2( duoTeam.getDayOfBirth2() );
         duoTeamDB.setMarkForExport( duoTeam.isMarkForExport() );
         duoTeamDB.setModificationDate( new Timestamp( duoTeam.getModificationDate().getTime() ) );
         duoTeamDB.setModificationId( Long.valueOf( duoTeam.getModificationId() ) );

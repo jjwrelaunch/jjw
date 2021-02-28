@@ -72,7 +72,9 @@ public class TeamAction
     private static String UPLOAD_TEAM = "uploadTeam";
 
     private static String UPLOAD_APPLICATIONS = "uploadApplications";
-
+    
+    private static String EXTERNAL_INPUT = "externalInput";
+    
     private static String ALL_TEAMS = "allTeams";
 
     private TeamManager teamManager;
@@ -252,6 +254,12 @@ public class TeamAction
     {
         getRequest().setAttribute( WEB_ADMIN_APPLICATION_UPLOAD, team );
         return UPLOAD_APPLICATIONS;
+    }
+    
+    public String gotoExternalInput()
+    {
+        
+        return EXTERNAL_INPUT;
     }
 
     public String gotoAllTeams()

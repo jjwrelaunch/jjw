@@ -73,6 +73,7 @@ public class TeamMapper
         ret.setId( new Long( team.getId() ) );
         ret.setModificationDate( new Timestamp( team.getModificationDate().getTime() ) );
         ret.setModificationId( new Long( team.getModificationId() ) );
+       // ret.setExternId( Long.valueOf( team.getExternId() ) );
         if ( team.getLogo() != null )
         {
             ret.setLogo( team.getLogo().clone() );
@@ -114,6 +115,7 @@ public class TeamMapper
         teamDB.setModificationId( Long.valueOf( team.getModificationId() ) );
         teamDB.setCountryId( Long.valueOf( team.getCountry().getId() ) );
         teamDB.setRegionId( Long.valueOf( team.getRegion().getId() ) );
+      //  teamDB.setExternId( Long.valueOf( team.getExternId() ) );
     }
 
 

@@ -227,6 +227,14 @@
       <to-view-id>/admin/uploadApplications.html</to-view-id>
     </navigation-case>
   </navigation-rule>
+  <navigation-rule>
+    <from-view-id>/admin/showTeams.jsp</from-view-id>
+    <navigation-case>
+      <from-action>#{adminTeamAction.gotoExternalInput}</from-action>
+      <from-outcome>externalInput</from-outcome>
+      <to-view-id>/admin/externalInput.html</to-view-id>
+    </navigation-case>
+  </navigation-rule>
   
   <navigation-rule>
     <from-view-id>/admin/*</from-view-id>

@@ -73,7 +73,7 @@ public class ConfigAction
         	String[] deadline= config.getDeadline().split("/");
         	int day =Integer.valueOf(deadline[0]);
         	int month =Integer.valueOf(deadline[1]);
-            if (day<1 || day> 31 || month < 1 || month> 10) throw new Exception("wrong deadline"); 
+            if (day<1 || day> 31 || month < 1 || month> 12) throw new Exception("wrong deadline"); 
             
         	configManager.saveConfig( new ServiceExchangeContext(
                 WebExchangeContextHelper.getWebExchangeContext( getSession() ).getUserId() ), config );

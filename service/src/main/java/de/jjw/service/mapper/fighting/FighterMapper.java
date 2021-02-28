@@ -94,6 +94,8 @@ public class FighterMapper
         ret.setWeight( fighter.getWeight() );
         ret.setFightingclassId( fighter.getFightingclassId() );
         ret.setYearOfBirth( fighter.getYearOfBirth() );
+        ret.setMonthOfBirth( fighter.getMonthOfBirth() );
+        ret.setDayOfBirth( fighter.getDayOfBirth() );
         ret.setMarkForExport( fighter.isMarkForExport() );
         try
         {
@@ -141,6 +143,9 @@ public class FighterMapper
 
         fighterDB.setWeight( fighter.getWeight() );
         fighterDB.setYearOfBirth( fighter.getYearOfBirth() );
+        fighterDB.setMonthOfBirth( fighter.getMonthOfBirth() );
+        fighterDB.setDayOfBirth( fighter.getDayOfBirth() );
+
         fighterDB.setMarkForExport( fighter.isMarkForExport() );
 
 //        if (fighter.getFightingclass() != null && fighterDB.getFightingclass() == null) {

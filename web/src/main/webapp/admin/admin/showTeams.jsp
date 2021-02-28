@@ -67,6 +67,9 @@
                    
   <h:commandButton value="#{msg['admin.gotoUploadFile']}"
                    action="#{adminTeamAction.gotoUploadApplications}" id="gotoUploadApplications" tabindex="4"/>
+                   
+  <h:commandButton value="#{msg['admin.gotoSDataInput']}"
+                   action="#{adminTeamAction.gotoExternalInput}" id="gotoSDataInput" tabindex="5"/>                   
 											
   <h:outputText value="#{adminTeamAction.text}"/>
   <c:if test="${adminTeamAction.teams != null}">

@@ -42,6 +42,7 @@
         <value>de/jjw/model/admin/Fightsystem.hbm.xml</value>
         <value>de/jjw/model/admin/ConfigJJW.hbm.xml</value>     
         <value>de/jjw/model/admin/IPLog.hbm.xml</value>
+        <value>de/jjw/model/admin/SDataInputModel.hbm.xml</value>
         <value>de/jjw/model/Video.hbm.xml</value>        
 
         <value>de/jjw/model/fighting/Fighter.hbm.xml</value>

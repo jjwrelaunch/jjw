@@ -187,10 +187,33 @@
         >
 
         </property>
+         <property
+            name="monthOfBirth"
+                    column="monthOfBirth"
+        >
+        </property>
+        <property
+            name="dayOfBirth"
+                    column="dayOfBirth"
+        >
+
+        </property>
+        
         
 		<property
             name="yearOfBirth2"
                     column="yearOfBirth2"
+        >
+
+        </property>
+         <property
+            name="monthOfBirth2"
+                    column="monthOfBirth2"
+        >
+        </property>
+        <property
+            name="dayOfBirth2"
+                    column="dayOfBirth2"
         >
 
         </property>       

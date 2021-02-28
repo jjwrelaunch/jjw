@@ -176,7 +176,17 @@
             name="yearOfBirth"
                     column="yearOfBirth"
         >
-
+        </property>
+        
+        <property
+            name="monthOfBirth"
+                    column="monthOfBirth"
+        >
+        </property>
+        <property
+            name="dayOfBirth"
+                    column="dayOfBirth"  >
+        
         </property>
          <property
             name="markForExport"

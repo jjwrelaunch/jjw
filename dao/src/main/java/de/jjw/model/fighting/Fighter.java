@@ -73,6 +73,10 @@ public class Fighter
 
     protected int yearOfBirth;
     
+    protected int monthOfBirth;
+    
+    protected int dayOfBirth;
+    
     protected boolean markForExport;
 
 
@@ -418,7 +422,25 @@ public class Fighter
         this.yearOfBirth = yearOfBirth;
     }
 
-    public boolean isMarkForExport()
+    
+    
+    public int getMonthOfBirth() {
+		return monthOfBirth;
+	}
+
+	public void setMonthOfBirth(int monthOfBirth) {
+		this.monthOfBirth = monthOfBirth;
+	}
+
+	public int getDayOfBirth() {
+		return dayOfBirth;
+	}
+
+	public void setDayOfBirth(int dayOfBirth) {
+		this.dayOfBirth = dayOfBirth;
+	}
+
+	public boolean isMarkForExport()
     {
         return markForExport;
     }

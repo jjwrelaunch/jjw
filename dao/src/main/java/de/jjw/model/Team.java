@@ -65,6 +65,8 @@ public class Team
     private Long createId;
 
     private Long modificationId;
+    
+    private Long externId;
 
     private Set<Fighter> fighterForTeam;
 
@@ -327,5 +329,13 @@ public class Team
         this.fighterForTeam = fighterForTeam;
     }
 
+	public Long getExternId() {
+		return externId;
+	}
+
+	public void setExternId(Long externId) {
+		this.externId = externId;
+	}
+    
 
 }

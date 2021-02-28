@@ -456,10 +456,13 @@ public class UploadTeamAction
             teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         FighterWeb newFighter = new FighterWeb();
+        
+        String birthdate= item.get( "yearOfBirth" ).getAsString();
+        String[]  birthDateArry = birthdate.trim().replace(".", ":").split(":");
 
         newFighter.setName( item.get( "name" ).getAsString() );
         newFighter.setFirstname( item.get( "firstname" ).getAsString() );
-        newFighter.setAge( getAge( item.get( "yearOfBirth" ).getAsString(), ageList ) );
+        newFighter.setAge( getAge( birthDateArry, ageList ) );
         newFighter.setAgeId( newFighter.getAge().getId() );
         newFighter.setTeamId( teamForFighter.getId() );
         newFighter.setTeam( teamForFighter );
@@ -468,7 +471,10 @@ public class UploadTeamAction
                                                                                          item.get( "gender" ).getAsString(),
                                                                                          Locale.GERMAN ) );
         newFighter.setWeight( item.get( "weight" ).getAsDouble() );
-        newFighter.setYearOfBirth( item.get( "yearOfBirth" ).getAsInt() );
+                
+        newFighter.setYearOfBirth( Integer.valueOf(birthDateArry[2]) );
+        newFighter.setMonthOfBirth( Integer.valueOf(birthDateArry[1]) );
+        newFighter.setDayOfBirth( Integer.valueOf(birthDateArry[0]) );            
 
         return newFighter;
     }
@@ -482,22 +488,32 @@ public class UploadTeamAction
             teamForDuo = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         DuoTeamWeb newDuoteam = new DuoTeamWeb();
+        
+        String birthdate= item.get( "yearOfBirth" ).getAsString();
+        String[]  birthDateArry = birthdate.trim().replace(".", ":").split(":");
+        String birthdate2= item.get( "yearOfBirth2" ).getAsString();
+        String[]  birthDateArry2 = birthdate2.trim().replace(".", ":").split(":");
 
         newDuoteam.setName( item.get( "name" ).getAsString() );
         newDuoteam.setFirstname( item.get( "firstname" ).getAsString() );
         newDuoteam.setName2( item.get( "name2" ).getAsString() );
         newDuoteam.setFirstname2( item.get( "firstname2" ).getAsString() );
-        newDuoteam.setAge( getAge( item.get( "yearOfBirth" ).getAsString(), item.get( "yearOfBirth2" ).getAsString(),
-                                   ageList ) );
+        newDuoteam.setAge( getAge( birthDateArry, birthDateArry2,ageList ) );
         newDuoteam.setAgeId( newDuoteam.getAge().getId() );
         newDuoteam.setTeamId( teamForDuo.getId() );
         newDuoteam.setTeam( teamForDuo );
         newDuoteam.setSex( item.get( "gender" ).getAsString() );
         newDuoteam.setSexWeb( CodestableMain.getInstance().getCodestableCodeValueByType( TYPE_SEX,
                                                                                          item.get( "gender" ).getAsString(),
-                                                                                         Locale.GERMAN ) );
-        newDuoteam.setYearOfBirth( item.get( "yearOfBirth" ).getAsInt() );
-        newDuoteam.setYearOfBirth2( item.get( "yearOfBirth2" ).getAsInt() );
+                                                                                         Locale.GERMAN ) );                
+        newDuoteam.setYearOfBirth( Integer.valueOf(birthDateArry[2]) );
+        newDuoteam.setMonthOfBirth( Integer.valueOf(birthDateArry[1]) );
+        newDuoteam.setDayOfBirth( Integer.valueOf(birthDateArry[0]) );            
+        
+        newDuoteam.setYearOfBirth2( Integer.valueOf(birthDateArry2[2]) );
+        newDuoteam.setMonthOfBirth2( Integer.valueOf(birthDateArry2[1]) );
+        newDuoteam.setDayOfBirth2( Integer.valueOf(birthDateArry2[0]) );
+        
         return newDuoteam;
     }
 
@@ -510,10 +526,13 @@ public class UploadTeamAction
             teamForFighter = getTeamForUpload( (int) teamId, teamList,item.get( "team" ).getAsString(),true  );
 
         NewaFighterWeb newFighter = new NewaFighterWeb();
-
+        
+        String birthdate= item.get( "yearOfBirth" ).getAsString();
+        String[]  birthDateArry = birthdate.trim().replace(".", ":").split(":");
+        
         newFighter.setName( item.get( "name" ).getAsString() );
         newFighter.setFirstname( item.get( "firstname" ).getAsString() );
-        newFighter.setAge( getAge( item.get( "yearOfBirth" ).getAsString(), ageList ) );
+        newFighter.setAge( getAge(birthDateArry, ageList ) );
         newFighter.setAgeId( newFighter.getAge().getId() );
         newFighter.setTeamId( teamForFighter.getId() );
         newFighter.setTeam( teamForFighter );
@@ -521,171 +540,38 @@ public class UploadTeamAction
         newFighter.setSexWeb( CodestableMain.getInstance().getCodestableCodeValueByType( TYPE_SEX,
                                                                                          item.get( "gender" ).getAsString(),
                                                                                          Locale.GERMAN ) );
+        
         newFighter.setWeight( item.get( "weight" ).getAsDouble() );
-        newFighter.setYearOfBirth( item.get( "yearOfBirth" ).getAsInt() );
+        newFighter.setYearOfBirth( Integer.valueOf(birthDateArry[2]) );
+        newFighter.setMonthOfBirth( Integer.valueOf(birthDateArry[1]) );
+        newFighter.setDayOfBirth( Integer.valueOf(birthDateArry[0]) );            
         return newFighter;
     }
 
 
-    public String uploadTeamold()
-    {
-        String line;
-        String[] lineArray;
-        Vector<ErrorElement> errors = new Vector<ErrorElement>();
-        try
-        {
-            if ( teamManager.isATeamMemberAlreadyInTheSystem( getTeam().getId() ) )
-            {
-                errors.add( new ErrorElement( ADMIN_TEAM_UPLOAD_ALREADY_MEMBER_EXISTS ) );
-                setErrorMessageVector( errors );
-                return null;
-            }
-            
-            BufferedReader registerInput = new BufferedReader( new InputStreamReader( registerFile.getInputStream() ) );
-            this.fighterList = new ArrayList<FighterWeb>();
-            this.duoteamList = new ArrayList<DuoTeamWeb>();
-            this.newaFighterList = new ArrayList<NewaFighterWeb>();
-            List<Age> ageList = ageManager.getAllAges();
-            line = registerInput.readLine(); // 1st line is headline
-            line = registerInput.readLine();
-            while ( line != null && !TypeUtil.STRING_DEFAULT.equals( line.trim() ) )
-            {
-                lineArray = line.split( "\\|" );
-
-                if ( !isCorrectVersion( lineArray[13] ) )
-                {
-                    errors.add( new ErrorElement( ADMIN_TEAM_WRONG_VERSION_UPLOAD ) );
-                    setErrorMessageVector( errors );
-                    return null;
-                }
-
-                if ( Preview.DISCEPLINE_FIGHTING.equals( lineArray[0] ) )
-                {
-                    fighterList.add( extractFighter( lineArray, ageList ) );
-                }
-
-                if ( Preview.DISCEPLINE_DUO.equals( lineArray[0] ) )
-                {
-                    duoteamList.add( extractDuoteam( lineArray, ageList ) );
-                }
-
-                if ( Preview.DISCEPLINE_NEWA.equals( lineArray[0] ) )
-                {
-                    newaFighterList.add( extractNewaFighter( lineArray, ageList ) );
-                }
-                line = registerInput.readLine();
-            }
-            registerInput.close();
-
-            if ( FighterValidator.isDoubleNameFighter( fighterList )
-                || DuoTeamValidator.isDoubleNameDuoTeam( duoteamList )
-                || NewaFighterValidator.isDoubleNameNewaFighter( newaFighterList ) )
-            {
-                errors.add( new ErrorElement( ADMIN_TEAM_UPLOAD_DOUBLE_PARTICIPANT ) );
-                setErrorMessageVector( errors );
-                return null;
-            }
-
-            if ( !FighterValidator.isRequiredFieldsValid( fighterList, errors )
-                && !DuoTeamValidator.isRequiredFieldsValid( duoteamList, errors )
-                && !NewaFighterValidator.isRequiredFieldsValid( newaFighterList, errors ) )
-            {
-                setErrorMessageVector( errors );
-                return null;
-            }
-            return saveTeam();
-        }
-        catch ( Exception e )
-        {
-            errors.add( new ErrorElement( ADMIN_TEAM_UPLOAD_ERROR ) );
-            setErrorMessageVector( errors );
-            return null;
-        }
-        finally
-        {
-            return null;
-        }
-    }
-    
+        
     private boolean isCorrectVersion( String version )
     {
         return IGlobalProjectConstants.UPLOAD_VERSION.equals( version );
     }
 
-    private FighterWeb extractFighter( String[] line, List<Age> ageList )
+    private Age getAge( String[]  birthDateArry, List<Age> ageList)
     {
-        FighterWeb newFighter = new FighterWeb();
-        
-        newFighter.setName(line[1]);
-        newFighter.setFirstname(line[2]);
-        newFighter.setAge( getAge( line[5], ageList ) );
-        newFighter.setAgeId( newFighter.getAge().getId() );
-        newFighter.setTeamId( team.getId() );
-        newFighter.setTeam(team);
-        newFighter.setSexWeb( CodestableMain.getInstance().getCodestableCodeValueByType( TYPE_SEX, line[8],
-                                                                                         Locale.GERMAN ) );
-        newFighter.setSex( line[8] );
-        newFighter.setWeight(Double.valueOf( line[9]));
-
-        
-        return newFighter;                        
-    }
-    
-    private DuoTeamWeb extractDuoteam( String[] line, List<Age> ageList )
-    {
-        DuoTeamWeb newDuoteam = new DuoTeamWeb();
-        
-        newDuoteam.setName(line[1]);
-        newDuoteam.setFirstname(line[2]);
-        newDuoteam.setName2(line[3]);
-        newDuoteam.setFirstname2(line[4]);
-        newDuoteam.setAge( getAge( line[5], line[6], ageList ) );
-        newDuoteam.setAgeId( newDuoteam.getAge().getId() );
-        newDuoteam.setTeamId( team.getId() );
-        newDuoteam.setTeam(team);
-        newDuoteam.setSex(line[8]);
-        newDuoteam.setSexWeb( CodestableMain.getInstance().getCodestableCodeValueByType( TYPE_SEX, line[8],
-                                                                                         Locale.GERMAN ) );
-
-        return newDuoteam;                        
-    }
-    
-    private NewaFighterWeb extractNewaFighter( String[] line, List<Age> ageList )
-    {
-        NewaFighterWeb newFighter = new NewaFighterWeb();
-        
-        newFighter.setName(line[1]);
-        newFighter.setFirstname(line[2]);
-        newFighter.setAge( getAge( line[5], ageList ) );
-        newFighter.setAgeId( newFighter.getAge().getId() );
-        newFighter.setTeamId( team.getId() );
-        newFighter.setTeam(team);
-        newFighter.setSex(line[8]);
-        newFighter.setSexWeb( CodestableMain.getInstance().getCodestableCodeValueByType( TYPE_SEX, line[8],
-                                                                                         Locale.GERMAN ) );
-        newFighter.setWeight(Double.valueOf(line[9]));
-
-        return newFighter;                        
-    }
-    
-    private Age getAge( String birthDate, List<Age> ageList)
-    {
-    	String[]  birthDateArry = birthDate.trim().split(".");
     	int dayBirth =Integer.valueOf(birthDateArry[0]);
     	int monthBirth =Integer.valueOf(birthDateArry[1]);
     	
     	Calendar rightNow = Calendar.getInstance();
         int actualAge = rightNow.get( Calendar.YEAR ) - Integer.valueOf( birthDateArry[2].trim() );
-        actualAge--;
+        
 
         //test if we are before or after deadline
         String [] deadline = config.getDeadline().split("/");
         int dayDeadline =Integer.valueOf(deadline[0]);
     	int monthDeadline =Integer.valueOf(deadline[1]);            	
         
-        if(monthBirth > monthDeadline)actualAge++;
+        if(monthBirth < monthDeadline)actualAge++;
         else {
-        	if(monthBirth == monthDeadline && dayBirth>dayDeadline)actualAge++;
+        	if(monthBirth == monthDeadline && dayBirth<dayDeadline)actualAge++;
         }
         
         for(Age item: ageList){
@@ -696,32 +582,31 @@ public class UploadTeamAction
         return null;
     }
 
-    private Age getAge( String birthDate, String birthDate2, List<Age> ageList )
+    private Age getAge( String[]  birthDateArry , String[]  birthDateArry2, List<Age> ageList )
     {
-    	String[]  birthDateArry = birthDate.trim().split(".");
+ 	
     	int dayBirth =Integer.valueOf(birthDateArry[0]);
     	int monthBirth =Integer.valueOf(birthDateArry[1]);
     	int yearBirth =Integer.valueOf(birthDateArry[2]);    	
     	
-    	String[]  birthDateArr2y = birthDate2.trim().split(".");
-    	int dayBirth2 =Integer.valueOf(birthDateArr2y[0]);
-    	int monthBirth2 =Integer.valueOf(birthDateArr2y[1]);
-    	int yearBirth2 =Integer.valueOf(birthDateArr2y[2]);
+    	int dayBirth2 =Integer.valueOf(birthDateArry2[0]);
+    	int monthBirth2 =Integer.valueOf(birthDateArry2[1]);
+    	int yearBirth2 =Integer.valueOf(birthDateArry2[2]);
     	
     	//test of year
-    	if ( yearBirth < yearBirth2 ) {
+    	if ( yearBirth > yearBirth2 ) {
     		yearBirth = yearBirth2;
     		monthBirth=monthBirth2;
     		dayBirth=dayBirth2;
     	}
     	else {//test of month
-    		if ( yearBirth == yearBirth2 && monthBirth< monthBirth2) {
+    		if ( yearBirth == yearBirth2 && monthBirth> monthBirth2) {
     			yearBirth = yearBirth2;
         		monthBirth=monthBirth2;
         		dayBirth=dayBirth2;
         	}
     		else {//test of day
-        		if (monthBirth == monthBirth2 && dayBirth< dayBirth2) {
+        		if (yearBirth == yearBirth2 && monthBirth == monthBirth2 && dayBirth> dayBirth2) {
         			yearBirth = yearBirth2;
             		monthBirth=monthBirth2;
             		dayBirth=dayBirth2;
@@ -731,16 +616,16 @@ public class UploadTeamAction
     	
         Calendar rightNow = Calendar.getInstance();
         int actualAge = rightNow.get( Calendar.YEAR ) - yearBirth;
-        actualAge--;
+        
 
         //test if we are before or after deadline
         String [] deadline = config.getDeadline().split("/");
         int dayDeadline =Integer.valueOf(deadline[0]);
     	int monthDeadline =Integer.valueOf(deadline[1]);            	
         
-        if(monthBirth > monthDeadline)actualAge++;
+        if(monthBirth < monthDeadline)actualAge++;
         else {
-        	if(monthBirth == monthDeadline && dayBirth>dayDeadline)actualAge++;
+        	if(monthBirth == monthDeadline && dayBirth<dayDeadline)actualAge++;
         }
 
         for ( Age item : ageList )

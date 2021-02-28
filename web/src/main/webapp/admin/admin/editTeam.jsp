@@ -56,6 +56,13 @@
         <jjw:codestableErrorMark field="region"/>
       </h:selectOneMenu>
       
+     <h:outputLabel for="externId" value="#{msg['externId']}"/>
+      <h:outputText value=""/>
+      <h:inputText value="#{adminTeamAction.team.externId}" id="externId" required="false" size="10" tabindex="2"
+                       maxlength="10">
+      	<jjw:codestableErrorMark field="externId"/>
+	  </h:inputText>    
+     
      
     <c:if test="${adminTeamAction.imageCommand != null}">
       
