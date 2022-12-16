@@ -11,7 +11,7 @@
 	<version>20.0.1</version>
 
 	<properties>
-		<spring.version>3.1.4.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<myfaces.version>1.2.8</myfaces.version>
 	</properties>
 	<dependencies>
